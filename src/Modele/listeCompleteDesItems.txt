@@ -1,0 +1,6 @@
+00:Stick:true:true:false
+01:Wood_Log:true:false:false
+02:Wooden_Plank:true:true:false
+03:Stuff:true:true:false
+04:A:true:true:false
+05:B:true:true:false
