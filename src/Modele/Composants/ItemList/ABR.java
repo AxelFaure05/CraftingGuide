@@ -1,10 +1,11 @@
 package Modele.Composants.ItemList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import Modele.Exceptions.ExceptionArbreVide;
 
-public class ABR<E> implements Iterable<E>{
+public class ABR<E> implements Iterable<E>, Serializable{
 	
 	E element;
 	ABR<E> arbG;
