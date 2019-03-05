@@ -1,8 +1,10 @@
 package Modele.Composants.ItemList;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import Modele.Exceptions.ExceptionArbreVide;
 
-public class ABR<E> {
+public class ABR<E> implements Iterable<E>{
 	
 	E element;
 	ABR<E> arbG;
@@ -49,4 +51,24 @@ public class ABR<E> {
 		if (this.estVide()) return 0;
 		else return 1 + Math.max(this.sag().hauteur(), this.sad().hauteur());
 	}
+	
+	public int balance() {
+		return this.arbD.hauteur()-this.arbG.hauteur();
+	}
+	
+	public ArrayList<E> parcoursProfondeurRécursif(ABR<E> ab) {
+		ArrayList<E> l = new ArrayList<E>();
+		if (!ab.estVide()) {
+			if (!ab.sag().estVide()) l.addAll(parcoursProfondeurRécursif(ab.sag()));
+			if (!ab.sad().estVide()) l.addAll(parcoursProfondeurRécursif(ab.sad()));
+			l.add(ab.racine());
+		}
+		return l;
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		return parcoursProfondeurRécursif(this).iterator();
+	}
+
 }
