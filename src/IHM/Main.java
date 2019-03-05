@@ -10,6 +10,18 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+	
+	/*
+	 *	Tu peux directement travailler sur la classe src/CraftingGuide,
+	 *		c'est la classe principale qui fait office de Frame.
+	 */
+	
+	/*
+	 * On risque d'avoir pas mal d'images et de données à stocker, 
+	 * 		peut-être que les stocker dans un dossier créé à cet effet peut aider dans l'organisation ? 
+	 */
+	public final static String DOSSIER_DONNEES = "./Data/";
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
