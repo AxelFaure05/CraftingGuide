@@ -27,7 +27,7 @@ public class Main extends Application {
 		try {
 			//BorderPane root = new BorderPane();
 			
-			Image bk = new Image("file:Table_de_Craft.png");
+			Image bk = new Image("file:" + DOSSIER_DONNEES + "Designs/Table_de_Craft.png");
 			ImageView mv = new ImageView(bk);
 			/*mv.setFitWidth(500);
 			mv.setFitHeight(500);*/
