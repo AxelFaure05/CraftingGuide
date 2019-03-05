@@ -15,7 +15,7 @@ import Modele.Composants.Item;
 
 public class ItemList extends ABR<Item> implements Serializable {
 	
-	final static String EMPLACEMENT_LISTECOMPLETE = "./src/Modele/Composants/ItemList/completeList.dat";
+	public final static String EMPLACEMENT_LISTECOMPLETE = "./src/Modele/Composants/ItemList/completeList.dat";
 	
 	public ItemList(String str) {
 		super();

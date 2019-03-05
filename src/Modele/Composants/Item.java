@@ -27,7 +27,7 @@ public class Item implements Comparable<Item>, Serializable {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = "minecraft:" + name.toLowerCase();
 	}
 	public boolean isCraftable() {
 		return isCraftable;

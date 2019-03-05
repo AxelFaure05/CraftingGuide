@@ -1,5 +1,9 @@
 package Modele.Composants;
 
+import Modele.Exceptions.ExceptionItemNonCorrespondant;
+import Modele.Exceptions.ExceptionItemNonStackable;
+import Modele.Exceptions.ExceptionStackOverflow;
+
 public class Stack {
 	
 	int count;
@@ -7,32 +11,46 @@ public class Stack {
 	
 	public Stack(Item item, int count) {
 		
-		this.setItem(item);
-		this.setCount(count);
+		try {
+			if(!item.isStackable()) {
+				throw new ExceptionItemNonStackable();
+			} else {
+				this.setItem(item);
+				this.setCount(count);
+			}
+		} catch(ExceptionItemNonStackable e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void remove(int removedCount) {
+	public boolean remove(int removedCount) {
 		try {
 			if(this.count-removedCount<0) {
 				throw new RuntimeException("Tried to remove more item than there is");
+			} else {
+				this.count -= removedCount;
+				return true;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+			return false;
 		}	
 	}
 
-	public void add(Item item, int addedCount) {
+	public boolean add(Item item, int addedCount) {
 		try {
 			if(this.item!=item) {
-				throw new RuntimeException("Cannot stack different items");
+				throw new ExceptionItemNonCorrespondant();
 			} else if(this.count==64) {
-				throw new RuntimeException("Cannot stack over 64 items");
+				throw new ExceptionStackOverflow();
 			} else {
 				this.count+=addedCount;
+				return true;
 			}
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	

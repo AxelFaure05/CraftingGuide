@@ -25,14 +25,18 @@ public class Dictionary implements Map<Character, Map<Character, Vector<Item>>> 
 
 			while(str!=null) {
 				arg = str.split(":");
-				this.put(new Item(
+				if(!this.containsKey(arg[1].charAt(0))){
+					this.put(arg[1].charAt(0), (Map<Character, Vector<Item>>)null);
+					this.get(arg[1].charAt(0)).put(arg[1].charAt(1), new Vector<Item>());
+				}
+				this.get(arg[1].charAt(0)).get(arg[1].charAt(1)).add(new Item(
 						Integer.valueOf(arg[0]),
 						arg[1],
 						Boolean.getBoolean(arg[2]),
 						Boolean.getBoolean(arg[3]),
 						Boolean.getBoolean(arg[4])));
 				str = bR.readLine();
-			}
+			} bR.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -63,8 +67,7 @@ public class Dictionary implements Map<Character, Map<Character, Vector<Item>>> 
 
 	@Override
 	public Map<Character, Vector<Item>> get(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.get(key);
 	}
 
 	@Override
@@ -81,7 +84,7 @@ public class Dictionary implements Map<Character, Map<Character, Vector<Item>>> 
 
 	@Override
 	public Map<Character, Vector<Item>> put(Character key, Map<Character, Vector<Item>> value) {
-		// TODO Auto-generated method stub
+		this.put(key, value);
 		return null;
 	}
 
@@ -108,5 +111,4 @@ public class Dictionary implements Map<Character, Map<Character, Vector<Item>>> 
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
