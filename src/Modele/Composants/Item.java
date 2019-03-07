@@ -6,15 +6,15 @@ public class Item implements Comparable<Item>, Serializable {
 	
 	private int ID;
 	private String name;
-	private boolean isCraftable, isStackable, isGhost;
+	private boolean isCraftable, isStackable, asFixedCraft;
 	
-	public Item(int ID, String name, boolean isCraftable, boolean isStackable, boolean isGhost) {
+	public Item(int ID, String name, boolean isCraftable, boolean isStackable, boolean asFixedCraft) {
 		
 		this.setID(ID);
 		this.setName(name);
 		this.setCraftable(isCraftable);
 		this.setStackable(isStackable);
-		this.setGhost(isGhost);
+		this.setFixedCraft(asFixedCraft);
 	}
 	
 	public int getID() {
@@ -41,11 +41,11 @@ public class Item implements Comparable<Item>, Serializable {
 	public void setStackable(boolean isStackable) {
 		this.isStackable = isStackable;
 	}
-	public boolean isGhost() {
-		return isGhost;
+	public boolean asFixedCraft() {
+		return asFixedCraft;
 	}
-	public void setGhost(boolean isGhost) {
-		this.isGhost = isGhost;
+	public void setFixedCraft(boolean asFixedCraft) {
+		this.asFixedCraft = asFixedCraft;
 	}
 	@Override
 	public int compareTo(Item o) {
