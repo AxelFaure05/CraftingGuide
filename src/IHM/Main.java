@@ -1,9 +1,10 @@
 package IHM;
-	
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -31,7 +32,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//BorderPane root = new BorderPane();
+			BorderPane onglet = new BorderPane();
 			
 			Image bk = new Image("file:" + DOSSIER_DONNEES + "Designs/Table_de_Craft.png");
 			ImageView mv = new ImageView(bk);
@@ -39,22 +40,39 @@ public class Main extends Application {
 			mv.setFitHeight(500);*/
 			mv.setImage(bk);
 			
+			
+			//Ajout des onglets
+			Menu onglet1= new Menu("Onglet1");
+			Menu onglet2= new Menu("Onglet2");
+			Menu onglet3= new Menu("Onglet3");
+			Menu onglet4= new Menu("Onglet4");
+			MenuBar menuBar= new MenuBar();
+			menuBar.getMenus().addAll(onglet1);
+			menuBar.getMenus().addAll(onglet2);
+			menuBar.getMenus().addAll(onglet3);
+			menuBar.getMenus().addAll(onglet4);
+			onglet.setTop(menuBar);
+			
 			Group g2 = new Group();
 			ComposantPerso c = new ComposantPerso();
+		
+			root.getChildren().addAll(g2,c,mv,onglet);
 			
-			root.getChildren().addAll(g2,c,mv);
-			
-			Scene scene = new Scene(root,335,315);
-			
+			Scene scene = new Scene(root,335,350);
 			scene.setRoot(root);
 			
+			//Appel de la fonction pour le hover des cases
 			interactionInventaire();
+			
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Crafting Guide");
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
+			
 			primaryStage.show();
-		} catch(Exception e) {
+		} 
+		
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -62,7 +80,7 @@ public class Main extends Application {
 	public void interactionInventaire() {
 		int col = 14;
 		int lig = 166;
-		Rectangle r = null;
+		Rectangle r;
 		
 		for(int j = 0;j<3;j++) {
 			for(int i = 0;i<9;i++) {
