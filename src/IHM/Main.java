@@ -91,9 +91,51 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 
 
 
+=======
+	
+	public void interactionInventaire() {
+		int col = 11;
+		int lig = 198;
+		Rectangle r;
+		
+		for(int j = 0;j<3;j++) {
+			for(int i = 0;i<9;i++) {
+				r = new Rectangle(col+36*i,lig+36*j,32,32);
+				r.setFill(Color.TRANSPARENT);
+				registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
+				root.getChildren().add(r);
+			}
+		}
+		
+		for(int i=0;i<9;i++) {
+			r = new Rectangle(col+36*i,lig+38.75*3,32,32);
+			r.setFill(Color.TRANSPARENT);
+			registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
+			root.getChildren().add(r);
+		}
+		
+		int col1 = 55;
+		int lig1 = 64;
+		
+		for(int i = 0;i<3;i++) {
+			for (int j = 0;j<3;j++) {
+					r = new Rectangle(col1+36*i,lig1+36*j,32,32);
+					r.setFill(Color.TRANSPARENT);
+					registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
+					root.getChildren().add(r);
+				}
+			}
+		r = new Rectangle(237.5,94.5,42,42);
+		r.setFill(Color.TRANSPARENT);
+		registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
+		root.getChildren().add(r);
+	}
+	
+>>>>>>> master
 	private void registerHandler(Shape s, Color defaultColor, Color hoverColor) {
 		s.setOnMouseEntered( e -> s.setFill(hoverColor));
 		s.setOnMouseExited(e -> s.setFill(defaultColor));
