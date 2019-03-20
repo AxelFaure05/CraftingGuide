@@ -57,11 +57,11 @@ public class ABR<E> implements Iterable<E>, Serializable{
 		return this.arbD.hauteur()-this.arbG.hauteur();
 	}
 	
-	public ArrayList<E> parcoursProfondeurRécursif(ABR<E> ab) {
+	public ArrayList<E> parcoursProfondeurRecursif(ABR<E> ab) {
 		ArrayList<E> l = new ArrayList<E>();
 		if (!ab.estVide()) {
-			if (!ab.sag().estVide()) l.addAll(parcoursProfondeurRécursif(ab.sag()));
-			if (!ab.sad().estVide()) l.addAll(parcoursProfondeurRécursif(ab.sad()));
+			if (!ab.sag().estVide()) l.addAll(parcoursProfondeurRecursif(ab.sag()));
+			if (!ab.sad().estVide()) l.addAll(parcoursProfondeurRecursif(ab.sad()));
 			l.add(ab.racine());
 		}
 		return l;
@@ -69,7 +69,7 @@ public class ABR<E> implements Iterable<E>, Serializable{
 
 	@Override
 	public Iterator<E> iterator() {
-		return parcoursProfondeurRécursif(this).iterator();
+		return parcoursProfondeurRecursif(this).iterator();
 	}
 
 }
