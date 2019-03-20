@@ -16,7 +16,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class Main extends Application {
-
+	
 
 
 
@@ -32,16 +32,17 @@ public class Main extends Application {
 	public final static String DOSSIER_DONNEES = "./Data/";
 	private BorderPane layout;
 	private Scene scene;
+	Group root = new Group();
 
-
+	
 	@Override
 	public void start(Stage window) {
 		try {
 			layout = new BorderPane();
-			scene= new Scene (layout,400,297);
+			scene= new Scene (layout,1400,900);
 
 
-
+			
 			Image background = new Image("file:" + DOSSIER_DONNEES + "Designs/menu.jpg");
 			ImageView mv = new ImageView(background);
 			/*mv.setFitWidth(500);
@@ -91,11 +92,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
 
-
-
-=======
 	
 	public void interactionInventaire() {
 		int col = 11;
@@ -134,8 +131,7 @@ public class Main extends Application {
 		registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
 		root.getChildren().add(r);
 	}
-	
->>>>>>> master
+
 	private void registerHandler(Shape s, Color defaultColor, Color hoverColor) {
 		s.setOnMouseEntered( e -> s.setFill(hoverColor));
 		s.setOnMouseExited(e -> s.setFill(defaultColor));
