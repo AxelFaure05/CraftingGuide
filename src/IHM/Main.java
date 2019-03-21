@@ -78,8 +78,8 @@ public class Main extends Application {
 	}
 	
 	public void interactionInventaire() {
-		int col = 14;
-		int lig = 166;
+		int col = 11;
+		int lig = 198;
 		Rectangle r;
 		
 		for(int j = 0;j<3;j++) {
