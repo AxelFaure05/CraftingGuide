@@ -63,27 +63,21 @@ public class Main extends Application {
 			 bouttonCraft.setOnAction(new EventHandler<ActionEvent>() {
 		            @Override
 		            public void handle(ActionEvent event) {
-		               
-		                crafting(window);
+		               System.out.println("Crafting");
+		               crafting(window);
 		            }
 		        });
 			 
-					 
-			 
-			 
-			 
 			Button bouttonCraftInverse= new Button ("Crafting Inversée");
-			
 			
 			//Appel d'une méthode qui gère l'ouverture de l'onglet crafting Inversée si clique sur boutton "BouttonCraftInverse"
 			 bouttonCraftInverse.setOnAction(new EventHandler<ActionEvent>() {
 		            @Override
 		            public void handle(ActionEvent event) {
-		                System.out.println("Hello World2!");
+		                System.out.println("Crafting Inverse");
 		                craftingInverse(window);
 		            }
 		        });
-			 
 			 
 			HBox hbox = new HBox();
 			hbox.setPadding(new Insets(10, 120, 15, 12));
@@ -106,6 +100,67 @@ public class Main extends Application {
 		}
 	}
 
+	public void menuStart(Stage window) {
+		layout = new BorderPane();
+		scene= new Scene (layout,1400,900);
+		
+		Image background = new Image("file:" + DOSSIER_DONNEES + "Designs/menu.jpg");
+		ImageView mv = new ImageView(background);
+		mv.setImage(background);
+		layout.getChildren().addAll(mv);
+		
+		Menu onglet1= new Menu("Menu Principal");
+		Menu onglet2= new Menu("Table de Craft");
+		Menu onglet3= new Menu("Table de Craft Inversée");
+		Menu onglet4= new Menu("Onglet4");
+		MenuBar menuBar= new MenuBar();
+		menuBar.getMenus().addAll(onglet1);
+		menuBar.getMenus().addAll(onglet2);
+		menuBar.getMenus().addAll(onglet3);
+		menuBar.getMenus().addAll(onglet4);
+		layout.setTop(menuBar);
+		
+		Button bouttonCraft= new Button ("Crafting");
+		
+		//Appel d'une méthode qui gère l'ouverture de l'onglet crafting si clique sur boutton "BouttonCraft"
+		 bouttonCraft.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	               System.out.println("Crafting");
+	               crafting(window);
+	            }
+	        });
+		 
+		Button bouttonCraftInverse= new Button ("Crafting Inversée");
+		
+		//Appel d'une méthode qui gère l'ouverture de l'onglet crafting Inversée si clique sur boutton "BouttonCraftInverse"
+		 bouttonCraftInverse.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	                System.out.println("Crafting Inverse");
+	                craftingInverse(window);
+	            }
+	        });
+		 
+		HBox hbox = new HBox();
+		hbox.setPadding(new Insets(10, 120, 15, 12));
+		hbox.setSpacing(100);
+		hbox.setStyle("-fx-background-color: #336699;");
+
+
+		hbox.getChildren().addAll(bouttonCraft, bouttonCraftInverse);
+		
+		Scene scene = new Scene(root,1400,900);
+		scene.setRoot(root);
+		
+		//Agencement des différents éléments du layout
+		layout.setTop(menuBar);
+		layout.setBottom(hbox);
+		//Affichage
+		window.setScene(scene);
+		window.show();
+	}
+	
 	public void crafting(Stage window) {
 		layout = new BorderPane();
 		scene= new Scene (layout,1400,900);
@@ -117,9 +172,9 @@ public class Main extends Application {
 		
 		
 		//Ajout des onglets
-		Menu onglet1= new Menu("Onglet1");
-		Menu onglet2= new Menu("Onglet2");
-		Menu onglet3= new Menu("Onglet3");
+		Menu onglet1= new Menu("Menu Principal");
+		Menu onglet2= new Menu("Table de Craft");
+		Menu onglet3= new Menu("Table de Craft Inversée");
 		Menu onglet4= new Menu("Onglet4");
 		MenuBar menuBar= new MenuBar();
 		menuBar.getMenus().addAll(onglet1);
@@ -127,6 +182,16 @@ public class Main extends Application {
 		menuBar.getMenus().addAll(onglet3);
 		menuBar.getMenus().addAll(onglet4);
 		layout.setTop(menuBar);
+		
+		onglet1.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("Retour au Menu");
+				menuStart(window);
+			}
+			
+		});
 		
 		Group g2 = new Group();
 		ComposantPerso c = new ComposantPerso();
