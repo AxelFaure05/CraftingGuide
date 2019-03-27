@@ -18,10 +18,11 @@ public class Main extends Application{
 		// TODO Auto-generated method stub
 		Parent root = FXMLLoader.load(getClass().getResource("interface.fxml"));
         root.setId("fenetre");
-		Scene scene = new Scene(root);
+		StackPane scene = new StackPane(root);
 		//scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
 		scene.getStylesheets().add("application.css");
 		
+		primaryStage.setStyle(scene);
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
 		primaryStage.show();

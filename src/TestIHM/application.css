@@ -4,3 +4,15 @@
 #fenetre{
   -fx-background-image: url("menu.jpg");
 }
+
+
+#table{
+  -fx-background-image: url("../../Data/Designs/GUI_Table.png")
+  //-fx-background-repeat: no-repeat;
+  //-fx-background-size: cover, auto;
+  
+}
+
+#result{
+	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
+}
