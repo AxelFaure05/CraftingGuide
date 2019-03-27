@@ -111,13 +111,13 @@ public class Main extends Application {
 		
 		Menu onglet1= new Menu("Menu Principal");
 		Menu onglet2= new Menu("Table de Craft");
-		Menu onglet3= new Menu("Table de Craft Inversï¿½e");
-		Menu onglet4= new Menu("Onglet4");
+		Menu onglet3= new Menu("Table de Craft Inversée");
+
 		MenuBar menuBar= new MenuBar();
 		menuBar.getMenus().addAll(onglet1);
 		menuBar.getMenus().addAll(onglet2);
 		menuBar.getMenus().addAll(onglet3);
-		menuBar.getMenus().addAll(onglet4);
+	
 		layout.setTop(menuBar);
 		
 		Button bouttonCraft= new Button ("Crafting");
@@ -172,14 +172,15 @@ public class Main extends Application {
 		
 		
 		//Ajout des onglets
-		Menu onglet1= new Menu("Onglet1");
-		Menu onglet2= new Menu("Onglet2");
-		Menu onglet3= new Menu("Onglet3");
-		Menu onglet4= new Menu("Onglet4");
+		Menu onglet1= new Menu("Menu Principal");
+		Menu onglet2= new Menu("Table de Craft");
+		Menu onglet3= new Menu("Table de Craft Inversée");
+
 		MenuBar menuBar= new MenuBar();
 		menuBar.getMenus().addAll(onglet1);
 		menuBar.getMenus().addAll(onglet2);
 		menuBar.getMenus().addAll(onglet3);
+	
 	
 		layout.setTop(menuBar);
 		
