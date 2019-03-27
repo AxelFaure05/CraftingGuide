@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
 	public static void main(String args) {
-		launch(args);
+		Application.launch(args);
 	}
 	
 	@Override
@@ -19,10 +19,10 @@ public class Main extends Application{
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add("application.css");
 		
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
-		scene.getStylesheets().add("application.css");
 		primaryStage.show();
 		
 	}
