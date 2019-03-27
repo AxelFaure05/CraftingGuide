@@ -1,7 +1,6 @@
 package Modele.Composants;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -22,8 +21,8 @@ public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable
 	
 	public CraftList(String str, ItemList iL) {
 		super();
-		this.rawDataLoad(str);
 		this.iL = iL;
+		this.rawDataLoad(str);
 	}
 	
 	public void rawDataLoad(String file) {
@@ -31,11 +30,17 @@ public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable
 		try {
 			BufferedReader bR = new BufferedReader(new FileReader(file));
 			String str = new String(bR.readLine());
-			String[] arg;
+			String[] arg, elem;
+			ItemMatrix craft;
 			
-			while(str!=null) {
+			while(str != null) {
 				arg = str.split(":");
-				this.put(iL.research(arg[0]).racine(), new ItemMatrix(3)); 
+				elem = arg[1].split(",");
+				craft = new ItemMatrix(3);
+				for(int i = 0; i<elem.length; i++) {
+					craft.add(elem[i], i);
+				}
+				this.put(this.iL.research(arg[0].toLowerCase()).racine(), craft);
 				str = bR.readLine();
 			}
 			bR.close();
