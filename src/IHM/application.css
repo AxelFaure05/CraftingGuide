@@ -2,5 +2,5 @@
 
 
 #fenetre{
-  background-image: url("menu.jpg");
+  -fx-background-image: url("menu.jpg");
 }

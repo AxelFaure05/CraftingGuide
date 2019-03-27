@@ -16,8 +16,13 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		Parent root = FXMLLoader.load(getClass().getResource("interface.fxml"));
+        root.setId("fenetre");
+		Scene scene = new Scene(root);
+		//scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
+		
 		primaryStage.setTitle("Hello World");
-		//primaryStage.setScene(new Scene(root,300,275));
+		primaryStage.setScene(scene);
+		scene.getStylesheets().add("application.css");
 		primaryStage.show();
 		
 	}
