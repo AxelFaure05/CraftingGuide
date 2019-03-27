@@ -9,7 +9,7 @@ public class ItemMatrix {
 	
 	public final static int[] size = {1, 3};
 	
-	Object[] matrix;
+	private Object[] matrix;
 	
 	public ItemMatrix(int size) {
 		this.matrix = new Item[size*size];
@@ -26,5 +26,9 @@ public class ItemMatrix {
 	
 	public void remove(int pos) {
 		this.matrix[pos] = null;
+	}
+	
+	public Object[] getMatrix() {
+		return matrix;
 	}
 }
