@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestIHM.Controller">
+<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestIHM.Controller">
    <children>
       <TabPane layoutX="76.0" layoutY="51.0" prefHeight="587.0" prefWidth="857.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -87,7 +84,7 @@
                                  <children>
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
                                        <children>
-                                          <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="1.0" layoutY="2.0" onDragDetected="#dragdetect" onDragDone="#dragdone" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="28.0" fitWidth="28.0" onDragDetected="#dragdetect" onDragDone="#dragdone" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
                                              <image>
                                                 <Image url="@../../Data/Designs/img_bed.png" />
                                              </image>
@@ -95,7 +92,7 @@
                                        </children></Pane>
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1">
                                        <children>
-                                          <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="-2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
                                              <image>
                                                 <Image url="@../../Data/Designs/img_wood.png" />
                                              </image>
@@ -103,7 +100,7 @@
                                        </children></Pane>
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2">
                                        <children>
-                                          <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
                                              <image>
                                                 <Image url="@../../Data/Designs/img_glowstone.png" />
                                              </image>
@@ -111,7 +108,7 @@
                                        </children></Pane>
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3">
                                        <children>
-                                          <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
                                              <image>
                                                 <Image url="@../../Data/Designs/img_stick.png" />
                                              </image>
@@ -119,7 +116,7 @@
                                        </children></Pane>
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4">
                                        <children>
-                                          <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
                                              <image>
                                                 <Image url="@../../Data/Designs/img_blockofredstone.png" />
                                              </image>
