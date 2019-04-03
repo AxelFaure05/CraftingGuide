@@ -48,4 +48,12 @@ public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable
 			e.printStackTrace();
 		}
 	}
+	
+	public void serialize() {
+		
+	}
+	
+	public CraftList deserialize() {
+		return null;
+	}
 }
