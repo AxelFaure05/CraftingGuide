@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 public class Controller {
 
     @FXML
-    private AnchorPane result;
+    private Pane result;
 
     @FXML
     private Pane paneprincipal;
@@ -37,13 +37,37 @@ public class Controller {
     	return this.inventory;
     }
     
-    @FXML
+   /* @FXML
     public void coords(MouseEvent e) {
     	System.out.println("click dans l'inventaire");
 		Node source = (Node)e.getSource() ;
+		System.out.println("1");
+        Integer colIndex = GridPane.getColumnIndex(source);
+        System.out.println("2");
+        Integer rowIndex = GridPane.getRowIndex(source);
+        System.out.println("3");
+        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
+	}*/
+    
+    public void coords(MouseEvent e) {
+		Node source = (Node) e.getTarget() ;
         Integer colIndex = GridPane.getColumnIndex(source);
         Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
+        System.out.println(colIndex);
+        System.out.println(rowIndex);
+	}
+    
+    public void coordsTable(MouseEvent e) {
+		Node source = (Node) e.getTarget() ;
+        Integer colIndex = GridPane.getColumnIndex(source);
+        Integer rowIndex = GridPane.getRowIndex(source);
+        System.out.println("Coords table de craft");
+        System.out.println(colIndex);
+        System.out.println(rowIndex);
+	}
+    
+    public void resultClicked(MouseEvent e) {
+		System.out.println("Résultat cliqué");
 	}
     
 }
