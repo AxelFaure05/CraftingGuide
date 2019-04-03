@@ -35,9 +35,6 @@ public class Main extends Application{
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		
-		//Evenement qui lance la fonction d'affichage des coordonnées
-		scene.setOnMouseClicked(e -> System.out.println("click") /*this.coords(event)*/);
-		
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
