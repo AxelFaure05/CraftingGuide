@@ -29,16 +29,16 @@ public class Modele extends Observable implements Serializable {
 	
 	public Modele() {
 		
-		//try {
-			//this.deserialize();
+		try {
+			this.deserialize();
 			
-		//} catch(Exception e) {
+		} catch(Exception e) {
 			this.inventaireCreatif = new ItemList("src/Modele/listeCompleteDesItems.txt");
 			this.inventaireSurvie = new Inventaire(3, 9);
 			this.craftingTable = new ItemMatrix(3);
 			this.resultatCraft = new ItemMatrix(1);
 			this.cL = new CraftList("src/Modele/listeCompleteDesCrafts.txt", this.inventaireCreatif);
-		//}
+		}
 	}
 	
 	public void changedScene(Scene scn) {
@@ -69,6 +69,7 @@ public class Modele extends Observable implements Serializable {
 			FileOutputStream fos = new FileOutputStream(new File(str));
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this);
+			
 			oos.close();
 			fos.close();
 		} catch (Exception e) {
@@ -79,8 +80,11 @@ public class Modele extends Observable implements Serializable {
 	public void deserialize() {
 		try {
 			this.inventaireCreatif = (new ItemList()).deserialize(ItemList.EMPLACEMENT_LISTECOMPLETE);
+			if(this.inventaireCreatif==null) throw new RuntimeException();
 			this.inventaireSurvie = (new Inventaire(dim[0], dim[1])).deserialize();
+			if(this.inventaireSurvie==null) throw new RuntimeException();
 			this.cL = (new CraftList()).deserialize();
+			if(this.cL==null) throw new RuntimeException();
 		} catch (Exception e) {
 			
 		}
