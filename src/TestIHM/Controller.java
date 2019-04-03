@@ -38,13 +38,6 @@ public class Controller {
     }
     
     @FXML
-    private void mouseEntered(MouseEvent e) {
-        Node source = (Node)e.getSource() ;
-        Integer colIndex = GridPane.getColumnIndex(source);
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-    }
-    
     public void coords(MouseEvent e) {
     	System.out.println("click dans l'inventaire");
 		Node source = (Node)e.getSource() ;
