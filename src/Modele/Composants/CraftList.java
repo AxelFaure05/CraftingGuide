@@ -14,6 +14,8 @@ public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable
 
 	ItemList iL;
 	
+	public CraftList() {super();}
+	
 	public CraftList(ItemList iL) {
 		super();
 		this.iL = iL;
