@@ -18,6 +18,9 @@ public class Controller {
 
     @FXML
     private GridPane table;
+    
+    @FXML
+    private GridPane inventory;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -29,11 +32,10 @@ public class Controller {
 
     }
     
-    public GridPane returnGridPane() {
-    	return this.table;
+    public GridPane returnInventaire() {
+    	return this.inventory;
     }
     
-
     @FXML
     private void mouseEntered(MouseEvent e) {
         Node source = (Node)e.getSource() ;
