@@ -29,3 +29,26 @@
 #result{
 	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
 }
+
+
+/*.tab-pane{
+	-fx-tab-width:100px;
+	-fx-tab-max-weight:200px;
+	-fx-text-fill:#FFF;
+}
+
+.tab-pane:selected{
+    -fx-background-color: #3c3c3c;
+	-fx-text-fill:#FFF;
+}*/
+
+.tab-pane *.tab-header-background {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, derive(-fx-color, transparent);
+	
+}
+
+.tab-pane .tab{
+	-fx-pref-width: 250;
+	-fx-pref-weight: 100;
+	
+}
