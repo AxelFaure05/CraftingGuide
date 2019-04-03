@@ -39,7 +39,7 @@ public class Main extends Application{
 		scene.getStylesheets().add("application.css");
 		
 		//Evenement qui lance la fonction d'affichage des coordonnées
-		inventory.setOnMouseClicked(event -> this.coords(event));
+		//inventory.setOnMouseClicked(event -> this.coords(event));
 		
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
