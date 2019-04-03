@@ -46,6 +46,7 @@ public class Controller {
     }
     
     public void coords(MouseEvent e) {
+    	System.out.println("click dans l'inventaire");
 		Node source = (Node)e.getSource() ;
         Integer colIndex = GridPane.getColumnIndex(source);
         Integer rowIndex = GridPane.getRowIndex(source);
