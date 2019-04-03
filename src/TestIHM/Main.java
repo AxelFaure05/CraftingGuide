@@ -30,22 +30,23 @@ public class Main extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		try {
 		Parent root = FXMLLoader.load(getClass().getResource("interface.fxml"));
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		
-		//scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
-		scene.getStylesheets().add("application.css");
-		
 		//Evenement qui lance la fonction d'affichage des coordonnées
-		//inventory.setOnMouseClicked(event -> this.coords(event));
+		scene.setOnMouseClicked(e -> System.out.println("click") /*this.coords(event)*/);
 		
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -79,11 +80,11 @@ public class Main extends Application{
 	}
 	
 	//Fonction appelée par le click de la souris sur un item du GridPane
-	public void coords(MouseEvent e) {
+	/*public void coords(MouseEvent e) {
 		Node source = (Node)e.getSource() ;
         Integer colIndex = GridPane.getColumnIndex(source);
         Integer rowIndex = GridPane.getRowIndex(source);
         System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-	}
+	}*/
 	
 }
