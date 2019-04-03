@@ -24,7 +24,6 @@ public class ItemMatrix implements Serializable {
 		} else if(item instanceof Stack) {
 			this.matrix[pos] = item;
 		}
-		
 	}
 	
 	public void remove(int pos) {
