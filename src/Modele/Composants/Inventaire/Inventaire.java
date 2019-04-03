@@ -1,10 +1,11 @@
 package Modele.Composants.Inventaire;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Modele.Composants.Stack;
 
-public class Inventaire extends ArrayList<Stack[]> {
+public class Inventaire extends ArrayList<Stack[]> implements Serializable {
 	
 	int rows, columns;
 	
@@ -23,4 +24,11 @@ public class Inventaire extends ArrayList<Stack[]> {
 		this.place(row, column, null);
 	}
 	
+	public void serialize() {
+		
+	}
+	
+	public Inventaire deserialize() {
+		return null;
+	}
 }

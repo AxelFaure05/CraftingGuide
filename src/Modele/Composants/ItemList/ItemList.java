@@ -48,14 +48,14 @@ public class ItemList extends ABR<Item> implements Serializable {
 	
 	public ItemList research(String str) {
 		ItemList res = this.deserialize(EMPLACEMENT_LISTECOMPLETE);
-		while(res.element.compareTo(new Item(0, str, false, false, false))<0) {
+		while(res.element.compareTo(new Item(0, str, str + ".png", false, false, false))<0) {
 			res = (ItemList) res.arbD;
 		}
 		ItemList resultatRecherche = new ItemList();
 		Iterator<Item> it = res.iterator();
 		while(it.hasNext()) {
 			Item item = it.next();
-			if(item.getName().startsWith("minecraft:" + str)) {
+			if(item.getName().startsWith(str)) {
 				resultatRecherche.addItem(item);
 			}
 		}
@@ -75,6 +75,7 @@ public class ItemList extends ABR<Item> implements Serializable {
 				this.addItem(new Item(
 						Integer.valueOf(arg[0]),
 						arg[1],
+						arg[1] + ".png",
 						Boolean.getBoolean(arg[2]),
 						Boolean.getBoolean(arg[3]),
 						Boolean.getBoolean(arg[4])));

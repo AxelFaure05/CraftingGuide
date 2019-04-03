@@ -5,13 +5,14 @@ import java.io.Serializable;
 public class Item implements Comparable<Item>, Serializable {
 	
 	private int ID;
-	private String name;
+	private String name, lien_image;
 	private boolean isCraftable, isStackable, asFixedCraft;
 	
-	public Item(int ID, String name, boolean isCraftable, boolean isStackable, boolean asFixedCraft) {
+	public Item(int ID, String name, String link, boolean isCraftable, boolean isStackable, boolean asFixedCraft) {
 		
 		this.setID(ID);
 		this.setName(name);
+		this.setLien(link);
 		this.setCraftable(isCraftable);
 		this.setStackable(isStackable);
 		this.setFixedCraft(asFixedCraft);
@@ -24,7 +25,7 @@ public class Item implements Comparable<Item>, Serializable {
 		ID = iD;
 	}
 	public String getName() {
-		return name;
+		return name.split(":")[1];
 	}
 	public void setName(String name) {
 		this.name = "minecraft:" + name.toLowerCase();
@@ -52,5 +53,16 @@ public class Item implements Comparable<Item>, Serializable {
 		if(this.name.compareTo(o.name)>0) return 1;
 		if(this.name.compareTo(o.name)<0) return -1;
 		return 0;
+	}
+	public boolean equals(Item it) {
+		return this.ID == it.ID && this.name == it.name && this.isStackable == it.isStackable && this.isCraftable == it.isCraftable && this.asFixedCraft == it.asFixedCraft;
+	}
+
+	public String getLien() {
+		return lien_image;
+	}
+
+	public void setLien(String lien_image) {
+		this.lien_image = lien_image;
 	}
 }
