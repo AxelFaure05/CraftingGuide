@@ -51,23 +51,27 @@ public class Controller {
     
     public void coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
-        Integer colIndex = GridPane.getColumnIndex(source);
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.println(colIndex);
-        System.out.println(rowIndex);
+		if(e.getSource() instanceof Pane) {
+	        Integer colIndex = GridPane.getColumnIndex(source);
+	        Integer rowIndex = GridPane.getRowIndex(source);
+	        System.out.println(colIndex);
+	        System.out.println(rowIndex);
+		}
 	}
     
     public void coordsTable(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
-        Integer colIndex = GridPane.getColumnIndex(source);
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.println("Coords table de craft");
-        System.out.println(colIndex);
-        System.out.println(rowIndex);
+		if(e.getSource() instanceof Pane) {
+	        Integer colIndex = GridPane.getColumnIndex(source);
+	        Integer rowIndex = GridPane.getRowIndex(source);
+	        System.out.println("Coords table de craft");
+	        System.out.println(colIndex);
+	        System.out.println(rowIndex);
+		}
 	}
     
     public void resultClicked(MouseEvent e) {
-		System.out.println("Résultat cliqué");
+		System.out.println("Rï¿½sultat cliquï¿½");
 	}
     
 }
