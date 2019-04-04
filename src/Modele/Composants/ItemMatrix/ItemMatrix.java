@@ -20,7 +20,8 @@ public class ItemMatrix implements Serializable {
 	
 	public void add(Object item, int pos) {
 		if(item instanceof Item) {
-			this.matrix[pos] = new Stack((Item) item, 1);
+			//this.matrix[pos] = new Stack((Item) item, 1);
+			this.matrix[pos] = item;
 		} else if(item instanceof Stack) {
 			this.matrix[pos] = item;
 		}
