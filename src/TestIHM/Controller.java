@@ -57,13 +57,26 @@ public class Controller {
     
     public void coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
+		Node n = source.getParent();
 		if(e.getSource() instanceof Pane) {
-			//System.out.println(source);
-	        Integer colIndex = GridPane.getColumnIndex(source);
-	        Integer rowIndex = GridPane.getRowIndex(source);
-	        System.out.println(colIndex);
-	        System.out.println(rowIndex);
+			if(n instanceof GridPane) {
+				System.out.println(source);
+		        Integer colIndex = GridPane.getColumnIndex(source);
+		        Integer rowIndex = GridPane.getRowIndex(source);
+		        System.out.println(colIndex);
+		        System.out.println(rowIndex);
+			}
+		 
+			else {
+				//System.out.println(source);
+				System.out.println(n);
+		        Integer colIndex = GridPane.getColumnIndex(n);
+		        Integer rowIndex = GridPane.getRowIndex(n);
+		        System.out.println(colIndex);
+		        System.out.println(rowIndex);
+			}
 		}
+		
 	}
     
     public void coordsTable(MouseEvent e) {
