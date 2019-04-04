@@ -8,7 +8,7 @@ import java.util.HashMap;
 import Modele.Composants.ItemList.ItemList;
 import Modele.Composants.ItemMatrix.ItemMatrix;
 
-public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable {
+public class CraftList extends HashMap<String, ItemMatrix> implements Serializable {
 	
 	public final static String EMPLACEMENT_LISTECRAFTCOMPLETE = "./Data/DAT_files/completeCraftList.dat";
 
@@ -40,9 +40,11 @@ public class CraftList extends HashMap<Item, ItemMatrix> implements Serializable
 				elem = arg[1].split(",");
 				craft = new ItemMatrix(3);
 				for(int i = 0; i<elem.length; i++) {
-					craft.add(elem[i], i);
+					if(!elem[i].equals("0")) {
+						craft.add(this.iL.research(elem[i]).racine(), i);
+					}
 				}
-				this.put(this.iL.research(arg[0].toLowerCase()).racine(), craft);
+				this.put(this.iL.research(arg[0].toLowerCase()).racine().getName(), craft);
 				str = bR.readLine();
 			}
 			bR.close();
