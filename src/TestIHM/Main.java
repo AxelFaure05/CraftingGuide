@@ -1,9 +1,18 @@
 package TestIHM;
 
+import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import Modele.Modele;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -23,6 +32,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 	private BorderPane layout;
 	
+	Modele modl = new Modele();
 	Controller ctrl = new Controller();
 	GridPane inventory = ctrl.returnInventaire();
 	
@@ -37,9 +47,11 @@ public class Main extends Application{
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		
+		inventory = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[1];
 		//ctrl.creerItemsBase();
-		//creerItemsBase();
+		creerItemsBase();
 		//System.out.println(scan());
+		
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
@@ -52,16 +64,21 @@ public class Main extends Application{
 		
 	}
 	
-	public void creerItemsBase() {
+	public void creerItemsBase() throws IOException {
 		
 		//GridPane grid = this.inventory;
 		
 		
 		
-    	Image img = new Image("file:./Data/Designs/img_wood.jpg");
-		ImageView iv = new ImageView(img);
+    	Image image = SwingFXUtils.toFXImage(ImageIO.read(new File("C:\\Users\\Axel\\eclipse-workspace\\CraftingGuide\\Data\\Designs\\img_stick.png")), null);
+    	
+		ImageView iv = new ImageView(image);
+		iv.setFitHeight(28);
+		iv.setFitWidth(28);
 		
-		//inventory.add(iv,5,5);
+		((Pane) inventory.getChildren().get(6)).getChildren().add(iv);
+
+		System.out.println((inventory.getChildrenUnmodifiable().get(6).lookup("ImageView").lookupAll("Image")));
     }
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
