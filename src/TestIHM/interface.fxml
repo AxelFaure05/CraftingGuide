@@ -206,6 +206,11 @@
                               <Pane id="case" fx:id="result" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
+                        <AnchorPane layoutX="183.0" layoutY="413.0" prefHeight="31.0" prefWidth="31.0">
+                           <children>
+                              <Pane id="case" fx:id="tempo" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
             </content>

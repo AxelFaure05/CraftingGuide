@@ -9,9 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -35,6 +37,9 @@ public class Main extends Application{
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		
+		//ctrl.creerItemsBase();
+		//creerItemsBase();
+		//System.out.println(scan());
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
 		primaryStage.setScene(scene);
@@ -46,6 +51,18 @@ public class Main extends Application{
 		}
 		
 	}
+	
+	public void creerItemsBase() {
+		
+		//GridPane grid = this.inventory;
+		
+		
+		
+    	Image img = new Image("file:./Data/Designs/img_wood.jpg");
+		ImageView iv = new ImageView(img);
+		
+		//inventory.add(iv,5,5);
+    }
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
 	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {

@@ -46,7 +46,7 @@ public class Main extends Application {
 			mv.setFitHeight(500);*/
 			mv.setImage(background);
 			layout.getChildren().addAll(mv);
-
+			
 			//Cr�ation des diff�rents �l�ments
 			Menu onglet1= new Menu("Menu Principal");
 			Menu onglet2= new Menu("Table de Craft");

@@ -3,7 +3,10 @@ package TestIHM;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -22,6 +25,9 @@ public class Controller {
     
     @FXML
     private GridPane inventory;
+    
+    @FXML
+    private Pane tempo;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -52,6 +58,7 @@ public class Controller {
     public void coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		if(e.getSource() instanceof Pane) {
+			//System.out.println(source);
 	        Integer colIndex = GridPane.getColumnIndex(source);
 	        Integer rowIndex = GridPane.getRowIndex(source);
 	        System.out.println(colIndex);
@@ -61,7 +68,7 @@ public class Controller {
     
     public void coordsTable(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
-		if(e.getSource() instanceof Pane) {
+		if (e.getSource() instanceof Pane) {
 	        Integer colIndex = GridPane.getColumnIndex(source);
 	        Integer rowIndex = GridPane.getRowIndex(source);
 	        System.out.println("Coords table de craft");
@@ -71,7 +78,7 @@ public class Controller {
 	}
     
     public void resultClicked(MouseEvent e) {
-		System.out.println("R�sultat cliqu�");
+		System.out.println("Result clicked");
 	}
     
 }
