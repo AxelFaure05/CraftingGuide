@@ -55,7 +55,7 @@ public class ItemList extends ABR<Item> implements Serializable {
 		Iterator<Item> it = res.iterator();
 		while(it.hasNext()) {
 			Item item = it.next();
-			if(item.getName().startsWith(str)) {
+			if(item.getName().toLowerCase().startsWith(str.toLowerCase())) {
 				resultatRecherche.addItem(item);
 			}
 		}
@@ -75,7 +75,7 @@ public class ItemList extends ABR<Item> implements Serializable {
 				this.addItem(new Item(
 						Integer.valueOf(arg[0]),
 						arg[1],
-						arg[1] + ".png",
+						"img_" + arg[1].toLowerCase() + ".png",
 						Boolean.getBoolean(arg[2]),
 						Boolean.getBoolean(arg[3]),
 						Boolean.getBoolean(arg[4])));
