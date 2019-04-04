@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Observable;
 
 import Modele.Composants.CraftList;
+import Modele.Composants.Item;
 import Modele.Composants.Inventaire.Inventaire;
 import Modele.Composants.ItemList.ItemList;
 import Modele.Composants.ItemMatrix.ItemMatrix;
@@ -23,7 +24,9 @@ public class Modele extends Observable implements Serializable {
 	public Inventaire inventaireSurvie;
 	public ItemMatrix craftingTable;
 	public ItemMatrix resultatCraft;
-	private CraftList cL;
+	public ItemMatrix itemToUncraft;
+	public ItemMatrix uncraftResult;
+	CraftList cL;
 	
 	public Scene onglet;
 	
@@ -31,12 +34,19 @@ public class Modele extends Observable implements Serializable {
 		
 		try {
 			this.deserialize();
-			
+			this.craftingTable = new ItemMatrix(3);
+			this.uncraftResult = new ItemMatrix(3);
+			this.resultatCraft = new ItemMatrix(1);
+			this.itemToUncraft = new ItemMatrix(1);
+
 		} catch(Exception e) {
 			this.inventaireCreatif = new ItemList("src/Modele/listeCompleteDesItems.txt");
 			this.inventaireSurvie = new Inventaire(3, 9);
 			this.craftingTable = new ItemMatrix(3);
+			this.uncraftResult = new ItemMatrix(3);
 			this.resultatCraft = new ItemMatrix(1);
+			this.itemToUncraft = new ItemMatrix(1);
+
 			this.cL = new CraftList("src/Modele/listeCompleteDesCrafts.txt", this.inventaireCreatif);
 		}
 	}
@@ -58,13 +68,15 @@ public class Modele extends Observable implements Serializable {
 	}
 	
 	public void uncraft() {
-		
+		this.uncraftResult = this.cL.get(((Item) this.itemToUncraft.getMatrix()[0]).getName());
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void craft() {
 		
 	}
-	public void serialize(String str) {
+	private void serialize(String str) {
 		try {
 			FileOutputStream fos = new FileOutputStream(new File(str));
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -77,7 +89,7 @@ public class Modele extends Observable implements Serializable {
 		}
 	}
 	
-	public void deserialize() {
+	private void deserialize() throws Exception {
 		try {
 			this.inventaireCreatif = (new ItemList()).deserialize(ItemList.EMPLACEMENT_LISTECOMPLETE);
 			if(this.inventaireCreatif==null) throw new RuntimeException();
@@ -86,7 +98,7 @@ public class Modele extends Observable implements Serializable {
 			this.cL = (new CraftList()).deserialize();
 			if(this.cL==null) throw new RuntimeException();
 		} catch (Exception e) {
-			
+			throw new Exception();
 		}
 	}
 }
