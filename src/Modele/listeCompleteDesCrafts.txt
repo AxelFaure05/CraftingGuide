@@ -1,11 +1,3 @@
-furnace:x,x,x,x,0,x,x,x,x:cobblestone
-wood_plank:x,0,0,0,0,0,0,0,0:oak_wood
-lapis_block:x,x,x,x,x,x,x,x,x:lapis_lazuli
-dispenser:x,x,x,x,y,x,x,z,x:cobblestone,redstone_dust,bow
-noteblock:x,x,x,x,y,x,x,x,x:wood_plank,redstone_dust
-bed:x,x,x,y,y,y,0,0,0:wool,wood_plank
-golden_rail:x,y,x,x,z,x,x,y,x:iron_ingot,gold_ingot,redstone_dust
-piston:x,x,x,y,z,y,y,y,y:wood_plank,cobblestone,redstone_dust
-wool:x,x,0,x,x,0,0,0,0:string
-sticky_piston:x,y,0,0,0,0,0,0,0:slimeball, piston
-gold_block:x,x,x,x,x,x,x,x,x,x:gold_ingot
+furnace:cobblestone,cobblestone,cobblestone,cobblestone,0,cobblestone,cobblestone,cobblestone,cobblestone:cobblestone
+wood_plank:oak_wood,0,0,0,0,0,0,0,0:oak_wood
+lapis_block:lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli:lapis_lazuli
