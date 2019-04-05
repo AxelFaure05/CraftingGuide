@@ -18,7 +18,7 @@ import javafx.scene.Scene;
 public class Modele extends Observable implements Serializable {
 	
 	public final static String DATA = "./Data/DAT_files/DATA.dat";
-	public static int[] dim = {2, 9};
+	public static int[] DIM = {27, 81};
 	
 	public ItemList inventaireCreatif;
 	public Inventaire inventaireSurvie;
@@ -41,7 +41,7 @@ public class Modele extends Observable implements Serializable {
 
 		} catch(Exception e) {
 			this.inventaireCreatif = new ItemList("src/Modele/listeCompleteDesItems.txt");
-			this.inventaireSurvie = new Inventaire(3, 9);
+			this.inventaireSurvie = new Inventaire(Modele.DIM[1]);
 			this.craftingTable = new ItemMatrix(3);
 			this.uncraftResult = new ItemMatrix(3);
 			this.resultatCraft = new ItemMatrix(1);
@@ -93,7 +93,7 @@ public class Modele extends Observable implements Serializable {
 		try {
 			this.inventaireCreatif = (new ItemList()).deserialize(ItemList.EMPLACEMENT_LISTECOMPLETE);
 			if(this.inventaireCreatif==null) throw new RuntimeException();
-			this.inventaireSurvie = (new Inventaire(dim[0], dim[1])).deserialize();
+			this.inventaireSurvie = (new Inventaire(Modele.DIM[1])).deserialize();
 			if(this.inventaireSurvie==null) throw new RuntimeException();
 			this.cL = (new CraftList()).deserialize();
 			if(this.cL==null) throw new RuntimeException();
