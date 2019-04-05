@@ -81,7 +81,7 @@ public class Main extends Application{
 		//Node obj = inventory.getChildren().get(6);
 		//((Pane)inventory.getChildren().get(6)).getChildren().remove(obj);
 		((Pane) inventory.getChildren().get(42)).getChildren().add(iv);
-		((Pane) inventory1.getChildren().get(42)).getChildren().add(iv);
+		//((Pane) inventory1.getChildren().get(42)).getChildren().add(iv);
 		//((Pane) inventory2.getChildren().get(42)).getChildren().add(iv);
 		//System.out.println(inventory.getChildren().get(6));
 		
