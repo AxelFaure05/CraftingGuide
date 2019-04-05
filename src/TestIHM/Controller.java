@@ -14,20 +14,41 @@ import javafx.scene.layout.Pane;
 
 public class Controller {
 
-    @FXML
-    private Pane result;
+	   @FXML
+	    private Pane paneprincipal;
 
-    @FXML
-    private Pane paneprincipal;
+	    @FXML
+	    private GridPane table;
 
-    @FXML
-    private GridPane table;
-    
-    @FXML
-    private GridPane inventory;
-    
-    @FXML
-    private Pane tempo;
+	    @FXML
+	    private GridPane inventory;
+	    
+	    @FXML
+	    private GridPane inventory1;
+	    
+	    @FXML
+	    private GridPane inventory2;
+
+	    @FXML
+	    private Pane result;
+
+	    @FXML
+	    private Pane tempo;
+
+	    @FXML
+	    private GridPane table_uncraft;
+
+	    @FXML
+	    private Pane result1;
+
+	    @FXML
+	    private Pane tempo2;
+
+	    @FXML
+	    private Pane tempo1;
+
+	    @FXML
+	    private GridPane inventory_crea;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -39,8 +60,20 @@ public class Controller {
 
     }
     
+    public GridPane returnCraftingTable() {
+		return table;
+    }
+    
     public GridPane returnInventaire() {
     	return this.inventory;
+    }
+    
+    public GridPane returnInventaire1() {
+    	return this.inventory1;
+    }
+    
+    public GridPane returnInventaire2() {
+    	return this.inventory2;
     }
     
    /* @FXML

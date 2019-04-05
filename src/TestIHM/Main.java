@@ -35,6 +35,10 @@ public class Main extends Application{
 	Modele modl = new Modele();
 	Controller ctrl = new Controller();
 	GridPane inventory = ctrl.returnInventaire();
+	GridPane inventory1 = ctrl.returnInventaire1();
+	GridPane inventory2 = ctrl.returnInventaire2();
+	GridPane tableCraft = ctrl.returnCraftingTable();
+	public final static String DATA = "./Data/Designs/img_";
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -65,16 +69,22 @@ public class Main extends Application{
 	}
 	
 	public void creerItemsBase() throws IOException {
-
-    	Image image = SwingFXUtils.toFXImage(ImageIO.read(new File("./Data/Designs/img_wood.png")), null);
+		
+    	Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+"wood"+".png")), null);
     	
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(28);
 		iv.setFitWidth(28);
+		iv.setTranslateX(2.0);
+		iv.setTranslateY(2.0);
+		
 		//Node obj = inventory.getChildren().get(6);
 		//((Pane)inventory.getChildren().get(6)).getChildren().remove(obj);
 		((Pane) inventory.getChildren().get(42)).getChildren().add(iv);
-		System.out.println(inventory.getChildren().get(6));
+		//((Pane) inventory1.getChildren().get(42)).getChildren().add(iv);
+		//((Pane) inventory2.getChildren().get(42)).getChildren().add(iv);
+		//System.out.println(inventory.getChildren().get(6));
+		
     }
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
