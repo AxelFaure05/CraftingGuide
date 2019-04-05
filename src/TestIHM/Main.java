@@ -71,11 +71,10 @@ public class Main extends Application{
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(28);
 		iv.setFitWidth(28);
-		Node obj = inventory.getChildren().get(6);
-		((Pane)inventory.getChildren().get(6)).getChildren().remove(iv);
-		((Pane) inventory.getChildren().get(6)).getChildren().add(iv);
-
-		System.out.println((inventory.getChildrenUnmodifiable().get(6).lookup("ImageView").lookupAll("Image")));
+		//Node obj = inventory.getChildren().get(6);
+		//((Pane)inventory.getChildren().get(6)).getChildren().remove(obj);
+		((Pane) inventory.getChildren().get(42)).getChildren().add(iv);
+		System.out.println(inventory.getChildren().get(6));
     }
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
