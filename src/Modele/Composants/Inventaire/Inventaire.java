@@ -5,23 +5,22 @@ import java.util.ArrayList;
 
 import Modele.Composants.Stack;
 
-public class Inventaire extends ArrayList<Stack[]> implements Serializable {
+public class Inventaire implements Serializable {
 	
-	int rows, columns;
+	Stack[] inventaire;
+	int size;
 	
-	public Inventaire(int rows, int columns) {
-		super();
-		for(int k = 0; k<rows; k++) {
-			this.add(k, new Stack[columns]);
-		}
+	public Inventaire(int size) {
+		this.inventaire = new Stack[size];
+		this.size = size;
 	}
 	
-	public void place(int row, int column, Stack stack) {
-		this.get(row)[column] = stack;
+	public void place(int indice, Stack stack) {
+		this.inventaire[indice] = stack;
 	}
 	
-	public void remove(int row, int column) {
-		this.place(row, column, null);
+	public void remove(int indice) {
+		this.inventaire[indice] = null;
 	}
 	
 	public void serialize() {
