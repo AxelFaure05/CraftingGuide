@@ -183,7 +183,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/Designs/img_crafting_table.png" />
+                        <Image url="@../../Data/Designs/Items/img_crafting_table.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -355,7 +355,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/Designs/img_furnace.png" />
+                        <Image url="@../../Data/Designs/Items/img_furnace.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -795,7 +795,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Data/Designs/img_glowstone.png" />
+                        <Image url="@../../Data/Designs/Items/img_enchanting_table.png" />
                      </image>
                   </ImageView>
                </graphic>

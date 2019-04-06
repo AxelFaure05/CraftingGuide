@@ -118,7 +118,8 @@ public class Main extends Application{
 				}
 			//System.out.println(item.getLien());
 			//System.out.println(Main.imageExist(item));
-		}		
+		}	
+		//System.out.println("taille du gridpane: "+inv_crea.getChildren().size());
     }
 	
 	/*public static boolean imageExist(Item item){
