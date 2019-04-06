@@ -94,23 +94,27 @@ public class Main extends Application{
 	public void creerItemsBase() throws IOException {
 		
 		Iterator<Item> it = modl.inventaireCreatif.iterator();
+		Iterator<Node> itP = inv_crea.lookupAll("Pane").iterator();
+		Pane pane;
 		Item item;
 		Image image;
 		ImageView iv;
 		int index = 0;
 		
+		
 		while(it.hasNext()) {
 			item = it.next();
+			
 			try {
 				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
-
+				pane = (Pane) itP.next();
 				iv = new ImageView(image);
-				iv.setFitHeight(28);
-				iv.setFitWidth(28);
+				iv.setFitHeight(26);
+				iv.setFitWidth(26);
 				iv.setTranslateX(2.0);
 				iv.setTranslateY(2.0);
 				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
-				((Pane) inv_crea.getChildren().get(inv_crea.getChildren().size()-index-1)).getChildren().add(iv);
+				pane.getChildren().add(iv);
 				index++;
 				} catch (Exception e){
 					System.out.println(DATA+item.getLien());
@@ -119,6 +123,7 @@ public class Main extends Application{
 			System.out.println(item.getLien());
 			//System.out.println(Main.imageExist(item));
 		}		
+		((Pane) inv_crea.getChildren().get(20)).getChildren().clear();
     }
 	
 	/*public static boolean imageExist(Item item){
