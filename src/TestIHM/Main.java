@@ -25,6 +25,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -67,7 +68,7 @@ public class Main extends Application{
 		inventory2 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[4];
 		tableCraft = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[2];
 		scroll = (ScrollPane) root.getChildrenUnmodifiable().get(0).lookupAll("ScrollPane").toArray()[0];
-		inv_crea = (GridPane) scroll.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[0];
+		inv_crea = (GridPane) ((AnchorPane) scroll.getContent()).getChildren().get(0);
 		
 		inventaires.add(inventory);
 		inventaires.add(inventory1);
