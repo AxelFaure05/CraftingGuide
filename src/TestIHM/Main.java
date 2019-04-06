@@ -4,12 +4,16 @@ import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import Modele.Modele;
+import Modele.Composants.Item;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -38,6 +42,10 @@ public class Main extends Application{
 	GridPane inventory1 = ctrl.returnInventaire1();
 	GridPane inventory2 = ctrl.returnInventaire2();
 	GridPane tableCraft = ctrl.returnCraftingTable();
+	GridPane inv_crea = ctrl.returnInventaire_Crea();
+	
+	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
+	
 	public final static String DATA = "./Data/Designs/img_";
 	
 	public static void main(String[] args) {
@@ -47,14 +55,25 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
+		
 		Parent root = FXMLLoader.load(getClass().getResource("interface.fxml"));
         root.setId("fenetre");
 		Scene scene = new Scene(root);
 		
 		inventory = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[1];
-		//ctrl.creerItemsBase();
+		inventory1 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[3];
+		inventory2 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[4];
+		tableCraft = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[2];
+		//inv_crea = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[5];
+		
+		inventaires.add(inventory);
+		inventaires.add(inventory1);
+		inventaires.add(inventory2);
+		inventaires.add(inv_crea);
+		
+		System.out.println(inventaires);
+		
 		creerItemsBase();
-		//System.out.println(scan());
 		
 		//Finalisation du setup de la fenêtre
 		primaryStage.setTitle("Hello World");
@@ -70,22 +89,59 @@ public class Main extends Application{
 	
 	public void creerItemsBase() throws IOException {
 		
-    	Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+"wood"+".png")), null);
-    	
-		ImageView iv = new ImageView(image);
-		iv.setFitHeight(28);
-		iv.setFitWidth(28);
-		iv.setTranslateX(2.0);
-		iv.setTranslateY(2.0);
+		Iterator<Item> it = modl.inventaireCreatif.iterator();
+		int index = 0;
 		
-		//Node obj = inventory.getChildren().get(6);
-		//((Pane)inventory.getChildren().get(6)).getChildren().remove(obj);
-		((Pane) inventory.getChildren().get(42)).getChildren().add(iv);
-		//((Pane) inventory1.getChildren().get(42)).getChildren().add(iv);
-		//((Pane) inventory2.getChildren().get(42)).getChildren().add(iv);
-		//System.out.println(inventory.getChildren().get(6));
-		
+		while(it.hasNext()) {
+			Item item = it.next();
+			//System.out.println(item.getLien());
+			/*for(int i = 0 ;i<3;i++) {
+				try {
+					Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+			    	
+					ImageView iv = new ImageView(image);
+					iv.setFitHeight(28);
+					iv.setFitWidth(28);
+					iv.setTranslateX(2.0);
+					iv.setTranslateY(2.0);
+	
+					((Pane) inventaires.get(i).getChildren().get(index)).getChildren().add(iv);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}*/
+			/*Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+	    	
+			ImageView iv = new ImageView(image);
+			iv.setFitHeight(28);
+			iv.setFitWidth(28);
+			iv.setTranslateX(2.0);
+			iv.setTranslateY(2.0);
+
+			((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
+			index+=1;*/
+			System.out.println(item.getLien());
+			System.out.println(this.imageExist(item));
+		}		
     }
+	
+	public static boolean imageExist(Item item){
+			boolean result = false;
+		    Image image;
+			try {
+				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+		    if(image != null){
+		         return true;
+		    }
+		    else{
+		         return false;
+		    }
+		    } catch (IOException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+		return result;
+	}
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
 	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {

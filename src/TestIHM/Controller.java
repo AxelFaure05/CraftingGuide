@@ -64,6 +64,10 @@ public class Controller {
 		return table;
     }
     
+    public GridPane returnInventaire_Crea() {
+		return inventory_crea;
+    }
+    
     public GridPane returnInventaire() {
     	return this.inventory;
     }

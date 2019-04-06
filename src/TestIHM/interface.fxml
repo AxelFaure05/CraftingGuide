@@ -82,46 +82,11 @@
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </padding>
                                  <children>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" onDragDetected="#dragdetect" onDragDone="#dragdone" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_bed.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children></Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_wood.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children></Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_glowstone.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children></Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_stick.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children></Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_blockofredstone.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children></Pane>
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="5" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" />
@@ -161,7 +126,7 @@
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="5" GridPane.rowIndex="4" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" GridPane.rowIndex="4" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                                    <Pane id="case" prefHeight="200.0" prefWidth="25.0" stylesheets="@application.css" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="8" GridPane.rowIndex="4" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.rowIndex="5" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" GridPane.rowIndex="5" />
@@ -289,51 +254,11 @@
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </padding>
                                  <children>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" onDragDetected="#dragdetect" onDragDone="#dragdone" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_bed.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_wood.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_glowstone.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_stick.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4">
-                                       <children>
-                                          <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                             <image>
-                                                <Image url="@../../Data/Designs/img_blockofredstone.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3" />
+                                    <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="5" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" />
                                     <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" />
@@ -470,51 +395,11 @@
                                           <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                        </padding>
                                        <children>
-                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
-                                             <children>
-                                                <ImageView fitHeight="28.0" fitWidth="28.0" onDragDetected="#dragdetect" onDragDone="#dragdone" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                                   <image>
-                                                      <Image url="@../../Data/Designs/img_bed.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </Pane>
-                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1">
-                                             <children>
-                                                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                                   <image>
-                                                      <Image url="@../../Data/Designs/img_wood.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </Pane>
-                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2">
-                                             <children>
-                                                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                                   <image>
-                                                      <Image url="@../../Data/Designs/img_glowstone.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </Pane>
-                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3">
-                                             <children>
-                                                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                                   <image>
-                                                      <Image url="@../../Data/Designs/img_stick.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </Pane>
-                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4">
-                                             <children>
-                                                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="2.0" translateY="2.0">
-                                                   <image>
-                                                      <Image url="@../../Data/Designs/img_blockofredstone.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </Pane>
+                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" />
+                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" />
+                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" />
+                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3" />
+                                          <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4" />
                                           <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="5" />
                                           <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" />
                                           <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" />
