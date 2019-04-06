@@ -487,9 +487,9 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="429.0" layoutY="54.0" prefHeight="470.0" prefWidth="321.0">
+                        <AnchorPane layoutX="429.0" layoutY="42.0" prefHeight="518.0" prefWidth="321.0">
                            <children>
-                              <ScrollPane fx:id="scroll" prefHeight="470.0" prefWidth="319.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane fx:id="scroll" prefHeight="519.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="636.0" prefWidth="305.0">
                                        <children>
@@ -792,6 +792,13 @@
                      </children>
                   </AnchorPane>
               </content>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Data/Designs/img_glowstone.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Tab>
         </tabs>
       </TabPane>

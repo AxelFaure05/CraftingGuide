@@ -106,7 +106,7 @@ public class Main extends Application{
 				iv.setFitWidth(28);
 				iv.setTranslateX(2.0);
 				iv.setTranslateY(2.0);
-	
+				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
 				((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
 				index+=1;
 			}
