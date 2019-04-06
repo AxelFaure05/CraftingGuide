@@ -116,7 +116,7 @@ public class Main extends Application{
 					System.out.println(DATA+item.getLien());
 					System.out.println("Non existant");
 				}
-			System.out.println(item.getLien());
+			//System.out.println(item.getLien());
 			//System.out.println(Main.imageExist(item));
 		}		
     }
