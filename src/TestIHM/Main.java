@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -43,10 +44,11 @@ public class Main extends Application{
 	GridPane inventory2 = ctrl.returnInventaire2();
 	GridPane tableCraft = ctrl.returnCraftingTable();
 	GridPane inv_crea = ctrl.returnInventaire_Crea();
+	ScrollPane scroll = ctrl.returnScrollPane();
 	
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
-	public final static String DATA = "./Data/Designs/img_";
+	public final static String DATA = "./Data/Designs/";
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -64,7 +66,8 @@ public class Main extends Application{
 		inventory1 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[3];
 		inventory2 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[4];
 		tableCraft = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[2];
-		//inv_crea = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[5];
+		scroll = (ScrollPane) root.getChildrenUnmodifiable().get(0).lookupAll("ScrollPane").toArray()[0];
+		inv_crea = (GridPane) scroll.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[0];
 		
 		inventaires.add(inventory);
 		inventaires.add(inventory1);
@@ -94,32 +97,18 @@ public class Main extends Application{
 		
 		while(it.hasNext()) {
 			Item item = it.next();
-			//System.out.println(item.getLien());
-			/*for(int i = 0 ;i<3;i++) {
-				try {
-					Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
-			    	
-					ImageView iv = new ImageView(image);
-					iv.setFitHeight(28);
-					iv.setFitWidth(28);
-					iv.setTranslateX(2.0);
-					iv.setTranslateY(2.0);
-	
-					((Pane) inventaires.get(i).getChildren().get(index)).getChildren().add(iv);
-				}catch(Exception e){
-					e.printStackTrace();
-				}
-			}*/
-			/*Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
-	    	
-			ImageView iv = new ImageView(image);
-			iv.setFitHeight(28);
-			iv.setFitWidth(28);
-			iv.setTranslateX(2.0);
-			iv.setTranslateY(2.0);
+			if(Main.imageExist(item)) {
+				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
 
-			((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
-			index+=1;*/
+				ImageView iv = new ImageView(image);
+				iv.setFitHeight(28);
+				iv.setFitWidth(28);
+				iv.setTranslateX(2.0);
+				iv.setTranslateY(2.0);
+	
+				((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
+				index+=1;
+			}
 			System.out.println(item.getLien());
 			System.out.println(Main.imageExist(item));
 		}		
@@ -131,6 +120,7 @@ public class Main extends Application{
 				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
 		         result=true;
 		    } catch (IOException e) {
+		    	//e.printStackTrace();
 				result=false;
 			}
 		return result;

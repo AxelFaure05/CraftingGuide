@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -49,6 +50,9 @@ public class Controller {
 
 	    @FXML
 	    private GridPane inventory_crea;
+	    
+	    @FXML
+	    private ScrollPane scroll;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -78,6 +82,10 @@ public class Controller {
     
     public GridPane returnInventaire2() {
     	return this.inventory2;
+    }
+    
+    public ScrollPane returnScrollPane() {
+    	return this.scroll;
     }
     
    /* @FXML
