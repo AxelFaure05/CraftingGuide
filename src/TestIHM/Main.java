@@ -121,24 +121,17 @@ public class Main extends Application{
 			((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
 			index+=1;*/
 			System.out.println(item.getLien());
-			System.out.println(this.imageExist(item));
+			System.out.println(Main.imageExist(item));
 		}		
     }
 	
 	public static boolean imageExist(Item item){
 			boolean result = false;
-		    Image image;
 			try {
-				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
-		    if(image != null){
-		         return true;
-		    }
-		    else{
-		         return false;
-		    }
+				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+		         result=true;
 		    } catch (IOException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
+				result=false;
 			}
 		return result;
 	}
