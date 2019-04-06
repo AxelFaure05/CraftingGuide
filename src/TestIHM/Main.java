@@ -49,7 +49,7 @@ public class Main extends Application{
 	
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
-	public final static String DATA = "./Data/Designs/";
+	public final static String DATA = "./Data/Designs/Items/";
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -94,28 +94,34 @@ public class Main extends Application{
 	public void creerItemsBase() throws IOException {
 		
 		Iterator<Item> it = modl.inventaireCreatif.iterator();
+		Item item;
+		Image image;
+		ImageView iv;
 		int index = 0;
 		
 		while(it.hasNext()) {
-			Item item = it.next();
-			if(Main.imageExist(item)) {
-				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+			item = it.next();
+			try {
+				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
 
-				ImageView iv = new ImageView(image);
+				iv = new ImageView(image);
 				iv.setFitHeight(28);
 				iv.setFitWidth(28);
 				iv.setTranslateX(2.0);
 				iv.setTranslateY(2.0);
 				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
-				((Pane) inv_crea.getChildren().get(index)).getChildren().add(iv);
-				index+=1;
-			}
+				((Pane) inv_crea.getChildren().get(inv_crea.getChildren().size()-index-1)).getChildren().add(iv);
+				index++;
+				} catch (Exception e){
+					System.out.println(DATA+item.getLien());
+					System.out.println("Non existant");
+				}
 			System.out.println(item.getLien());
-			System.out.println(Main.imageExist(item));
+			//System.out.println(Main.imageExist(item));
 		}		
     }
 	
-	public static boolean imageExist(Item item){
+	/*public static boolean imageExist(Item item){
 			boolean result = false;
 			try {
 				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
@@ -125,7 +131,7 @@ public class Main extends Application{
 				result=false;
 			}
 		return result;
-	}
+	}*/
 	
 	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
 	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
