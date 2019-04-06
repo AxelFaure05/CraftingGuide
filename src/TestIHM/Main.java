@@ -111,8 +111,8 @@ public class Main extends Application{
 				iv = new ImageView(image);
 				iv.setFitHeight(26);
 				iv.setFitWidth(26);
-				iv.setTranslateX(2.0);
-				iv.setTranslateY(2.0);
+				iv.setTranslateX(3.0);
+				iv.setTranslateY(3.0);
 				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
 				pane.getChildren().add(iv);
 				index++;
