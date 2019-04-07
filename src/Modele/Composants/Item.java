@@ -55,7 +55,7 @@ public class Item implements Comparable<Item>, Serializable {
 		return 0;
 	}
 	public boolean equals(Item it) {
-		return this.ID == it.ID && this.name == it.name && this.isStackable == it.isStackable && this.isCraftable == it.isCraftable && this.asFixedCraft == it.asFixedCraft;
+		return this.getName().equals(it.getName()) && this.isStackable == it.isStackable && this.isCraftable == it.isCraftable && this.asFixedCraft == it.asFixedCraft;
 	}
 
 	public String getLien() {
