@@ -2,6 +2,8 @@ package TestIHM;
 
 
 
+import java.util.Map;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -117,6 +119,11 @@ public class Controller {
     	int y = coords(e).second;
     	System.out.println(x);
     	System.out.println(y);
+    	Node tmp2 = (Node) Main.namespace.get("tempo2");
+    	Node inv = tmp2.getParent();
+    	
+    	//Pane p = inv.get(coordsToPosition(x, y));
+    	System.out.println(inv);
     }
     
     public CouplePerso coords(MouseEvent e) {
@@ -171,4 +178,8 @@ public class Controller {
     public void resultClicked(MouseEvent e) {
 		System.out.println("Result clicked");
 	}
+    
+    public Integer coordsToPosition(int a,int b) {
+    	return a*9+b+1;
+    }
 }

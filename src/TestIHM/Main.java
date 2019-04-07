@@ -48,6 +48,7 @@ public class Main extends Application{
 	GridPane inv_crea = ctrl.returnInventaire_Crea();
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
+	static Map<String, Object> namespace;
 	
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
@@ -62,7 +63,7 @@ public class Main extends Application{
 		try {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
-		Map<String, Object> namespace = loader.getNamespace();
+		namespace = loader.getNamespace();
 		
 		root.setId("fenetre");
 		Scene scene = new Scene(root);
