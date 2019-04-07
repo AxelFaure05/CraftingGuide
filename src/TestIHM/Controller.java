@@ -119,9 +119,9 @@ public class Controller {
     	int y = coords(e).second;
     	System.out.println(x);
     	System.out.println(y);
-    	Node tmp2 = (Node) Main.namespace.get("tempo2");
+    	GridPane tmp2 = (GridPane) Main.namespace.get("tempo2");
     	Node inv = tmp2.getParent();
-    	
+    	System.out.println(tmp2.getChildren().get(0));
     	//Pane p = inv.get(coordsToPosition(x, y));
     	System.out.println(inv);
     }
