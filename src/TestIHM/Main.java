@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -60,17 +61,21 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		try {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("interface.fxml"));
-        root.setId("fenetre");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
+		Parent root = loader.load();
+		Map<String, Object> namespace = loader.getNamespace();
+		
+		root.setId("fenetre");
+        
 		Scene scene = new Scene(root);
 		
-		inventory = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[1];
-		inventory1 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[3];
-		inventory2 = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[4];
-		tableCraft = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[2];
-		scroll = (ScrollPane) root.getChildrenUnmodifiable().get(0).lookupAll("ScrollPane").toArray()[0];
-		inv_crea = (GridPane) ((AnchorPane) scroll.getContent()).getChildren().get(0);
-		//tempo2 = (Pane) ((AnchorPane) root.getChildrenUnmodifiable().get(0).lookupAll("AnchorPane").toArray()[0]).getChildren();
+		inventory = (GridPane)namespace.get("inventory");
+		inventory1 = (GridPane)namespace.get("inventory1");
+		inventory2 = (GridPane)namespace.get("inventory2");
+		tableCraft = (GridPane)namespace.get("table");
+		scroll = (ScrollPane)namespace.get("scroll");
+		inv_crea = (GridPane)namespace.get("inventory_crea");
+		tempo2 = (Pane)namespace.get("tempo2");
 		
 		inventaires.add(inventory);
 		inventaires.add(inventory1);
@@ -127,6 +132,7 @@ public class Main extends Application{
 			//System.out.println(Main.imageExist(item));
 		}		
 		((Pane) inv_crea.getChildren().get(20)).getChildren().clear();
+		
     }
 	
 	/*public static boolean imageExist(Item item){
