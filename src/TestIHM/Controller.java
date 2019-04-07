@@ -88,6 +88,10 @@ public class Controller {
     	return this.scroll;
     }
     
+    public Pane returntempo2() {
+    	return this.tempo2;
+    }
+    
    /* @FXML
     public void coords(MouseEvent e) {
     	System.out.println("click dans l'inventaire");
@@ -99,6 +103,10 @@ public class Controller {
         System.out.println("3");
         System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
 	}*/
+    
+    public void leftClick(MouseEvent e) {
+    	coords(e);
+    }
     
     public void coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
@@ -117,6 +125,7 @@ public class Controller {
 				System.out.println(n);
 		        Integer colIndex = GridPane.getColumnIndex(n);
 		        Integer rowIndex = GridPane.getRowIndex(n);
+		        System.out.println("Coordonnées inventaire actuel : ");
 		        System.out.println(colIndex);
 		        System.out.println(rowIndex);
 			}
@@ -139,4 +148,9 @@ public class Controller {
 		System.out.println("Result clicked");
 	}
     
+    public boolean tempoFull() {
+    	boolean result = false;
+    	//if(tempo2.getChildren())
+    	return result;
+    } 
 }

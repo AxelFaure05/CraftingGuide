@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestIHM.Controller">
+<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestIHM.Controller">
    <children>
       <TabPane layoutX="76.0" layoutY="51.0" prefHeight="587.0" prefWidth="857.0" styleClass="tabPane" stylesheets="@application.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -55,7 +55,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="50.0" layoutY="67.0" prefHeight="298.0" prefWidth="296.0">
                            <children>
-                              <GridPane fx:id="inventory" hgap="2.0" onMouseClicked="#coords" prefHeight="201.0" prefWidth="201.0" vgap="2.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                              <GridPane fx:id="inventory" hgap="2.0" onMouseClicked="#leftClick" prefHeight="201.0" prefWidth="201.0" vgap="2.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -227,7 +227,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="50.0" layoutY="67.0" prefHeight="298.0" prefWidth="296.0">
                            <children>
-                              <GridPane fx:id="inventory1" hgap="2.0" onMouseClicked="#coords" prefHeight="201.0" prefWidth="201.0" vgap="2.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                              <GridPane fx:id="inventory1" hgap="2.0" onMouseClicked="#leftClick" prefHeight="201.0" prefWidth="201.0" vgap="2.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -346,7 +346,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="183.0" layoutY="413.0" prefHeight="31.0" prefWidth="31.0">
                            <children>
-                              <Pane id="case" fx:id="tempo2" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -482,7 +482,7 @@
                               </AnchorPane>
                               <AnchorPane layoutX="183.0" layoutY="413.0" prefHeight="31.0" prefWidth="31.0">
                                  <children>
-                                    <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="31.0" prefWidth="31.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -493,7 +493,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="305.0">
                                        <children>
-                                          <GridPane fx:id="inventory_crea" hgap="2.0" onMouseClicked="#coords" prefHeight="530.0" prefWidth="300.0" vgap="2.0" AnchorPane.bottomAnchor="-201.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <GridPane fx:id="inventory_crea" hgap="2.0" onMouseClicked="#leftClick" prefHeight="530.0" prefWidth="300.0" vgap="2.0" AnchorPane.bottomAnchor="-201.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -533,12 +533,13 @@
                                                 <RowConstraints minHeight="28.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="28.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="28.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints />
                                              </rowConstraints>
                                              <padding>
                                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                              </padding>
                                              <children>
-                                                <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css"/>
+                                                <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3" />

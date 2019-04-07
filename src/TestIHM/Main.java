@@ -46,6 +46,7 @@ public class Main extends Application{
 	GridPane tableCraft = ctrl.returnCraftingTable();
 	GridPane inv_crea = ctrl.returnInventaire_Crea();
 	ScrollPane scroll = ctrl.returnScrollPane();
+	Pane tempo2 = ctrl.returntempo2();
 	
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
@@ -69,6 +70,7 @@ public class Main extends Application{
 		tableCraft = (GridPane) root.getChildrenUnmodifiable().get(0).lookupAll("GridPane").toArray()[2];
 		scroll = (ScrollPane) root.getChildrenUnmodifiable().get(0).lookupAll("ScrollPane").toArray()[0];
 		inv_crea = (GridPane) ((AnchorPane) scroll.getContent()).getChildren().get(0);
+		//tempo2 = (Pane) ((AnchorPane) root.getChildrenUnmodifiable().get(0).lookupAll("AnchorPane").toArray()[0]).getChildren();
 		
 		inventaires.add(inventory);
 		inventaires.add(inventory1);
@@ -88,6 +90,7 @@ public class Main extends Application{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(tempoFull());
 		
 	}
 	
@@ -174,5 +177,12 @@ public class Main extends Application{
         Integer rowIndex = GridPane.getRowIndex(source);
         System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
 	}*/
+	
+	public boolean tempoFull() {
+    	boolean result = false;
+    	//if(tempo2.getChildren())
+    	System.out.println(tempo2);
+    	return result;
+    }
 	
 }
