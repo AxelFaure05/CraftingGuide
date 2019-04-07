@@ -60,13 +60,11 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		Map<String, Object> namespace = loader.getNamespace();
 		
 		root.setId("fenetre");
-        
 		Scene scene = new Scene(root);
 		
 		inventory = (GridPane)namespace.get("inventory");
@@ -77,10 +75,10 @@ public class Main extends Application{
 		inv_crea = (GridPane)namespace.get("inventory_crea");
 		tempo2 = (Pane)namespace.get("tempo2");
 		
-		inventaires.add(inventory);
+		/*inventaires.add(inventory);
 		inventaires.add(inventory1);
 		inventaires.add(inventory2);
-		inventaires.add(inv_crea);
+		inventaires.add(inv_crea);*/
 		
 		System.out.println(inventaires);
 		

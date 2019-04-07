@@ -1,5 +1,7 @@
 package TestIHM;
 
+
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class Controller {
 
@@ -105,52 +108,67 @@ public class Controller {
 	}*/
     
     public void leftClick(MouseEvent e) {
-    	coords(e);
+    	Node source = (Node) e.getTarget();
+    	System.out.println(source.getParent().getId());
+    	String id = source.getParent().getId();
+    	System.out.println(id==(source.getParent().getId()).toString());
+    	//if(id==)
+    	int x = coords(e).first;
+    	int y = coords(e).second;
+    	System.out.println(x);
+    	System.out.println(y);
     }
     
-    public void coords(MouseEvent e) {
+    public CouplePerso coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		Node n = source.getParent();
+		Integer colIndex = null;
+		Integer rowIndex = null;
 		if(e.getSource() instanceof Pane) {
 			if(n instanceof GridPane) {
-				System.out.println(source);
-		        Integer colIndex = GridPane.getColumnIndex(source);
-		        Integer rowIndex = GridPane.getRowIndex(source);
-		        System.out.println(colIndex);
-		        System.out.println(rowIndex);
+				colIndex = GridPane.getColumnIndex(source);
+		        rowIndex = GridPane.getRowIndex(source);
+		        if(colIndex == null) colIndex = 0;
+		        if(rowIndex == null) rowIndex = 0;
 			}
-		 
 			else {
-				//System.out.println(source);
-				System.out.println(n);
-		        Integer colIndex = GridPane.getColumnIndex(n);
-		        Integer rowIndex = GridPane.getRowIndex(n);
-		        System.out.println("Coordonnées inventaire actuel : ");
-		        System.out.println(colIndex);
-		        System.out.println(rowIndex);
+		        colIndex = GridPane.getColumnIndex(n);
+		        rowIndex = GridPane.getRowIndex(n);
+		        if(colIndex == null) colIndex = 0;
+		        if(rowIndex == null) rowIndex = 0;
 			}
 		}
-		
+		CouplePerso result = new CouplePerso(rowIndex,colIndex);
+		return result ;
 	}
     
-    public void coordsTable(MouseEvent e) {
+    public class CouplePerso{
+    	public int first;
+    	public int second;
+    	public CouplePerso(int f,int s) {
+    		this.first=f;
+    		this.second=s;
+    	}
+    }
+    
+    public CouplePerso coordsTable(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
-		if (e.getSource() instanceof Pane) {
-	        Integer colIndex = GridPane.getColumnIndex(source);
-	        Integer rowIndex = GridPane.getRowIndex(source);
+		Integer colIndex = null;
+		Integer rowIndex = null;
+		//if (e.getSource() instanceof Pane) {
+	        colIndex = GridPane.getColumnIndex(source);
+	        rowIndex = GridPane.getRowIndex(source);
+	        if(colIndex == null) colIndex = 0;
+	        if(rowIndex == null) rowIndex = 0;
 	        System.out.println("Coords table de craft");
-	        System.out.println(colIndex);
 	        System.out.println(rowIndex);
-		}
+	        System.out.println(colIndex);
+		//}
+		CouplePerso result = new CouplePerso(rowIndex, colIndex);
+		return result;
 	}
     
     public void resultClicked(MouseEvent e) {
 		System.out.println("Result clicked");
 	}
-    
-    public boolean tempoFull() {
-    	boolean result = false;
-    	//if(tempo2.getChildren())
-    	return result;
-    } 
 }
