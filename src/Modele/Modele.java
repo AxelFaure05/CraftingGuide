@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Observable;
 
 import Modele.Composants.CraftList;
@@ -38,6 +40,7 @@ public class Modele extends Observable implements Serializable {
 			this.uncraftResult = new ItemMatrix(3);
 			this.resultatCraft = new ItemMatrix(1);
 			this.itemToUncraft = new ItemMatrix(1);
+			
 
 		} catch(Exception e) {
 			this.inventaireCreatif = new ItemList("src/Modele/listeCompleteDesItems.txt");
@@ -74,6 +77,15 @@ public class Modele extends Observable implements Serializable {
 	}
 	
 	public void craft() {
+		Iterator<String> itm = cL.iterator();
+		String tmp;
+		while(itm.hasNext()) {
+			tmp = itm.next();
+			if(this.craftingTable.equals(cL.get(tmp))) {
+				this.resultatCraft.remove(0);
+				this.resultatCraft.add(this.inventaireCreatif.research(tmp, true).racine(), 0);
+			}
+		}
 		
 	}
 	private void serialize(String str) {
