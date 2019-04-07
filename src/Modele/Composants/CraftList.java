@@ -82,10 +82,10 @@ public class CraftList extends HashMap<String, ItemMatrix> implements Serializab
 		try {
 			FileInputStream fis = new FileInputStream(new File(str));
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ItemList il = (ItemList) ois.readObject();
+			CraftList cL = (CraftList) ois.readObject();
 			ois.close();
 			fis.close();
-			return il;
+			return cL;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
