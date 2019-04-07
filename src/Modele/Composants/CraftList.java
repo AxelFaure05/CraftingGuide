@@ -1,7 +1,12 @@
 package Modele.Composants;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -61,11 +66,29 @@ public class CraftList extends HashMap<String, ItemMatrix> implements Serializab
 		return this.keySet().iterator();
 	}
 	
-	public void serialize() {
-		
+	public void serialize(String str) {
+		try {
+			FileOutputStream fos = new FileOutputStream(new File(str));
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this);
+			oos.close();
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public CraftList deserialize() {
+	public CraftList deserialize(String str) {
+		try {
+			FileInputStream fis = new FileInputStream(new File(str));
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			ItemList il = (ItemList) ois.readObject();
+			ois.close();
+			fis.close();
+			return il;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }
