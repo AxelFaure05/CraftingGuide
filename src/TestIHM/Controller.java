@@ -118,14 +118,9 @@ public class Controller {
     	int x = coords(e).first;
     	int y = coords(e).second;
     	int z = coordsToPosition(x, y);
-    	System.out.println(x);
-    	System.out.println(y);
-    	GridPane inv2 = (GridPane) Main.namespace.get("inventory2");
-    	//Node inv = tmp2.getParent();
-    	System.out.println(inv2.getChildren().get(0));
-    	System.out.println((Pane) inv2.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[z]);
-    	//Pane p = inv.get(coordsToPosition(x, y));
-    	//System.out.println(inv);
+    	System.out.println("x="+x);
+    	System.out.println("y="+y);
+    	System.out.println(this.inventory2.getChildren().get(z));
     }
     
     public CouplePerso coords(MouseEvent e) {
