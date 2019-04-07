@@ -117,11 +117,13 @@ public class Controller {
     	//if(id==)
     	int x = coords(e).first;
     	int y = coords(e).second;
+    	int z = coordsToPosition(x, y);
     	System.out.println(x);
     	System.out.println(y);
     	GridPane tmp2 = (GridPane) Main.namespace.get("tempo2");
     	Node inv = tmp2.getParent();
     	System.out.println(tmp2.getChildren().get(0));
+    	System.out.println(tmp2.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[z]);
     	//Pane p = inv.get(coordsToPosition(x, y));
     	System.out.println(inv);
     }
