@@ -132,8 +132,9 @@ public class Controller {
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
-    tempo.getChildren().add(source);
-        
+    
+    	Image im = ((ImageView) source).getImage();
+        ((Pane) tempo).getChildren().add(new ImageView(im));
     }
     
     public CouplePerso coords(MouseEvent e) {
