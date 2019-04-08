@@ -119,7 +119,7 @@ public class Controller {
     	//if(id==)
     	int x = coords(e).first;
     	int y = coords(e).second;
-    	int z = (coordsToPosition(x, y))-1;
+    	int z = coordsToPosition(x, y);
     	System.out.println("x="+x);
     	System.out.println("y="+y);
     	System.out.println(this.inventory2.getChildren().get(z));
