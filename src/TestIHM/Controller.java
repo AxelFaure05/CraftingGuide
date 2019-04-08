@@ -110,7 +110,9 @@ public class Controller {
 	}*/
     
     public void leftClick(MouseEvent e) {
+    	
     	Node source = (Node) e.getTarget();
+    	System.out.println(source.getParent());
     	System.out.println(source.getParent().getId());
     	String id = source.getParent().getId();
     	System.out.println(id==(source.getParent().getId()).toString());
@@ -121,6 +123,17 @@ public class Controller {
     	System.out.println("x="+x);
     	System.out.println("y="+y);
     	System.out.println(this.inventory2.getChildren().get(z));
+    	//this.tempo.
+    		
+    	//this.inventory2.getChildren().get(z);
+    	//GridPane.setColumnIndex(source,0);
+        //GridPane.setRowIndex(source, 0);
+    	
+    	//Mise en place des conditions
+    	//Si l'item sur lequel on clique est dans l'inventaire
+    	
+    tempo.getChildren().add(source);
+        
     }
     
     public CouplePerso coords(MouseEvent e) {
