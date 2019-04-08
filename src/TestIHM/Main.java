@@ -1,5 +1,4 @@
 package TestIHM;
-
 import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
 import java.io.File;
@@ -38,7 +37,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 	private BorderPane layout;
-	
 	Modele modl = new Modele();
 	Controller ctrl = new Controller();
 	GridPane inventory = ctrl.returnInventaire();
@@ -166,9 +164,8 @@ public class Main extends Application{
 		
 		Node[][]inventaire = null;
 		
-		for(int i=0;i<9;i++) {
-			for(int j=0;j<9;j++) {
-				
+		for(int i=0;i<28;i++) {
+			for(int j=0;j<9;j++) {				
 				inventaire[i][j] = getNodeByRowColumnIndex(i, j, inventory);
 			}
 		}
