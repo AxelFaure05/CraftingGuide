@@ -86,7 +86,7 @@ public class Main extends Application{
 		creerItemsBase();
 		
 		//Finalisation du setup de la fenêtre
-		primaryStage.setTitle("Hello World");
+		primaryStage.setTitle("Crafting Guide");
 		primaryStage.setScene(scene);
 		primaryStage.setScene(scene);
 		primaryStage.show();
