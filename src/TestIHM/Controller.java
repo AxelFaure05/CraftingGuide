@@ -4,6 +4,7 @@ package TestIHM;
 
 import java.util.Map;
 
+import Modele.Modele;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class Controller {
+	Modele model;
+	public Controller() {
+	}
 
 	   @FXML
 	    private Pane paneprincipal;
@@ -97,69 +101,51 @@ public class Controller {
     	return this.tempo2;
     }
     
-   /* @FXML
-    public void coords(MouseEvent e) {
-    	System.out.println("click dans l'inventaire");
-		Node source = (Node)e.getSource() ;
-		System.out.println("1");
-        Integer colIndex = GridPane.getColumnIndex(source);
-        System.out.println("2");
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.println("3");
-        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-	}*/
-    
     public void leftClick(MouseEvent e) {
     	Node source = (Node) e.getTarget();
-    	System.out.println(source.getParent().getId());
-    	String id = source.getParent().getId();
-    	System.out.println(id==(source.getParent().getId()).toString());
-    	//if(id==)
-    	int x = coords(e).first;
-    	int y = coords(e).second;
-    	int z = (coordsToPosition(x, y))-1;
-    	System.out.println("x="+x);
-    	System.out.println("y="+y);
-    	System.out.println(this.inventory2.getChildren().get(z));
-    }
-    
-    public CouplePerso coords(MouseEvent e) {
-		Node source = (Node) e.getTarget() ;
-		Node n = source.getParent();
-		Integer colIndex = null;
-		Integer rowIndex = null;
+    	Node p = source.getParent();
 		if(e.getSource() instanceof Pane) {
-			if(n instanceof GridPane) {
-				colIndex = GridPane.getColumnIndex(source);
-		        rowIndex = GridPane.getRowIndex(source);
-		        if(colIndex == null) colIndex = 0;
-		        if(rowIndex == null) rowIndex = 0;
-			}
-			else {
-		        colIndex = GridPane.getColumnIndex(n);
-		        rowIndex = GridPane.getRowIndex(n);
-		        if(colIndex == null) colIndex = 0;
-		        if(rowIndex == null) rowIndex = 0;
+			if(p instanceof GridPane) {
+				String siCase = source.getId().toString();
+				if(siCase.equals("case")) {
+
+					Integer colIndex = GridPane.getColumnIndex(source);
+					Integer rowIndex = GridPane.getRowIndex(source);
+					//Si on est dans la colone ou ligne 0, je fais en genre que ca renvoie 0 et pas null
+
+					if(colIndex == null) {	colIndex=0; }
+					if(rowIndex == null) {	rowIndex=0; }
+
+					System.out.println(colIndex);
+					System.out.println(rowIndex);
+				}
 			}
 		}
-		CouplePerso result = new CouplePerso(rowIndex,colIndex);
-		return result ;
-	}
-    
-    public class CouplePerso{
-    	public int first;
-    	public int second;
-    	public CouplePerso(int f,int s) {
-    		this.first=f;
-    		this.second=s;
-    	}
-    }
-    
-    public CouplePerso coordsTable(MouseEvent e) {
+		else {
+			if(p.getId() != null) {
+				String siCase = p.getId().toString();
+				if(siCase.equals("case")) {
+
+					Integer colIndex = GridPane.getColumnIndex(p);
+					Integer rowIndex = GridPane.getRowIndex(p);
+					//Si on est dans la colone ou ligne 0, je fais en genre que ca renvoie 0 et pas null
+
+					if(colIndex == null) {	colIndex=0; }
+					if(rowIndex == null) {	rowIndex=0; }
+
+					System.out.println(colIndex);
+					System.out.println(rowIndex);
+				}
+
+			}
+		}
+   }
+  
+    public void coordsTable(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		Integer colIndex = null;
 		Integer rowIndex = null;
-		//if (e.getSource() instanceof Pane) {
+		if (e.getSource() instanceof Pane) {
 	        colIndex = GridPane.getColumnIndex(source);
 	        rowIndex = GridPane.getRowIndex(source);
 	        if(colIndex == null) colIndex = 0;
@@ -167,9 +153,7 @@ public class Controller {
 	        System.out.println("Coords table de craft");
 	        System.out.println(rowIndex);
 	        System.out.println(colIndex);
-		//}
-		CouplePerso result = new CouplePerso(rowIndex, colIndex);
-		return result;
+		}
 	}
     
     public void resultClicked(MouseEvent e) {
