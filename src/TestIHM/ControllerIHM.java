@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class Controller {
+public class ControllerIHM {
 
 	   @FXML
 	    private Pane paneprincipal;

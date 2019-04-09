@@ -38,7 +38,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 	private BorderPane layout;
 	Modele modl = new Modele();
-	Controller ctrl = new Controller();
+	ControllerIHM ctrl = new ControllerIHM();
 	GridPane inventory = ctrl.returnInventaire();
 	GridPane inventory1 = ctrl.returnInventaire1();
 	GridPane inventory2 = ctrl.returnInventaire2();

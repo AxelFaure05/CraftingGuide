@@ -30,7 +30,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	}
 
 	public void actionPerformed(ActionEvent a) {
-		
+		if(a.getSource() instanceof leftClick)
 	}
 
 	@Override
