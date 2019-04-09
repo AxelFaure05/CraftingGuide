@@ -117,8 +117,8 @@ public class ControllerIHM {
     	String id = source.getParent().getId();
     	System.out.println(id==(source.getParent().getId()).toString());
     	//if(id==)
-    	int x = coords(e).first;
-    	int y = coords(e).second;
+    	int x = coords(e).x;
+    	int y = coords(e).y;
     	int z = coordsToPosition(x, y);
     	System.out.println("x="+x);
     	System.out.println("y="+y);
@@ -161,11 +161,11 @@ public class ControllerIHM {
 	}
     
     public class CouplePerso{
-    	public int first;
-    	public int second;
+    	public int x;
+    	public int y;
     	public CouplePerso(int f,int s) {
-    		this.first=f;
-    		this.second=s;
+    		this.x=f;
+    		this.y=s;
     	}
     }
     
