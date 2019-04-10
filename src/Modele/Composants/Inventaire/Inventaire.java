@@ -30,4 +30,8 @@ public class Inventaire implements Serializable {
 	public Inventaire deserialize() {
 		return null;
 	}
+	
+	public Stack[] getInv() {
+		return inventaire;
+	}
 }
