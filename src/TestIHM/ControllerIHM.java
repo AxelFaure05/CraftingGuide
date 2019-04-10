@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -112,6 +113,7 @@ public class ControllerIHM {
     public void leftClick(MouseEvent e) {
     	
     	Node source = (Node) e.getTarget();
+    	Parent p = source.getParent();
     	System.out.println(source.getParent());
     	System.out.println(source.getParent().getId());
     	String id = source.getParent().getId();
@@ -150,10 +152,18 @@ public class ControllerIHM {
 		        if(rowIndex == null) rowIndex = 0;
 			}
 			else {
-		        colIndex = GridPane.getColumnIndex(n);
-		        rowIndex = GridPane.getRowIndex(n);
-		        if(colIndex == null) colIndex = 0;
-		        if(rowIndex == null) rowIndex = 0;
+				if(n instanceof ImageView) {
+					colIndex = GridPane.getColumnIndex(n.getParent());
+			        rowIndex = GridPane.getRowIndex(n.getParent());
+			        if(colIndex == null) colIndex = 0;
+			        if(rowIndex == null) rowIndex = 0;
+				}
+				else {
+			        colIndex = GridPane.getColumnIndex(n);
+			        rowIndex = GridPane.getRowIndex(n);
+			        if(colIndex == null) colIndex = 0;
+			        if(rowIndex == null) rowIndex = 0;
+				}
 			}
 		}
 		CouplePerso result = new CouplePerso(rowIndex,colIndex);
