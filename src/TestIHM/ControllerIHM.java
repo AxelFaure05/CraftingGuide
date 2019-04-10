@@ -2,6 +2,7 @@ package TestIHM;
 
 
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javafx.collections.ObservableList;
@@ -98,6 +99,9 @@ public class ControllerIHM {
     	return this.tempo2;
     }
     
+    ArrayList<Pane> listeTempo = new ArrayList<Pane>();
+    
+    
    /* @FXML
     public void coords(MouseEvent e) {
     	System.out.println("click dans l'inventaire");
@@ -111,7 +115,9 @@ public class ControllerIHM {
 	}*/
     
     public void leftClick(MouseEvent e) {
-    	
+    	listeTempo.add(tempo);
+    	listeTempo.add(tempo1);
+    	listeTempo.add(tempo2);
     	Node source = (Node) e.getTarget();
     	Parent p = source.getParent();
     	System.out.println(source.getParent());
@@ -134,9 +140,39 @@ public class ControllerIHM {
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
-    
-    	Image im = ((ImageView) source).getImage();
-        ((Pane) tempo).getChildren().add(new ImageView(im));
+    	
+    	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && source.getId()!="inv_crea"/* && source.*/) {
+    		System.out.println("cdt 1");
+    		for(int i=0;i<3;i++) {
+    			listeTempo.get(i).getChildren().clear();
+	    		ImageView ima = (ImageView) tempo.getChildren().get(0);
+	    		Image im = ima.getImage();
+	    		ImageView iv = new ImageView(im);
+	    		iv.setFitHeight(26);
+				iv.setFitWidth(26);
+				iv.setTranslateX(3.0);
+				iv.setTranslateY(3.0);
+				((Pane) p.getChildren().add(iv);
+    		}
+    	}
+    	else {
+    		if(source instanceof ImageView) {
+    			System.out.println("cdt2");
+        		for(int i=0;i<3;i++) {
+        			listeTempo.get(i).getChildren().clear();
+    	    		ImageView ima = (ImageView) source;
+    	    		Image im = ima.getImage();
+    	    		ImageView iv = new ImageView(im);
+    	    		iv.setFitHeight(26);
+    				iv.setFitWidth(26);
+    				iv.setTranslateX(3.0);
+    				iv.setTranslateY(3.0);
+    				((Pane) listeTempo.get(i)).getChildren().add(iv);
+        		}
+        	}
+    	}
+    	
+    	
     }
     
     public CouplePerso coords(MouseEvent e) {
