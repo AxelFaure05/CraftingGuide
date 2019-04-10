@@ -144,7 +144,13 @@ public class ControllerIHM {
 		Node n = source.getParent();
 		Integer colIndex = null;
 		Integer rowIndex = null;
-		if(e.getSource() instanceof Pane) {
+		
+		colIndex = GridPane.getColumnIndex(source);
+		rowIndex = GridPane.getRowIndex(source);
+		if(colIndex == null) colIndex = 0;
+        if(rowIndex == null) rowIndex = 0;
+		
+		/*if(e.getSource() instanceof Pane) {
 			if(n instanceof GridPane) {
 				colIndex = GridPane.getColumnIndex(source);
 		        rowIndex = GridPane.getRowIndex(source);
@@ -165,7 +171,7 @@ public class ControllerIHM {
 			        if(rowIndex == null) rowIndex = 0;
 				}
 			}
-		}
+		}*/
 		CouplePerso result = new CouplePerso(rowIndex,colIndex);
 		return result ;
 	}
