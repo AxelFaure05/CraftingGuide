@@ -3,6 +3,7 @@ package TestIHM;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javafx.collections.ObservableList;
@@ -152,7 +153,13 @@ public class ControllerIHM {
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
-				((Pane) p.getChildren().add(iv);
+				System.out.println(source);
+				System.out.println(((Pane)source).getChildren());
+				//list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[0];
+				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();
+				
+				Pane p1 = (Pane) this.inventory2.getChildren().get(z);
+				p1.getChildren().add(iv);
     		}
     	}
     	else {
