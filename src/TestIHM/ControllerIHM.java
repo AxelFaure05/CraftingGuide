@@ -101,6 +101,7 @@ public class ControllerIHM {
     }
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
+    ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();
     
     
    /* @FXML
@@ -158,11 +159,16 @@ public class ControllerIHM {
 				System.out.println(source);
 				System.out.println(((Pane)source).getChildren());
 				//list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[0];
-				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();	
-				Pane p1 = (Pane) source; //l'endroit où on clique est cast en pane
-				p1.getChildren().add(iv); //ajout de l'imageview au pane
-    		}		//((Pane) p.getChildren().add(iv);
-    		}
+				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();
+				Pane p2 = (Pane) listeInventaires.get(i).getChildren().toArray()[0];
+				/*System.out.println(p2);
+				Node p3 = p2.getChildrenUnmodifiable().get(z);
+				System.out.println(p3);*/
+				//Pane p1 = (Pane) source; //l'endroit où on clique est cast en pane
+				//p1.getChildren().add(iv); //ajout de l'imageview au pane
+    		}		
+    		//((Pane) p.getChildren().add(iv);
+    	}
 
     	
     	else {
