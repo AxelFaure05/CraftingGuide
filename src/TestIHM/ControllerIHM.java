@@ -149,7 +149,7 @@ public class ControllerIHM {
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && source.getParent().getId()!="inventory_crea") {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea"))) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -166,10 +166,11 @@ public class ControllerIHM {
 				GridPane grid = listeInventaires.get(i);
 				Pane p1 = (Pane) grid.getChildren().get(z-1);
 				p1.getChildren().add(iv);
-    		}		
+    		}	
+    		return;
     	}
     	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(/*source instanceof ImageView &&*/ listeTempo.get(0).getChildren().isEmpty() && (source.getParent().getId()=="inventory2")) {
+    	if(/*source instanceof ImageView && listeTempo.get(0).getChildren().isEmpty() &&*/ (source.getParent().getId().equals("inventory2"))) {
     		System.out.println("cdt2");
     		for(int i=0;i<3;i++) {
     			
@@ -187,8 +188,6 @@ public class ControllerIHM {
     			//p1.getChildrenUnmodifiable().clear();
     			p1.getChildren().clear();
     			listeTempo.get(i).getChildren().add(iv);
-    			
-    			
     		}
     	}
     	
