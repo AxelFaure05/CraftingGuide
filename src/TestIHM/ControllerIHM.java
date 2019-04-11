@@ -164,8 +164,10 @@ public class ControllerIHM {
     		}		
     	}
     	
-    	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(source.getId())  /* && source.*/) {
+    	if(source instanceof Pane && listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(p.getId().toString())  /* && source.*/) {
+    		System.out.println("cdt2");
     		for(int i=0;i<3;i++) {
+    			
     			GridPane grid = listeInventaires.get(i);
     			Pane p1 = (Pane) grid.getChildren().get(z-1);
     			
@@ -176,7 +178,8 @@ public class ControllerIHM {
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
-    			
+				
+    			//p1.getChildrenUnmodifiable().clear();
     			p1.getChildren().clear();
     			listeTempo.get(i).getChildren().add(iv);
     			
@@ -184,9 +187,15 @@ public class ControllerIHM {
     		}
     	}
     	
+    	//if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(source.getId())  /* && source.*/) {
+    		/*for(int i=0;i<3;i++) {
+    			
+    		}
+    	}*/
+    	
     	else {
     		if(source instanceof ImageView) {
-    			System.out.println("cdt2");
+    			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
     	    		ImageView ima = (ImageView) source;
