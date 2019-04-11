@@ -36,7 +36,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
 			Node source=(Node) e.getSource();
-			String id = source.getParent().getId().toString();
+			String id = source.getId().toString();
 			CouplePerso coord = cIHM.coords(e);
 			Integer position = cIHM.coordsToPosition(coord.x, coord.y);
 
