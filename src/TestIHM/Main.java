@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import Controller.Controller;
 import Modele.Modele;
 import Modele.Composants.Item;
 import javafx.application.Application;
@@ -39,6 +40,7 @@ public class Main extends Application{
 	private BorderPane layout;
 	Modele modl = new Modele();
 	ControllerIHM ctrl = new ControllerIHM();
+	Controller ctrll = new Controller(modl,ctrl);
 	GridPane inventory = ctrl.returnInventaire();
 	GridPane inventory1 = ctrl.returnInventaire1();
 	GridPane inventory2 = ctrl.returnInventaire2();
