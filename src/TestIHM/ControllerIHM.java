@@ -120,6 +120,9 @@ public class ControllerIHM {
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
     	listeTempo.add(tempo2);
+    	listeInventaires.add(inventory);
+    	listeInventaires.add(inventory1);
+    	listeInventaires.add(inventory2);
     	Node source = (Node) e.getTarget();
     	Parent p = source.getParent();
     	System.out.println(source.getParent());
@@ -144,13 +147,10 @@ public class ControllerIHM {
     	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && source.getId()!="inv_crea"  /* && source.*/) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
-    			ImageView ima = (ImageView) tempo.getChildren().get(0);
+    			ImageView ima = (ImageView) tempo2.getChildren().get(0);
+    			Image im = ima.getImage();
     			listeTempo.get(i).getChildren().clear();
-    			//Effaçage de chaque case tempo
-    			tempo.getChildren().clear();
-    			tempo1.getChildren().clear();
-    			tempo2.getChildren().clear();
-	    		Image im = ima.getImage();
+	    		
 	    		ImageView iv = new ImageView(im);
 	    		iv.setFitHeight(26);
 				iv.setFitWidth(26);
@@ -158,18 +158,31 @@ public class ControllerIHM {
 				iv.setTranslateY(3.0);
 				System.out.println(source);
 				System.out.println(((Pane)source).getChildren());
-				//list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[0];
-				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();
-				Pane p2 = (Pane) listeInventaires.get(i).getChildren().toArray()[0];
-				/*System.out.println(p2);
-				Node p3 = p2.getChildrenUnmodifiable().get(z);
-				System.out.println(p3);*/
-				//Pane p1 = (Pane) source; //l'endroit où on clique est cast en pane
-				//p1.getChildren().add(iv); //ajout de l'imageview au pane
+				GridPane grid = listeInventaires.get(i);
+				Pane p1 = (Pane) grid.getChildren().get(z-1);
+				p1.getChildren().add(iv);
     		}		
-    		//((Pane) p.getChildren().add(iv);
     	}
-
+    	
+    	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(source.getId())  /* && source.*/) {
+    		for(int i=0;i<3;i++) {
+    			GridPane grid = listeInventaires.get(i);
+    			Pane p1 = (Pane) grid.getChildren().get(z-1);
+    			
+    			ImageView ima = (ImageView) p1.getChildren().get(0);
+    			Image im = ima.getImage();
+    			ImageView iv = new ImageView(im);
+	    		iv.setFitHeight(26);
+				iv.setFitWidth(26);
+				iv.setTranslateX(3.0);
+				iv.setTranslateY(3.0);
+    			
+    			p1.getChildren().clear();
+    			listeTempo.get(i).getChildren().add(iv);
+    			
+    			
+    		}
+    	}
     	
     	else {
     		if(source instanceof ImageView) {
