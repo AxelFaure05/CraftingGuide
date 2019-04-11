@@ -33,19 +33,20 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	}
 
 	public void detectClick(MouseEvent e) {
+		
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
 			Node source=(Node) e.getSource();
-			String id = source.getParent().getId().toString();
+			String id = source.getId().toString();
 			CouplePerso coord = cIHM.coords(e);
 			Integer position = cIHM.coordsToPosition(coord.x, coord.y);
 
 			//J'identifie le click de sourie
 			if(e.getButton() == MouseButton.PRIMARY) {
-
+				
 				//J'identifie dans quoi nous cliquons
 				if(id.equals("inventory")||id.equals("inventory1")||id.equals("inventory2")) {
-
+					
 					//Je recupere les infos du stack d'item cliqué
 					Stack stackTemp = model.inventaireSurvie.getInv()[position];
 
@@ -54,6 +55,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 
 						//Je check si j'ai un item dans la case temporaire
 						if(!itemEnMain) {
+							
 							stackTemp.setCount(1);
 							model.inventaireSurvie.getInv()[position].remove(1);
 							itemEnMain = !itemEnMain;
