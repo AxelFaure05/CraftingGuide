@@ -132,21 +132,23 @@ public class ControllerIHM {
     	System.out.println("x="+x);
     	System.out.println("y="+y);
     	System.out.println(this.inventory2.getChildren().get(z));
-    	//this.tempo.
+    	 
     		
-    	//this.inventory2.getChildren().get(z);
-    	//GridPane.setColumnIndex(source,0);
-        //GridPane.setRowIndex(source, 0);
+
     	
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	
-    	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && source.getId()!="inv_crea"/* && source.*/) {
+    	if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && source.getId()!="inv_crea"  /* && source.*/) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
+    			ImageView ima = (ImageView) tempo.getChildren().get(0);
     			listeTempo.get(i).getChildren().clear();
-	    		ImageView ima = (ImageView) tempo.getChildren().get(0);
+    			//Effaçage de chaque case tempo
+    			tempo.getChildren().clear();
+    			tempo1.getChildren().clear();
+    			tempo2.getChildren().clear();
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
 	    		iv.setFitHeight(26);
@@ -156,12 +158,13 @@ public class ControllerIHM {
 				System.out.println(source);
 				System.out.println(((Pane)source).getChildren());
 				//list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[0];
-				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();
-				
-				Pane p1 = (Pane) this.inventory2.getChildren().get(z);
-				p1.getChildren().add(iv);
+				//Object[] list = p.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray();	
+				Pane p1 = (Pane) source; //l'endroit où on clique est cast en pane
+				p1.getChildren().add(iv); //ajout de l'imageview au pane
+    		}		//((Pane) p.getChildren().add(iv);
     		}
-    	}
+
+    	
     	else {
     		if(source instanceof ImageView) {
     			System.out.println("cdt2");
