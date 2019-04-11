@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import Controller.Controller;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class ControllerIHM {
+	
+	Controller ctrl = Main.returnController();
 
 	   @FXML
 	    private Pane paneprincipal;
@@ -117,6 +120,7 @@ public class ControllerIHM {
 	}*/
     
     public void leftClick(MouseEvent e) {
+    	ctrl.detectClick(e);
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
     	listeTempo.add(tempo2);
