@@ -136,6 +136,8 @@ public class ControllerIHM {
     	int x = coords(e).x;
     	int y = coords(e).y;
     	int z = coordsToPosition(x, y);
+    	
+    	int posParent = coordsToPosition(coordsParent(e).x, coordsParent(e).y);
     	//System.out.println("x="+x);
     	//System.out.println("y="+y);
     	//System.out.println(this.inventory2.getChildren().get(z));
@@ -174,7 +176,7 @@ public class ControllerIHM {
     		for(int i=0;i<3;i++) {
     			
     			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildrenUnmodifiable().get(z-1);
+    			Pane p1 = (Pane) grid.getChildren().get(posParent-1); //grid.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[posParent-1];
     			ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
@@ -222,6 +224,21 @@ public class ControllerIHM {
     	
     }
     
+    public CouplePerso coordsParent(MouseEvent e) {
+		Node source = (Node) e.getTarget() ;
+		Node n = source.getParent();
+		Integer colIndex = null;
+		Integer rowIndex = null;
+		
+		colIndex = GridPane.getColumnIndex(n);
+		rowIndex = GridPane.getRowIndex(n);
+		if(colIndex == null) colIndex = 0;
+        if(rowIndex == null) rowIndex = 0;
+        
+        CouplePerso result = new CouplePerso(rowIndex,colIndex);
+		return result ;
+    }
+        
     public CouplePerso coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		Node n = source.getParent();
