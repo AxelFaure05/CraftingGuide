@@ -104,8 +104,7 @@ public class ControllerIHM {
     }
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
-    ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();
-    
+    ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
     
    /* @FXML
     public void coords(MouseEvent e) {
@@ -170,14 +169,14 @@ public class ControllerIHM {
     		return;
     	}
     	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(/*source instanceof ImageView && listeTempo.get(0).getChildren().isEmpty() &&*/ (source.getParent().getId().equals("inventory2"))) {
+    	if(p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory")) {
     		System.out.println("cdt2");
     		for(int i=0;i<3;i++) {
     			
     			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildren().get(z-1);
-    			
-    			ImageView ima = (ImageView) p1.getChildren().get(0);
+    			Pane p1 = (Pane) grid.getChildrenUnmodifiable().get(z-1);
+    			//System.out.println(p1.getChildrenUnmodifiable().);
+    			ImageView ima = (ImageView) p1.getChildren().get(0)/*.get(0)*/;
     			Image im = ima.getImage();
     			ImageView iv = new ImageView(im);
 	    		iv.setFitHeight(26);
@@ -198,7 +197,7 @@ public class ControllerIHM {
     	}*/
     	
     	else {
-    		if(source instanceof ImageView) {
+    		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
     			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
