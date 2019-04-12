@@ -175,16 +175,22 @@ public class ControllerIHM {
     			
     			GridPane grid = listeInventaires.get(i);
     			Pane p1 = (Pane) grid.getChildrenUnmodifiable().get(z-1);
+    			ImageView ima = (ImageView) source;
+	    		Image im = ima.getImage();
+	    		ImageView iv = new ImageView(im);
+    			/*ImageView iview ;
+    			p1.getChildren().add(iview);*/
     			//System.out.println(p1.getChildrenUnmodifiable().);
-    			ImageView ima = (ImageView) p1.getChildren().get(0)/*.get(0)*/;
-    			Image im = ima.getImage();
-    			ImageView iv = new ImageView(im);
+    			//ImageView ima = (ImageView) p1.getChildren().get(0)/*.get(0)*/;
+    			/*Image im = ima.getImage();
+    			ImageView iv = new ImageView(im);*/
 	    		iv.setFitHeight(26);
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 				
     			//p1.getChildrenUnmodifiable().clear();
+				
     			p1.getChildren().clear();
     			listeTempo.get(i).getChildren().add(iv);
     		}
