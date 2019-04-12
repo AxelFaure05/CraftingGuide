@@ -25,17 +25,23 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	Modele model;
 	ControllerIHM cIHM;
 	boolean itemEnMain = false;
+	//Je créé le stack d'item qui sera dans notre main
+	Stack stackTemp = null;
 
 
 	public Controller(Modele m, ControllerIHM c) {
 		this.model = m;
 		this.cIHM = c;
+		Item testI = new Item(10,"objet","objet",true,true,true);
+		Stack test = new Stack(testI,1);
+		model.inventaireSurvie.place(2, test);
+		model.inventaireSurvie.place(3, test);
 	}
 
 	public void detectClick(MouseEvent e) {
-		
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
+
 			Node source=(Node) e.getSource();
 			String id = source.getId().toString();
 			CouplePerso coord = cIHM.coords(e);
@@ -43,43 +49,79 @@ public class Controller implements ActionListener,ItemListener, Observer {
 
 			//J'identifie le click de sourie
 			if(e.getButton() == MouseButton.PRIMARY) {
-				
-				//J'identifie dans quoi nous cliquons
+
+
+
+
+				//J'identifie si nous cliquons dans l'inventaire
 				if(id.equals("inventory")||id.equals("inventory1")||id.equals("inventory2")) {
-					
-					//Je recupere les infos du stack d'item cliquÃ©
-					Stack stackTemp = model.inventaireSurvie.getInv()[position];
 
-					//Si le stack est non null, cela veut dire qu'on clique pas sur une case vide
-					if(stackTemp != null) {
+					//Je recupere les infos du stack d'item clique
+					Stack stackRecup = model.inventaireSurvie.getInv()[position];
 
-						//Je check si j'ai un item dans la case temporaire
-						if(!itemEnMain) {
-							
-							stackTemp.setCount(1);
-							model.inventaireSurvie.getInv()[position].remove(1);
+					//Je regarde si j'ai deja un item dans la main oui ou non
+					if(!itemEnMain) {
+
+						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
+						if(stackRecup != null) {
+							//System.out.println("je recupere l'item");
+							stackTemp = model.inventaireSurvie.getInv()[position];
+							model.inventaireSurvie.remove(position);
 							itemEnMain = !itemEnMain;
 						}
+					}
+					else {
+						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case de l'inventaire
+						if(stackRecup == null) {
+							//System.out.println("je pose l'item");
+							model.inventaireSurvie.place(position, stackTemp);
+							itemEnMain=!itemEnMain;
+						}
+						//Si la case clique n'est pas vide, alors j'echange les deux items de place
 						else {
-							if(model.inventaireSurvie.getInv()[position].getItem() == stackTemp.getItem()) {
-								stackTemp.add(stackTemp.getItem(), 1);
-								model.inventaireSurvie.getInv()[position].remove(1);
-							}
-							else {
-								if(model.inventaireSurvie.getInv()[position] == null) {
-									model.inventaireSurvie.place(position, stackTemp);
-									itemEnMain = !itemEnMain;
-								}
-								else {
-									Stack stackTemp2 = model.inventaireSurvie.getInv()[position];
-									model.inventaireSurvie.place(position, stackTemp);
-									stackTemp = stackTemp2;
-								}
-							}
+							//System.out.println("jechange deux items de place");
+							model.inventaireSurvie.remove(position);
+							model.inventaireSurvie.place(position, stackTemp);
+							stackTemp = stackRecup;
 						}
 					}
 				}
+
+
+
+
+				//Je regarde si on clique sur la table de craft
+				/*if(id.equals("table")) {
+
+					//Je recupere les infos du stack d'item clique
+					Stack stackRecup = model.craftingTable.getMatrix()[position];
+
+					//Je regarde si j'ai deja un item dans la main oui ou non
+					if(!itemEnMain) {
+
+						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
+						if(stackRecup != null) {
+							model.craftingTable.remove(position);
+							stackTemp = stackRecup;
+							itemEnMain=!itemEnMain;
+						}
+					}
+					else {
+						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case du table de craft
+						if(stackRecup == null) {
+							model.craftingTable.add(stackTemp, position);
+							itemEnMain=!itemEnMain;
+						}
+						//Sinon j'echange les deux items de place
+						else {
+							model.craftingTable.remove(position);
+							model.craftingTable.add(stackTemp, position);
+							stackTemp = stackRecup;
+						}
+					}
+				}*/
 			}
+
 		}
 	}
 	@Override

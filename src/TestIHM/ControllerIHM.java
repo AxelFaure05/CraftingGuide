@@ -129,18 +129,18 @@ public class ControllerIHM {
     	listeInventaires.add(inventory2);
     	Node source = (Node) e.getTarget();
     	Parent p = source.getParent();
-    	System.out.println(source.getParent());
-    	System.out.println(source.getParent().getId());
+    	//System.out.println(source.getParent());
+    	//System.out.println(source.getParent().getId());
     	String id = source.getParent().getId();
-    	System.out.println(id==(source.getParent().getId()).toString());
+    	//System.out.println(id==(source.getParent().getId()).toString());
     	//if(id==)
     	int x = coords(e).x;
     	int y = coords(e).y;
     	int z = coordsToPosition(x, y);
-    	System.out.println("x="+x);
-    	System.out.println("y="+y);
-    	System.out.println(this.inventory2.getChildren().get(z));
-    	System.out.println(inventory2.getId());
+    	//System.out.println("x="+x);
+    	//System.out.println("y="+y);
+    	//System.out.println(this.inventory2.getChildren().get(z));
+    	//System.out.println(inventory2.getId());
     	 
     		
 
@@ -264,6 +264,7 @@ public class ControllerIHM {
     }
     
     public CouplePerso coordsTable(MouseEvent e) {
+    	ctrl.detectClick(e);
 		Node source = (Node) e.getTarget() ;
 		Integer colIndex = null;
 		Integer rowIndex = null;
@@ -281,6 +282,7 @@ public class ControllerIHM {
 	}
     
     public void resultClicked(MouseEvent e) {
+    	ctrl.detectClick(e);
 		System.out.println("Result clicked");
 	}
     
