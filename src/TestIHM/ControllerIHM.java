@@ -105,7 +105,7 @@ public class ControllerIHM {
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
-    
+    Boolean flag =false;
    /* @FXML
     public void coords(MouseEvent e) {
     	System.out.println("click dans l'inventaire");
@@ -126,6 +126,11 @@ public class ControllerIHM {
     	listeInventaires.add(inventory);
     	listeInventaires.add(inventory1);
     	listeInventaires.add(inventory2);
+    	
+    	
+    	
+    	
+    	
     	Node source = (Node) e.getTarget();
     	Parent p = source.getParent();
     	//System.out.println(source.getParent());
@@ -147,64 +152,8 @@ public class ControllerIHM {
 
     	
     	//Mise en place des conditions
-    	//Si l'item sur lequel on clique est dans l'inventaire
-    	
-    	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea"))) {
-    		System.out.println("cdt 1");
-    		for(int i=0;i<3;i++) {
-    			ImageView ima = (ImageView) tempo2.getChildren().get(0);
-    			Image im = ima.getImage();
-    			listeTempo.get(i).getChildren().clear();
-	    		
-	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
-				iv.setTranslateX(3.0);
-				iv.setTranslateY(3.0);
-				/*System.out.println(source);
-				System.out.println(((Pane)source).getChildren());*/
-				GridPane grid = listeInventaires.get(i);
-				Pane p1 = (Pane) grid.getChildren().get(z-1);
-				p1.getChildren().add(iv);
-    		}	
-    		return;
-    	}
-    	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory")) {
-    		System.out.println("cdt2");
-    		for(int i=0;i<3;i++) {
-    			
-    			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildren().get(posParent-1); //grid.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[posParent-1];
-    			ImageView ima = (ImageView) source;
-	    		Image im = ima.getImage();
-	    		ImageView iv = new ImageView(im);
-    			/*ImageView iview ;
-    			p1.getChildren().add(iview);*/
-    			//System.out.println(p1.getChildrenUnmodifiable().);
-    			//ImageView ima = (ImageView) p1.getChildren().get(0)/*.get(0)*/;
-    			/*Image im = ima.getImage();
-    			ImageView iv = new ImageView(im);*/
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
-				iv.setTranslateX(3.0);
-				iv.setTranslateY(3.0);
-				
-    			//p1.getChildrenUnmodifiable().clear();
-				
-    			p1.getChildren().clear();
-    			listeTempo.get(i).getChildren().add(iv);
-    		}
-    	}
-    	
-    	//if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(source.getId())  /* && source.*/) {
-    		/*for(int i=0;i<3;i++) {
-    			
-    		}
-    	}*/
-    	
-    	else {
+   
+    		//déplacement d'inventaire créatif vers les tempos
     		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
     			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
@@ -219,10 +168,63 @@ public class ControllerIHM {
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
         	}
+    		
+    		
+    		
+    		
+    		//tempo est pas vide et on clique sur un inventaire, la condition s'occupe de déplacer l'item de tempo vers la case de l'inventaire où on clique, et cela sur chaque onglet
+    		if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && ( source.getParent().getId().equals("inventory") || source.getParent().getId().equals("inventory1") || source.getParent().getId().equals("inventory2")) ) {
+    			System.out.println("tempo est pas vide et on clique sur un inventaire");	
+    			for(int i=0;i<3;i++) {
+        			ImageView ima = (ImageView) tempo2.getChildren().get(0);
+        			Image im = ima.getImage();
+        			listeTempo.get(i).getChildren().clear();
+    	    		ImageView iv = new ImageView(im);
+    	    		iv.setFitHeight(26);
+    				iv.setFitWidth(26);
+    				iv.setTranslateX(3.0);
+    				iv.setTranslateY(3.0);
+    				/*System.out.println(source);
+    				System.out.println(((Pane)source).getChildren());*/
+    				GridPane grid = listeInventaires.get(i);
+    				Pane p1 = (Pane) grid.getChildren().get(z-1);
+    				p1.getChildren().add(iv);
+        		}
+    			//Effacage de chaque case tempo
+    			tempo.getChildren().clear();
+    			tempo1.getChildren().clear();
+    			tempo2.getChildren().clear();
+    			
+    			
+    			
+    			
+    			
+    			
+    		}
+    		
+    		
+    		//tempo est pas vide et on clique sur un inventaire, la condition s'occupe de déplacer l'item de tempo vers la case de l'inventaire où on clique, et cela sur chaque onglet
+    		if(source instanceof ImageView &&  ( p.getParent().getId().equals("inventory") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory2")) ) {
+    		//	System.out.println("on clique sur un item d'un inventaire");
+				Pane p1 = (Pane) listeInventaires.get(0).getChildren().get(z-1);
+				ImageView ima = (ImageView) p1.getChildren().get(0);
+				Image itemamettre = ima.getImage();
+				flag =true;
+				System.out.println("on clique sur un item d'un inventaire");
+    		}
+    		
+    		
+    		if (flag==true && source instanceof ImageView) {
+    			System.out.println("pret à mettre l'image view dans la case");
+    			flag=false;
+    		}
+    		
+    		
+    		
     	}
     	
     	
-    }
+  
     
     public CouplePerso coordsParent(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
