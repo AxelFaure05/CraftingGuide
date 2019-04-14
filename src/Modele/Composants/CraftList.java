@@ -1,59 +1,48 @@
-package Modele.Composants;
+package Modele.Structures;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Hashtable;
 
-import Modele.Composants.ItemList.ItemList;
-import Modele.Composants.ItemMatrix.ItemMatrix;
+import Modele.Composants.Craft;
+import Modele.Composants.Item;
+import Modele.Composants.Stack;
 
-public class CraftList extends HashMap<String, ItemMatrix> implements Serializable, Iterable<String> {
-	
-	public final static String EMPLACEMENT_LISTECRAFTCOMPLETE = "./Data/DAT_files/completeCraftList.dat";
+//re-réfléchis-y, tu étais fatigué. ;3
+public class CraftList extends HashMap<Craft, String> implements Serializable {
 
-	ItemList iL;
+
+	private static final String rawList = "./Data/rawData/rawCraftList.txt";
+	private ItemList itemList;
 	
-	public CraftList() {super();}
-	
-	public CraftList(ItemList iL) {
-		super();
-		this.iL = iL;
-	}
-	
-	public CraftList(String str, ItemList iL) {
-		super();
-		this.iL = iL;
-		this.rawDataLoad(str);
+	public CraftList(ItemList il) {
+		this.setItemList(il);
+		this.rawDataLoad(CraftList.rawList);
 	}
 	
 	public void rawDataLoad(String file) {
-		
 		try {
 			BufferedReader bR = new BufferedReader(new FileReader(file));
 			String str = bR.readLine();
 			String[] arg, elem;
-			ItemMatrix craft;
+			Craft craft;
 			
 			while(str != null) {
 				arg = str.split(":");
 				elem = arg[1].split(",");
-				craft = new ItemMatrix(3);
+				craft = new Craft();
 				for(int i = 0; i<elem.length; i++) {
 					if(!elem[i].equals("0")) {
-						craft.add(this.iL.research(elem[i], true).racine(), i);
+						craft.add(new Stack(this.getItemList().research(elem[i], true).racine(), 1), i);
 					} else {
-						craft.add(new Item(0, "vide", "img_vide.png", false, false, false), i);
+						craft.add(null, i);
 					}
 				}
-				this.put(arg[0], craft);
+				craft.craftID = craft.matID();
+				this.put(craft, arg[0]);
 				str = bR.readLine();
 			}
 			bR.close();
@@ -61,34 +50,13 @@ public class CraftList extends HashMap<String, ItemMatrix> implements Serializab
 			e.printStackTrace();
 		}
 	}
-	
-	public Iterator<String> iterator() {
-		return this.keySet().iterator();
+
+	public ItemList getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(ItemList itemList) {
+		this.itemList = itemList;
 	}
 	
-	public void serialize(String str) {
-		try {
-			FileOutputStream fos = new FileOutputStream(new File(str));
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(this);
-			oos.close();
-			fos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public CraftList deserialize(String str) {
-		try {
-			FileInputStream fis = new FileInputStream(new File(str));
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			CraftList cL = (CraftList) ois.readObject();
-			ois.close();
-			fis.close();
-			return cL;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }
