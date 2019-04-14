@@ -2,39 +2,37 @@ package Modele.Composants;
 
 import java.io.Serializable;
 
-public class Item implements Comparable<Item>, Serializable {
+public class Item implements Serializable {
 	
 	private int ID;
-	private String name, lien_image;
-	private boolean isCraftable, isStackable, asFixedCraft;
+	private String name;
+	private String imLink;
+	private boolean isStackable;
 	
-	public Item(int ID, String name, String link, boolean isCraftable, boolean isStackable, boolean asFixedCraft) {
-		
+	public Item(int ID, String name, String imLink, boolean isStackable) {
 		this.setID(ID);
-		this.setName(name);
-		this.setLien(link);
-		this.setCraftable(isCraftable);
+		this.setName(name.toLowerCase());
+		this.setImLink(imLink);
 		this.setStackable(isStackable);
-		this.setFixedCraft(asFixedCraft);
 	}
-	
+
 	public int getID() {
 		return ID;
 	}
 	public void setID(int iD) {
-		ID = iD;
+		this.ID = iD;
 	}
 	public String getName() {
-		return name.split(":")[1];
+		return name;
 	}
 	public void setName(String name) {
-		this.name = "minecraft:" + name.toLowerCase();
+		this.name = name;
 	}
-	public boolean isCraftable() {
-		return isCraftable;
+	public String getImLink() {
+		return imLink;
 	}
-	public void setCraftable(boolean isCraftable) {
-		this.isCraftable = isCraftable;
+	public void setImLink(String imLink) {
+		this.imLink = imLink;
 	}
 	public boolean isStackable() {
 		return isStackable;
@@ -42,27 +40,18 @@ public class Item implements Comparable<Item>, Serializable {
 	public void setStackable(boolean isStackable) {
 		this.isStackable = isStackable;
 	}
-	public boolean asFixedCraft() {
-		return asFixedCraft;
-	}
-	public void setFixedCraft(boolean asFixedCraft) {
-		this.asFixedCraft = asFixedCraft;
-	}
-	@Override
 	public int compareTo(Item o) {
 		if(this.name.compareTo(o.name)>0) return 1;
 		if(this.name.compareTo(o.name)<0) return -1;
 		return 0;
 	}
-	public boolean equals(Item it) {
-		return this.getName().equals(it.getName()) && this.isStackable == it.isStackable && this.isCraftable == it.isCraftable && this.asFixedCraft == it.asFixedCraft;
+	@Override
+	public boolean equals(Object it) {
+		if(!(it instanceof Item)) return false;
+		return this.getName().equals(((Item)it).getName());
 	}
-
-	public String getLien() {
-		return lien_image;
-	}
-
-	public void setLien(String lien_image) {
-		this.lien_image = lien_image;
+	@Override
+	public int hashCode() {
+		return this.ID + this.getName().hashCode();
 	}
 }
