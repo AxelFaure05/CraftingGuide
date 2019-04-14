@@ -1,21 +1,17 @@
-package Modele.Composants.ItemList;
+package Modele.Structures;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
 
 import Modele.Composants.Item;
+import Modele.Structures.sous_Structures.ABR;
 
 public class ItemList extends ABR<Item> implements Serializable {
 	
-	public final static String EMPLACEMENT_LISTECOMPLETE = "./Data/DAT_files/completeList.dat";
+	private static final String rawList = "./Data/rawData/rawItemList.txt";
 	
 	public ItemList(String str) {
 		super();
@@ -47,8 +43,9 @@ public class ItemList extends ABR<Item> implements Serializable {
 	}
 	
 	public ItemList research(String str, boolean exact) {
-		ItemList res = this.deserialize(EMPLACEMENT_LISTECOMPLETE);
-		while(res.element.compareTo(new Item(0, str, str + ".png", false, false, false))<0) {
+		ItemList res = new ItemList(this.racine(),(ItemList) this.arbG,(ItemList) this.arbD);
+		while(res.racine().compareTo(new Item(0, str, str + ".png", false)) > 0) {
+			System.out.println(res.racine().getName());
 			res = (ItemList) res.arbD;
 		}
 		ItemList resultatRecherche = new ItemList();
@@ -57,17 +54,15 @@ public class ItemList extends ABR<Item> implements Serializable {
 			Item item = it.next();
 			if(item.getName().toLowerCase().startsWith(str.toLowerCase()) && !exact) {
 				resultatRecherche.addItem(item);
-			} else if(item.getName().toLowerCase().equals(str) && exact) {
+			} else if(item.getName().toLowerCase().equals(str.toLowerCase()) && exact) {
 				resultatRecherche.addItem(item);
 				break;
 			}
 		}
-		
 		return resultatRecherche;
 	}
 	
 	public void rawDataLoad(String file) {
-		
 		try {
 			BufferedReader bR = new BufferedReader(new FileReader(file));
 			String str = new String(bR.readLine());
@@ -79,41 +74,16 @@ public class ItemList extends ABR<Item> implements Serializable {
 						Integer.valueOf(arg[0]),
 						arg[1],
 						"img_" + arg[1].toLowerCase() + ".png",
-						Boolean.getBoolean(arg[2]),
-						Boolean.getBoolean(arg[3]),
-						Boolean.getBoolean(arg[4])));
+						Boolean.getBoolean(arg[2])));
 				str = bR.readLine();
 			}
 			bR.close();
-			this.serialize(EMPLACEMENT_LISTECOMPLETE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void serialize(String str) {
-		try {
-			FileOutputStream fos = new FileOutputStream(new File(str));
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(this);
-			oos.close();
-			fos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public ItemList deserialize(String str) {
-		try {
-			FileInputStream fis = new FileInputStream(new File(str));
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			ItemList il = (ItemList) ois.readObject();
-			ois.close();
-			fis.close();
-			return il;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+
+	public static String getRawlist() {
+		return rawList;
 	}
 }
