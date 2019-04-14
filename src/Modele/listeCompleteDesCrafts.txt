@@ -1,3 +1,0 @@
-furnace:cobblestone,cobblestone,cobblestone,cobblestone,0,cobblestone,cobblestone,cobblestone,cobblestone:cobblestone
-wood_plank:oak_wood,0,0,0,0,0,0,0,0:oak_wood
-lapis_block:lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli,lapis_lazuli:lapis_lazuli
