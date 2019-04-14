@@ -6,111 +6,77 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Observable;
 
-import Modele.Composants.CraftList;
-import Modele.Composants.Item;
-import Modele.Composants.Inventaire.Inventaire;
-import Modele.Composants.ItemList.ItemList;
-import Modele.Composants.ItemMatrix.ItemMatrix;
-import javafx.scene.Scene;
+import Modele.Composants.Stack;
+import Modele.Composants.Craft;
+import Modele.Structures.CraftList;
+import Modele.Structures.CraftListReversed;
+import Modele.Structures.Inventory;
+import Modele.Structures.ItemList;
+import Modele.Structures.StackMatrix;
 
 public class Modele extends Observable implements Serializable {
 	
-	public final static String DATA = "./Data/DAT_files/DATA.dat";
-	public static int[] DIM = {27, 243};
+	public Inventory inventaireSurvie;
+	public ItemList fullItemList;
+	public StackMatrix tableDeCraft;
+	public StackMatrix resultatCraft;
+	public CraftList fullCraftList;
+	public CraftListReversed fullCraftListReversed;
 	
-	public ItemList inventaireCreatif;
-	public Inventaire inventaireSurvie;
-	public ItemMatrix craftingTable;
-	public ItemMatrix resultatCraft;
-	public ItemMatrix itemToUncraft;
-	public ItemMatrix uncraftResult;
-	CraftList cL;
-	
-	public Scene onglet;
+	public final static int invSize = 81;
+	private final static String DATA = "./Data/DATA.dat"; 
 	
 	public Modele() {
-		
 		try {
-			this.deserialize();
-			this.craftingTable = new ItemMatrix(3);
-			this.uncraftResult = new ItemMatrix(3);
-			this.resultatCraft = new ItemMatrix(1);
-			this.itemToUncraft = new ItemMatrix(1);
-			
-
-		} catch(Exception e) {
-			this.inventaireCreatif = new ItemList("src/Modele/listeCompleteDesItems.txt");
-			this.inventaireSurvie = new Inventaire(Modele.DIM[1]);
-			this.craftingTable = new ItemMatrix(3);
-			this.uncraftResult = new ItemMatrix(3);
-			this.resultatCraft = new ItemMatrix(1);
-			this.itemToUncraft = new ItemMatrix(1);
-
-			this.cL = new CraftList("src/Modele/listeCompleteDesCrafts.txt", this.inventaireCreatif);
-		}
-	}
-	
-	public void changedScene(Scene scn) {
-		this.onglet = scn;
-		this.hasChanged();
-		this.notifyObservers();
-	}
-	
-	public void changedCraftingTable() {
-		this.setChanged();
-		this.notifyObservers();
-	}
-	
-	public void changedResultatCraft() {
-		this.setChanged();
-		this.notifyObservers();
-	}
-	
-	public void uncraft() {
-		this.uncraftResult = this.cL.get(((Item) this.itemToUncraft.getMatrix()[0]).getName());
-		this.setChanged();
-		this.notifyObservers();
-	}
-	
-	public void craft() {
-		Iterator<String> itm = cL.iterator();
-		String tmp;
-		while(itm.hasNext()) {
-			tmp = itm.next();
-			if(this.craftingTable.equals(cL.get(tmp))) {
-				this.resultatCraft.remove(0);
-				this.resultatCraft.add(this.inventaireCreatif.research(tmp, true).racine(), 0);
-			}
+			if(this.deserialize()==null) {
+				throw new RuntimeException();
+			} 
+			System.out.println("Deserialized!");
+		} catch (Exception e){
+			System.out.println("Could not deserialize!");
+			this.inventaireSurvie = new Inventory();
+			this.fullItemList = new ItemList(ItemList.getRawlist());
+			this.fullCraftList = new CraftList(this.fullItemList);
+			this.fullCraftListReversed = new CraftListReversed(this.fullItemList);
 		}
 		
+		this.tableDeCraft = new StackMatrix(9);
+		this.resultatCraft = new StackMatrix(1);
 	}
-	private void serialize(String str) {
+	
+	public void Craft() {
+		Craft craft = new Craft(this.tableDeCraft);
+		this.resultatCraft = new StackMatrix(new Stack(this.fullItemList.research(this.fullCraftList.get(craft), true).racine(), 1), 1);
+	}
+	
+	public void Uncraft() {
+		this.tableDeCraft = this.fullCraftListReversed.get(this.resultatCraft.getStackAt(0).getItem().getName());
+	}
+	
+	private void serialize() {
 		try {
-			FileOutputStream fos = new FileOutputStream(new File(str));
+			FileOutputStream fos = new FileOutputStream(new File(Modele.DATA));
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this);
-			
 			oos.close();
 			fos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	private void deserialize() throws Exception {
+	public Modele deserialize() {
 		try {
-			this.inventaireCreatif = (new ItemList()).deserialize(ItemList.EMPLACEMENT_LISTECOMPLETE);
-			if(this.inventaireCreatif==null) throw new RuntimeException();
-			this.inventaireSurvie = (new Inventaire(Modele.DIM[1])).deserialize();
-			if(this.inventaireSurvie==null) throw new RuntimeException();
-			this.cL = (new CraftList()).deserialize(CraftList.EMPLACEMENT_LISTECRAFTCOMPLETE);
-			if(this.cL==null) throw new RuntimeException();
+			FileInputStream fos = new FileInputStream(new File(Modele.DATA));
+			ObjectInputStream oos = new ObjectInputStream(fos);
+			Modele modl;
+			modl = (Modele)oos.readObject();
+			oos.close();
+			fos.close();
+			return modl;
 		} catch (Exception e) {
-			throw new Exception();
+			return null;
 		}
 	}
 }
