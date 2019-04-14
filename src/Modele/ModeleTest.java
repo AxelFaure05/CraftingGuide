@@ -3,50 +3,67 @@ package Modele;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Modele.Composants.Craft;
 import Modele.Composants.Item;
-import Modele.Composants.ItemMatrix.ItemMatrix;
+import Modele.Composants.Stack;
+import Modele.Structures.ItemList;
+import Modele.Structures.StackMatrix;
 
 class ModeleTest {
 	
 	Modele modl;
-	Item itm1;
-	Item itm2;
+	Stack itm1;
+	Stack itm2;
+	Stack itm3;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		modl = new Modele();
-		itm1 = modl.inventaireCreatif.research("furnace", true).racine();
-		itm2 = modl.inventaireCreatif.research("cobblestone", true).racine();
+		itm1 = new Stack(modl.fullItemList.research("noteblock", true).racine(), 1);
+		itm2 = new Stack(modl.fullItemList.research("wood_plank", true).racine(), 1);
+		itm3 = new Stack(modl.fullItemList.research("redstone_dust", true).racine(), 1);
+		
 	}
 
 	@Test
 	void testUncraft() {
-		modl.itemToUncraft.getMatrix()[0] = itm1;
-		modl.uncraft();
+		StackMatrix crft = new StackMatrix(9);
 		
-		assertEquals(modl.cL.get(itm1.getName()).getMatrix().equals(modl.uncraftResult.getMatrix()), true);
+		for(int k = 0; k<crft.matrix.length; k++) {
+			if(k != 4) {
+				crft.matrix[k] = itm2;
+			} else {
+				crft.matrix[k] = itm3;
+			}
+		}
+		
+		Craft craft = new Craft(crft);
+		modl.resultatCraft.getMatrix()[0] = itm1;
+		modl.Uncraft();
+		
+		assertEquals(modl.fullCraftListReversed.get(itm1.getItem().getName()).equals(craft), true);
 	}
 	
 	@Test
 	void testCraft() {
-		ItemMatrix im = new ItemMatrix(ItemMatrix.size[1]);
-		Object[] matrix = im.getMatrix();
+		StackMatrix crft = new StackMatrix(9);
 		
-		for(int k = 0; k<matrix.length; k++) {
+		for(int k = 0; k<crft.matrix.length; k++) {
 			if(k != 4) {
-				matrix[k] = itm2;
+				crft.matrix[k] = itm2;
 			} else {
-				matrix[k] = new Item(0, "vide", "img_vide.png", false, false, false);
+				crft.matrix[k] = itm3;
 			}
 		}
-		modl.craftingTable.setMatrix(matrix);
-		modl.craft();
 		
-		assertEquals(((Item) modl.resultatCraft.getMatrix()[0]).equals((Item) itm1), true);
+		modl.tableDeCraft = crft;
+		modl.Craft();
+		assertEquals(modl.resultatCraft.getMatrix()[0].getItem().equals(itm1.getItem()), true);
 	}
 }
