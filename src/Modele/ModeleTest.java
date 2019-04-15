@@ -17,18 +17,24 @@ import Modele.Structures.StackMatrix;
 
 class ModeleTest {
 	
-	Modele modl;
+	Modele modl = new Modele();
 	Stack itm1;
 	Stack itm2;
 	Stack itm3;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		modl = new Modele();
+		//modl = new Modele();
 		itm1 = new Stack(modl.fullItemList.research("noteblock", true).racine(), 1);
 		itm2 = new Stack(modl.fullItemList.research("wood_plank", true).racine(), 1);
 		itm3 = new Stack(modl.fullItemList.research("redstone_dust", true).racine(), 1);
 		
+	}
+	
+	@Test
+	void testResearch() {
+		String str = new String(modl.fullItemList.research("Nether_quartz", true).racine().getName());
+		assertEquals(str.equals("nether_quartz"), true);
 	}
 
 	@Test
