@@ -130,7 +130,7 @@ public class ControllerIHM {
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea"))) {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) ) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -189,8 +189,8 @@ public class ControllerIHM {
     		}	
     		System.out.println("2");
     		ImageView iv = new ImageView(im);
-	    	iv.setFitHeight(26);
-			iv.setFitWidth(26);
+	    	iv.setFitHeight(56);
+			iv.setFitWidth(56);
 			iv.setTranslateX(3.0);
 			iv.setTranslateY(3.0);
 			
