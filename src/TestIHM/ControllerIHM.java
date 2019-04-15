@@ -24,7 +24,7 @@ import javafx.scene.paint.Color;
 
 public class ControllerIHM {
 	
-	Controller ctrl = Main.returnController();
+	//Controller ctrl = Main.returnController();
 
 	   @FXML
 	    private Pane paneprincipal;
@@ -106,20 +106,8 @@ public class ControllerIHM {
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
     
-   /* @FXML
-    public void coords(MouseEvent e) {
-    	System.out.println("click dans l'inventaire");
-		Node source = (Node)e.getSource() ;
-		System.out.println("1");
-        Integer colIndex = GridPane.getColumnIndex(source);
-        System.out.println("2");
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.println("3");
-        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-	}*/
-    
     public void leftClick(MouseEvent e) {
-    	ctrl.detectClick(e);
+    	//ctrl.detectClick(e);
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
     	listeTempo.add(tempo2);
@@ -128,24 +116,16 @@ public class ControllerIHM {
     	listeInventaires.add(inventory2);
     	Node source = (Node) e.getTarget();
     	Parent p = source.getParent();
-    	//System.out.println(source.getParent());
-    	//System.out.println(source.getParent().getId());
     	String id = source.getParent().getId();
-    	//System.out.println(id==(source.getParent().getId()).toString());
-    	//if(id==)
     	int x = coords(e).x;
     	int y = coords(e).y;
     	int z = coordsToPosition(x, y);
-    	
     	int posParent = coordsToPosition(coordsParent(e).x, coordsParent(e).y);
     	//System.out.println("x="+x);
     	//System.out.println("y="+y);
     	//System.out.println(this.inventory2.getChildren().get(z));
     	//System.out.println(inventory2.getId());
-    	 
-    		
 
-    	
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
@@ -162,8 +142,7 @@ public class ControllerIHM {
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
-				/*System.out.println(source);
-				System.out.println(((Pane)source).getChildren());*/
+
 				GridPane grid = listeInventaires.get(i);
 				Pane p1 = (Pane) grid.getChildren().get(z-1);
 				p1.getChildren().add(iv);
@@ -171,38 +150,53 @@ public class ControllerIHM {
     		return;
     	}
     	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory")) {
+    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory"))) {
     		System.out.println("cdt2");
     		for(int i=0;i<3;i++) {
     			
     			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildren().get(posParent-1); //grid.getChildrenUnmodifiable().get(0).lookupAll("Pane").toArray()[posParent-1];
+    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
     			ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
-    			/*ImageView iview ;
-    			p1.getChildren().add(iview);*/
-    			//System.out.println(p1.getChildrenUnmodifiable().);
-    			//ImageView ima = (ImageView) p1.getChildren().get(0)/*.get(0)*/;
-    			/*Image im = ima.getImage();
-    			ImageView iv = new ImageView(im);*/
+	    		
 	    		iv.setFitHeight(26);
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
-				
-    			//p1.getChildrenUnmodifiable().clear();
 				
     			p1.getChildren().clear();
     			listeTempo.get(i).getChildren().add(iv);
     		}
     	}
     	
-    	//if(source instanceof Pane && !listeTempo.get(0).getChildren().isEmpty() && listeInventaires.contains(source.getId())  /* && source.*/) {
-    		/*for(int i=0;i<3;i++) {
-    			
-    		}
-    	}*/
+    	//Si on tient un item et qu'on clique dans la table de craft
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && source.getParent().getId().equals("table")) {
+    		System.out.println("cdt4");
+    		
+    		int k = coordsTable(e).x;
+        	int l = coordsTable(e).y;
+        	int m = coordsInTable(k,l)-1;
+    		
+    		ImageView ima = (ImageView) tempo2.getChildren().get(0);
+    		Image im = ima.getImage();
+    		System.out.println("1");
+    		GridPane grid = table;
+    		Pane p1 = (Pane) grid.getChildren().get(m);
+    		
+    		for(int i=0;i<3;i++) {
+    			listeTempo.get(i).getChildren().clear();
+    		}	
+    		System.out.println("2");
+    		ImageView iv = new ImageView(im);
+	    	iv.setFitHeight(26);
+			iv.setFitWidth(26);
+			iv.setTranslateX(3.0);
+			iv.setTranslateY(3.0);
+			
+    		p1.getChildren().add(iv);
+    		System.out.println("3");
+    	}
     	
     	else {
     		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
@@ -219,9 +213,7 @@ public class ControllerIHM {
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
         	}
-    	}
-    	
-    	
+    	}	
     }
     
     public CouplePerso coordsParent(MouseEvent e) {
@@ -241,7 +233,6 @@ public class ControllerIHM {
         
     public CouplePerso coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
-		Node n = source.getParent();
 		Integer colIndex = null;
 		Integer rowIndex = null;
 		
@@ -250,28 +241,6 @@ public class ControllerIHM {
 		if(colIndex == null) colIndex = 0;
         if(rowIndex == null) rowIndex = 0;
 		
-		/*if(e.getSource() instanceof Pane) {
-			if(n instanceof GridPane) {
-				colIndex = GridPane.getColumnIndex(source);
-		        rowIndex = GridPane.getRowIndex(source);
-		        if(colIndex == null) colIndex = 0;
-		        if(rowIndex == null) rowIndex = 0;
-			}
-			else {
-				if(n instanceof ImageView) {
-					colIndex = GridPane.getColumnIndex(n.getParent());
-			        rowIndex = GridPane.getRowIndex(n.getParent());
-			        if(colIndex == null) colIndex = 0;
-			        if(rowIndex == null) rowIndex = 0;
-				}
-				else {
-			        colIndex = GridPane.getColumnIndex(n);
-			        rowIndex = GridPane.getRowIndex(n);
-			        if(colIndex == null) colIndex = 0;
-			        if(rowIndex == null) rowIndex = 0;
-				}
-			}
-		}*/
 		CouplePerso result = new CouplePerso(rowIndex,colIndex);
 		return result ;
 	}
@@ -286,29 +255,35 @@ public class ControllerIHM {
     }
     
     public CouplePerso coordsTable(MouseEvent e) {
-    	ctrl.detectClick(e);
+    	//ctrl.detectClick(e);
 		Node source = (Node) e.getTarget() ;
 		Integer colIndex = null;
 		Integer rowIndex = null;
-		//if (e.getSource() instanceof Pane) {
-	        colIndex = GridPane.getColumnIndex(source);
-	        rowIndex = GridPane.getRowIndex(source);
-	        if(colIndex == null) colIndex = 0;
-	        if(rowIndex == null) rowIndex = 0;
-	        System.out.println("Coords table de craft");
-	        System.out.println(rowIndex);
-	        System.out.println(colIndex);
-		//}
+		
+	    colIndex = GridPane.getColumnIndex(source);
+	    rowIndex = GridPane.getRowIndex(source);
+	    if(colIndex == null) colIndex = 0;
+	    if(rowIndex == null) rowIndex = 0;
+	    
+	    System.out.println("Coords table de craft");
+	    System.out.println(rowIndex);
+	    System.out.println(colIndex);
+	    System.out.println(source.getParent().getId());
+	    
 		CouplePerso result = new CouplePerso(rowIndex, colIndex);
 		return result;
 	}
     
     public void resultClicked(MouseEvent e) {
-    	ctrl.detectClick(e);
+    	//ctrl.detectClick(e);
 		System.out.println("Result clicked");
 	}
     
     public Integer coordsToPosition(int a,int b) {
     	return a*9+b+1;
+    }
+    
+    public Integer coordsInTable(int a,int b) {
+    	return a*3+b+1;
     }
 }
