@@ -26,21 +26,63 @@ public class ItemList extends ABR<Item> implements Serializable {
 		super(i, arbG, arbD);
 	}
 	
-	public ItemList addItem(Item item) {
-		if(this.estVide()) {
-			this.element = item;
-			this.arbD = new ItemList();
-			this.arbG = new ItemList();
-			return this;
+	public ItemList addItem(Item item, ItemList itml) {
+		if(itml.estVide()) {
+			itml.element = item;
+			itml.arbD = new ItemList();
+			itml.arbG = new ItemList();
+			return itml;
 		}
-		if(item.compareTo(this.element)<0) {
-			return ((ItemList) this.arbG).addItem(item);
+		else if(item.compareTo(itml.element)<0) {
+			itml.arbG = addItem(item, (ItemList) itml.arbG);
+			if(itml.balance() == 2) {
+				if(item.compareTo(itml.arbG.racine())<0) {
+					itml = rotationGauche(itml);
+				} else {
+					itml = doubleRotationGauche(itml);
+				}
+			}
+		} else if(item.compareTo(this.element)>0) {
+			itml.arbD = addItem(item, (ItemList) itml.arbD);
+			if(itml.balance( ) == 2) {
+				if(item.compareTo(itml.arbD.racine())>0) {
+					itml = rotationDroite(itml);
+				} else {
+					itml = doubleRotationDroite(itml);
+				}
+			}
+			
 		}
-		if(item.compareTo(this.element)>0) {
-			return ((ItemList) this.arbD).addItem(item);
-		}
-		return this;
+		return itml;
 	}
+	
+	private ItemList rotationGauche(ItemList k2)
+    {
+        ItemList k1 = (ItemList)k2.arbG;
+        k2.arbG = (ItemList)k1.arbD;
+        k1.arbD = (ItemList)k2;
+        return k1;
+    }
+
+    private ItemList rotationDroite(ItemList k1)
+    {
+        ItemList k2 = (ItemList)k1.arbD;
+        k1.arbD = (ItemList)k2.arbG;
+        k2.arbG = (ItemList)k1;
+        return k2;
+    }
+    
+    private ItemList doubleRotationGauche(ItemList k3)
+    {
+        k3.arbG = rotationDroite( (ItemList)k3.arbG );
+        return rotationGauche(k3);
+    }
+
+    private ItemList doubleRotationDroite(ItemList k1)
+    {
+        k1.arbD = rotationGauche( (ItemList)k1.arbD );
+        return rotationDroite(k1);
+    }    
 	
 	public ItemList research(String str, boolean exact) {
 		ItemList res = new ItemList(this.racine(),(ItemList) this.arbG,(ItemList) this.arbD);
@@ -53,9 +95,9 @@ public class ItemList extends ABR<Item> implements Serializable {
 		while(it.hasNext()) {
 			Item item = it.next();
 			if(item.getName().toLowerCase().startsWith(str.toLowerCase()) && !exact) {
-				resultatRecherche.addItem(item);
+				resultatRecherche.addItem(item, resultatRecherche);
 			} else if(item.getName().toLowerCase().equals(str.toLowerCase()) && exact) {
-				resultatRecherche.addItem(item);
+				resultatRecherche.addItem(item, resultatRecherche);
 				break;
 			}
 		}
@@ -74,7 +116,7 @@ public class ItemList extends ABR<Item> implements Serializable {
 						Integer.valueOf(arg[0]),
 						arg[1],
 						"img_" + arg[1].toLowerCase() + ".png",
-						Boolean.getBoolean(arg[2])));
+						Boolean.getBoolean(arg[2])), this);
 				str = bR.readLine();
 			}
 			bR.close();
