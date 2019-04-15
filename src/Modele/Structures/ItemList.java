@@ -86,8 +86,7 @@ public class ItemList extends ABR<Item> implements Serializable {
 	
 	public ItemList research(String str, boolean exact) {
 		ItemList res = new ItemList(this.racine(),(ItemList) this.arbG,(ItemList) this.arbD);
-		while(res.racine().compareTo(new Item(0, str, str + ".png", false)) > 0) {
-			System.out.println(res.racine().getName());
+		while(res.racine().compareTo(new Item(0, str, str + ".png", false)) < 0) {
 			res = (ItemList) res.arbD;
 		}
 		ItemList resultatRecherche = new ItemList();
