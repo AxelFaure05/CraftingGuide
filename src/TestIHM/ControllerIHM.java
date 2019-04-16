@@ -130,7 +130,7 @@ public class ControllerIHM {
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) ) {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getId().equals("result1"))) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -180,14 +180,14 @@ public class ControllerIHM {
     		
     		ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
-    		System.out.println("1");
+    		//System.out.println("1");
     		GridPane grid = table;
     		Pane p1 = (Pane) grid.getChildren().get(m);
     		
     		for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
     		}	
-    		System.out.println("2");
+    		//System.out.println("2");
     		ImageView iv = new ImageView(im);
 	    	iv.setFitHeight(56);
 			iv.setFitWidth(56);
@@ -195,7 +195,7 @@ public class ControllerIHM {
 			iv.setTranslateY(4.0);
 			
     		p1.getChildren().add(iv);
-    		System.out.println("3");
+    		//System.out.println("3");
     	}
     	
 		if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
@@ -219,6 +219,20 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
+		if(source instanceof Pane && source.getId().equals("result1") /*&& !(listeTempo.get(0).getChildren().isEmpty())*/) {
+			System.out.println("cdt6");
+			ImageView ima = (ImageView) tempo2.getChildren().get(0);
+    		Image im = ima.getImage();
+			for(int i=0;i<3;i++) {
+    			listeTempo.get(i).getChildren().clear();
+    		}
+			ImageView iv = new ImageView(im);
+    		iv.setFitHeight(26);
+			iv.setFitWidth(26);
+			iv.setTranslateX(3.0);
+			iv.setTranslateY(3.0);
+			result1.getChildren().add(iv);
+		}
     	
     	else {
     		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
