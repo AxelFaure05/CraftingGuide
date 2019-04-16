@@ -191,12 +191,33 @@ public class ControllerIHM {
     		ImageView iv = new ImageView(im);
 	    	iv.setFitHeight(56);
 			iv.setFitWidth(56);
-			iv.setTranslateX(3.0);
-			iv.setTranslateY(3.0);
+			iv.setTranslateX(4.0);
+			iv.setTranslateY(4.0);
 			
     		p1.getChildren().add(iv);
     		System.out.println("3");
     	}
+    	
+		if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
+			System.out.println("cdt5");
+			int k = coordsTable(e).x;
+        	int l = coordsTable(e).y;
+        	int m = coordsInTable(k,l)-1;
+			for(int i=0;i<3;i++) {
+    			listeTempo.get(i).getChildren().clear();
+	    		ImageView ima = (ImageView) source;
+	    		Image im = ima.getImage();
+	    		ImageView iv = new ImageView(im);
+	    		iv.setFitHeight(26);
+				iv.setFitWidth(26);
+				iv.setTranslateX(3.0);
+				iv.setTranslateY(3.0);
+				((Pane) listeTempo.get(i)).getChildren().add(iv);
+			}
+			Pane p1 = (Pane) table.getChildren().get(m);
+			p1.getChildren().clear();
+		}
+    	
     	
     	else {
     		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
