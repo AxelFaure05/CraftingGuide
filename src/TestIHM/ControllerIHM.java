@@ -64,6 +64,9 @@ public class ControllerIHM {
 	    
 	    @FXML
 	    private ScrollPane scroll;
+	    
+	    @FXML
+	    private AnchorPane anchorResult1;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -125,12 +128,12 @@ public class ControllerIHM {
     	//System.out.println("y="+y);
     	//System.out.println(this.inventory2.getChildren().get(z));
     	//System.out.println(inventory2.getId());
-
+    	System.out.println("ParentID:"+id);
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getId().equals("result1"))) {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1"))) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -220,7 +223,7 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
-		if(source instanceof Pane && source.getId().equals("result1") /*&& !(listeTempo.get(0).getChildren().isEmpty())*/) {
+		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") /*&& !(listeTempo.get(0).getChildren().isEmpty())*/) {
 			System.out.println("cdt6");
 			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
