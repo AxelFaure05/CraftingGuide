@@ -64,6 +64,9 @@ public class ControllerIHM {
 	    
 	    @FXML
 	    private ScrollPane scroll;
+	    
+	    @FXML
+	    private AnchorPane anchorResult1;
 
     @FXML
     void dragdetect(ActionEvent event) {
@@ -125,12 +128,12 @@ public class ControllerIHM {
     	//System.out.println("y="+y);
     	//System.out.println(this.inventory2.getChildren().get(z));
     	//System.out.println(inventory2.getId());
-
+    	System.out.println("ParentID:"+id);
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getId().equals("result1"))) {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1"))) {
     		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -138,8 +141,8 @@ public class ControllerIHM {
     			listeTempo.get(i).getChildren().clear();
 	    		
 	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(36);
+				iv.setFitWidth(36);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 
@@ -160,8 +163,8 @@ public class ControllerIHM {
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
 	    		
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(85);
+				iv.setFitWidth(85);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 				
@@ -183,14 +186,15 @@ public class ControllerIHM {
     		//System.out.println("1");
     		GridPane grid = table;
     		Pane p1 = (Pane) grid.getChildren().get(m);
+    		p1.getChildren().clear();
     		
     		for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
     		}	
     		//System.out.println("2");
     		ImageView iv = new ImageView(im);
-	    	iv.setFitHeight(56);
-			iv.setFitWidth(56);
+	    	iv.setFitHeight(86);
+			iv.setFitWidth(86);
 			iv.setTranslateX(4.0);
 			iv.setTranslateY(4.0);
 			
@@ -209,8 +213,8 @@ public class ControllerIHM {
 	    		ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(86);
+				iv.setFitWidth(86);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 				((Pane) listeTempo.get(i)).getChildren().add(iv);
@@ -219,35 +223,37 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
-		if(source instanceof Pane && source.getId().equals("result1") /*&& !(listeTempo.get(0).getChildren().isEmpty())*/) {
+		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
 			System.out.println("cdt6");
 			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
+    		result1.getChildren().clear();
 			for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
     		}
 			ImageView iv = new ImageView(im);
-    		iv.setFitHeight(26);
-			iv.setFitWidth(26);
+    		iv.setFitHeight(86);
+			iv.setFitWidth(86);
 			iv.setTranslateX(3.0);
 			iv.setTranslateY(3.0);
 			result1.getChildren().add(iv);
 		}
     	
     	else {
-    		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
+    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") || p.getParent().getId().equals("anchorResult1"))) {
     			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
     	    		ImageView ima = (ImageView) source;
     	    		Image im = ima.getImage();
     	    		ImageView iv = new ImageView(im);
-    	    		iv.setFitHeight(26);
-    				iv.setFitWidth(26);
+    	    		iv.setFitHeight(86);
+    				iv.setFitWidth(86);
     				iv.setTranslateX(3.0);
     				iv.setTranslateY(3.0);
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
+        		result1.getChildren().clear();
         	}
     	}	
     }
