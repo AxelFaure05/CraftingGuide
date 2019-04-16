@@ -3,6 +3,8 @@
 
 #fenetre{
   -fx-background-image: url("menu.jpg");
+  -fx-background-repeat:no-repeat;
+  -fx-background-size:cover;
 }
 
 
@@ -62,7 +64,8 @@
 	-fx-pref-weight: 100;
   -fx-background-color: #5E87BA;
   -fx-font-size: 20px;
-
+  -fx-font-weight: bold;
+  -fx-color:white;
 
 
 }
