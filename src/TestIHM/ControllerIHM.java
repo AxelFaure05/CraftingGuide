@@ -223,10 +223,11 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
-		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") /*&& !(listeTempo.get(0).getChildren().isEmpty())*/) {
+		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
 			System.out.println("cdt6");
 			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
+    		result1.getChildren().clear();
 			for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
     		}
@@ -239,7 +240,7 @@ public class ControllerIHM {
 		}
     	
     	else {
-    		if(source instanceof ImageView && p.getParent().getId().equals("inventory_crea")) {
+    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") || p.getParent().getId().equals("anchorResult1"))) {
     			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
@@ -252,6 +253,7 @@ public class ControllerIHM {
     				iv.setTranslateY(3.0);
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
+        		result1.getChildren().clear();
         	}
     	}	
     }
