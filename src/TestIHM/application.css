@@ -10,13 +10,19 @@
   -fx-background-image: url("../../Data/Designs/GUI_Table.png");
   -fx-background-repeat: no-repeat;
   -fx-background-size: cover, auto;
-  
+
 }
 
 #case{
 	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover, auto;
+  /*-fx-background-radius: 50px;*/
+    -fx-border-radius: 4px 4px 4px 4px;
+    -fx-border-width: 2px;
+    -fx-border-color: #191919;
+
+
 }
 
 #case:hover{
@@ -37,18 +43,26 @@
 	-fx-text-fill:#FFF;
 }
 
-.tab-pane:selected{
-    -fx-background-color: #3c3c3c;
-	-fx-text-fill:#FFF;
-}*/
 
+.tab-pane:selected{
+    -fx-background-color: grey;
+	-fx-text-fill:#FFF;
+}
+*/
 .tab-pane *.tab-header-background {
-    -fx-background-color: -fx-outer-border, -fx-inner-border;
-	
+  -fx-background-color: #5E87BA;
+  -fx-outer-border, -fx-inner-border;
+
+
 }
 
+
 .tab-pane .tab{
-	-fx-pref-width: 250;
+	-fx-pref-width: 275;
 	-fx-pref-weight: 100;
-	
+  -fx-background-color: #5E87BA;
+  -fx-font-size: 20px;
+
+
+
 }
