@@ -48,7 +48,10 @@ public class Modele extends Observable implements Serializable {
 	
 	public void Craft() {
 		Craft craft = new Craft(this.tableDeCraft);
-		this.resultatCraft = new StackMatrix(new Stack(this.fullItemList.research(this.fullCraftList.get(craft), true).racine(), 1), 1);
+		String itemName = this.fullCraftList.get(craft);
+		if(itemName != null) {
+			this.resultatCraft = new StackMatrix(new Stack(this.fullItemList.research(itemName, true).racine(), 1), 1);
+		}
 	}
 	
 	public void Uncraft() {
