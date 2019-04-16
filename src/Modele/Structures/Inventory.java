@@ -10,6 +10,9 @@ public class Inventory extends ArrayList<Stack> implements Serializable {
 	
 	public Inventory() {
 		super(Modele.invSize);
+                for(int k = 0; k<Modele.invSize; k++){
+                       this.add(null);
+                }
 	}
 	
 }
