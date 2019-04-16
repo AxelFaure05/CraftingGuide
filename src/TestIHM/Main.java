@@ -40,7 +40,7 @@ public class Main extends Application{
 	private BorderPane layout;
 	static Modele modl = new Modele();
 	static ControllerIHM ctrl = new ControllerIHM();
-	//static Controller ctrll = new Controller(modl,ctrl);
+	static Controller ctrll = new Controller(modl,ctrl);
 	GridPane inventory = ctrl.returnInventaire();
 	GridPane inventory1 = ctrl.returnInventaire1();
 	GridPane inventory2 = ctrl.returnInventaire2();
@@ -174,9 +174,9 @@ public class Main extends Application{
 		return inventaire;
 	}
 	
-	/*public static Controller returnController() {
+	public static Controller returnController() {
 		return ctrll;
-	}*/
+	}
 	
 	//Fonction appelée par le click de la souris sur un item du GridPane
 	/*public void coords(MouseEvent e) {

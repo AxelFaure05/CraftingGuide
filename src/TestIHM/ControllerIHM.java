@@ -24,7 +24,7 @@ import javafx.scene.paint.Color;
 
 public class ControllerIHM {
 	
-	//Controller ctrl = Main.returnController();
+	Controller ctrl = Main.returnController();
 
 	   @FXML
 	    private Pane paneprincipal;
@@ -107,7 +107,7 @@ public class ControllerIHM {
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
     
     public void leftClick(MouseEvent e) {
-    	//ctrl.detectClick(e);
+    	ctrl.detectClick(e);
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
     	listeTempo.add(tempo2);
@@ -277,7 +277,7 @@ public class ControllerIHM {
     }
     
     public CouplePerso coordsTable(MouseEvent e) {
-    	//ctrl.detectClick(e);
+    	ctrl.detectClick(e);
 		Node source = (Node) e.getTarget() ;
 		Integer colIndex = null;
 		Integer rowIndex = null;
@@ -297,7 +297,7 @@ public class ControllerIHM {
 	}
     
     public void resultClicked(MouseEvent e) {
-    	//ctrl.detectClick(e);
+    	ctrl.detectClick(e);
 		System.out.println("Result clicked");
 	}
     

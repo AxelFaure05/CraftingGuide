@@ -123,13 +123,16 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							stackTemp = stackRecup;
 						}
 					}
+					
+					model.Craft();
+					System.out.println(model.resultatCraft.getMatrix()[0]);
 				}
 			}
 
 		}
-		for(int i =0;i<10;i++) {
+		/*for(int i =0;i<10;i++) {
 			System.out.println(model.inventaireSurvie.get(i));
-		}
+		}*/
 	}
 	@Override
 	public void update(Observable arg0, Object arg1) {
