@@ -39,7 +39,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	}
 
 	public void detectClick(MouseEvent e) {
-
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
 			Node source=(Node) e.getSource();
@@ -56,7 +55,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					Integer position = cIHM.coordsToPosition(coord.x, coord.y)-1;
 					//Je recupere les infos du stack d'item clique
 					Stack stackRecup = model.inventaireSurvie.get(position);
-					System.out.println(position);
 					//Je regarde si j'ai deja un item dans la main oui ou non
 					if(!itemEnMain) {
 
@@ -89,14 +87,10 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 				}
 
-
-
-
 				//Je regarde si on clique sur la table de craft
 				if(id.equals("table")) {
 					
 					Integer position = cIHM.coordsInTable(coord.x, coord.y)-1;
-					System.out.println(position);
 					//Je recupere les infos du stack d'item clique
 					Stack stackRecup = model.tableDeCraft.getMatrix()[position];
 
@@ -126,6 +120,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					
 					model.Craft();
 					System.out.println(model.resultatCraft.getMatrix()[0]);
+				}
+				if(id.equals("inventory_crea")) {
+					CouplePerso coord2 = cIHM.coordsParent(e);
+					//String id2 = source.getParent();
+					Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
+					System.out.print(position);
+					System.out.println(" ICI REGARDE LA");
 				}
 			}
 
