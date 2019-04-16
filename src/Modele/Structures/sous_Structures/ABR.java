@@ -54,7 +54,7 @@ public class ABR<E> implements Iterable<E>, Serializable{
 	}
 	
 	public int balance() {
-		return this.arbD.hauteur()-this.arbG.hauteur();
+		return this.arbG.hauteur()-this.arbD.hauteur();
 	}
 	
 	public ArrayList<E> parcoursProfondeurRecursif(ABR<E> ab) {
