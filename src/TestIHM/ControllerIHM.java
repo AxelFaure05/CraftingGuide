@@ -200,9 +200,10 @@ public class ControllerIHM {
     	
 		if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
 			System.out.println("cdt5");
-			int k = coordsTable(e).x;
-        	int l = coordsTable(e).y;
+			int k = coordsParent(e).x;
+        	int l = coordsParent(e).y;
         	int m = coordsInTable(k,l)-1;
+        	System.out.println(m);
 			for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
 	    		ImageView ima = (ImageView) source;
