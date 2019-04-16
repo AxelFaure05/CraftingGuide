@@ -183,6 +183,7 @@ public class ControllerIHM {
     		//System.out.println("1");
     		GridPane grid = table;
     		Pane p1 = (Pane) grid.getChildren().get(m);
+    		p1.getChildren().clear();
     		
     		for(int i=0;i<3;i++) {
     			listeTempo.get(i).getChildren().clear();
