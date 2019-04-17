@@ -8,8 +8,6 @@ import java.util.Observer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +25,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	Modele model;
 	ControllerIHM cIHM;
 	boolean itemEnMain = false;
-	//Je crï¿½ï¿½ le stack d'item qui sera dans notre main
+	//Je créé le stack d'item qui sera dans notre main
 	Stack stackTemp = null;
 
 
@@ -97,7 +95,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 
 				//Je regarde si on clique sur la table de craft
 				if(id.equals("table")) {
-
+					
 					Integer position = cIHM.coordsInTable(coord.x, coord.y)-1;
 					//Je recupere les infos du stack d'item clique
 					Stack stackRecup = model.tableDeCraft.getMatrix()[position];
@@ -128,12 +126,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							//stackTemp = stackRecup;
 						}
 					}
-
+					
 					model.Craft();
 					System.out.println(model.resultatCraft.getMatrix()[0]);
 				}
 				//Je regarde si on clique dans l'inventaire creatif
 				if(id.equals("inventory_crea")) {
+<<<<<<< HEAD
 					//Et si on clique sur un image
 					if (e.getSource() instanceof ImageView) {
 
@@ -152,6 +151,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
 						}
 					}
+=======
+					//CouplePerso coord2 = cIHM.coordsParent(e);
+					//String id2 = source.getParent();
+					//Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
+					//System.out.print(position);
+					//System.out.println(id);
+>>>>>>> 7a656787522541f08bbfa9972c81a3270dc14d2e
 				}
 			}
 		}

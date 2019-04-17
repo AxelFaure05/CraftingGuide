@@ -129,6 +129,7 @@ public class ControllerIHM {
     	//System.out.println(this.inventory2.getChildren().get(z));
     	//System.out.println(inventory2.getId());
     	System.out.println("ParentID:"+id);
+    	System.out.println("Clicked element ID :"+source.getId());
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
@@ -138,9 +139,12 @@ public class ControllerIHM {
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     			Image im = ima.getImage();
+    		
     			listeTempo.get(i).getChildren().clear();
 	    		
 	    		ImageView iv = new ImageView(im);
+	    		String ID = ima.getId();
+	    		iv.setId(ID);
 	    		iv.setFitHeight(36);
 				iv.setFitWidth(36);
 				iv.setTranslateX(3.0);
@@ -162,6 +166,8 @@ public class ControllerIHM {
     			ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
+	    		String ID = ima.getId();
+	    		iv.setId(ID);
 	    		
 	    		iv.setFitHeight(85);
 				iv.setFitWidth(85);
@@ -193,6 +199,8 @@ public class ControllerIHM {
     		}	
     		//System.out.println("2");
     		ImageView iv = new ImageView(im);
+    		String ID = ima.getId();
+    		iv.setId(ID);
 	    	iv.setFitHeight(86);
 			iv.setFitWidth(86);
 			iv.setTranslateX(4.0);
@@ -232,6 +240,8 @@ public class ControllerIHM {
     			listeTempo.get(i).getChildren().clear();
     		}
 			ImageView iv = new ImageView(im);
+			String ID = ima.getId();
+    		iv.setId(ID);
     		iv.setFitHeight(86);
 			iv.setFitWidth(86);
 			iv.setTranslateX(3.0);
@@ -247,6 +257,8 @@ public class ControllerIHM {
     	    		ImageView ima = (ImageView) source;
     	    		Image im = ima.getImage();
     	    		ImageView iv = new ImageView(im);
+    	    		String ID = ima.getId();
+    	    		iv.setId(ID);
     	    		iv.setFitHeight(86);
     				iv.setFitWidth(86);
     				iv.setTranslateX(3.0);
