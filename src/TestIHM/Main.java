@@ -61,11 +61,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
+		primaryStage.setResizable(false);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		namespace = loader.getNamespace();
 		
 		root.setId("fenetre");
+		
 		Scene scene = new Scene(root);
 		
 		inventory = (GridPane)namespace.get("inventory");
