@@ -104,8 +104,7 @@ public class Main extends Application{
 		Iterator<Node> itP = inv_crea.lookupAll("Pane").iterator();
 		Pane pane;
 		Item item;
-		//Image image;
-		LocatedImage li;
+		Image image;
 		ImageView iv;
 		int index = 0;
 		
@@ -115,11 +114,14 @@ public class Main extends Application{
 			item = it.next();
 			
 			try {
-				String url = DATA+item.getImLink();
-				Image image = new LocatedImage(url);
+				String url = item.getImLink();
+				//String[] path = url.split(".");
+				
 				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getImLink())), null);
+				//String nom = path[0];
 				pane = (Pane) itP.next();
 				iv = new ImageView(image);
+				iv.setId(url);
 				iv.setFitHeight(26);
 				iv.setFitWidth(26);
 				iv.setTranslateX(3.0);
@@ -127,7 +129,10 @@ public class Main extends Application{
 				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
 				pane.getChildren().add(iv);
 				index++;
+				//System.out.println(image.impl_getUrl());
+				System.out.println(iv.getId());
 				} catch (Exception e){
+					//e.printStackTrace();
 					System.out.println(DATA+item.getImLink());
 					System.out.println("Non existant");
 				}
