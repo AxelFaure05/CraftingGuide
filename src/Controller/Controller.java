@@ -124,6 +124,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					System.out.println(model.resultatCraft.getMatrix()[0]);
 				}
 				if(id.equals("inventory_crea")) {
+<<<<<<< HEAD
 					if (e.getSource() instanceof ImageView) {
 						CouplePerso coord2 = cIHM.coordsParent(e);
 						Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
@@ -134,6 +135,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						System.out.println(" ICI REGARDE LA");
 					}
 
+=======
+					CouplePerso coord2 = cIHM.coordsParent(e);
+					//String id2 = source.getParent();
+					Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
+					System.out.print(position);
+					System.out.println(id);
+>>>>>>> 1b4bf64b7d6c40a25c0ace814dd26ceda293ade3
 				}
 			}
 
