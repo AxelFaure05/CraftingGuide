@@ -64,8 +64,10 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						if(stackRecup != null) {
 							System.out.print("je recupere l'item ");
 							System.out.println(position);
-							stackTemp = model.inventaireSurvie.get(position);
-							model.inventaireSurvie.set(position, null);
+							
+							stackTemp = model.putInInv(position, stackRecup);
+							//stackTemp = model.inventaireSurvie.get(position);
+							//model.inventaireSurvie.set(position, null);
 							itemEnMain = !itemEnMain;
 						}
 					}
@@ -74,17 +76,21 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						if(stackRecup == null) {
 							System.out.print("je pose l'item ");
 							System.out.println(position);
-
-							model.inventaireSurvie.set(position, stackTemp);
+							
+							stackTemp = model.putInInv(position, stackRecup);
+							//model.inventaireSurvie.set(position, stackTemp);
 							itemEnMain=!itemEnMain;
 						}
 						//Si la case clique n'est pas vide, alors j'echange les deux items de place
 						else {
 							System.out.print("jechange deux items de place ");
 							System.out.println(position);
-							model.inventaireSurvie.set(position,null);
-							model.inventaireSurvie.set(position, stackTemp);
-							stackTemp = stackRecup;
+							
+							stackTemp = model.putInInv(position, stackRecup);
+							
+							//model.inventaireSurvie.set(position,null);
+							//model.inventaireSurvie.set(position, stackTemp);
+							//stackTemp = stackRecup;
 						}
 					}
 				}
@@ -101,43 +107,53 @@ public class Controller implements ActionListener,ItemListener, Observer {
 
 						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
 						if(stackRecup != null) {
-							model.tableDeCraft.add(null,position);
-							stackTemp = stackRecup;
+							stackTemp = model.putInTableSlot(position, stackTemp);
+							//model.tableDeCraft.add(null,position);
+							//stackTemp = stackRecup;
 							itemEnMain=!itemEnMain;
 						}
 					}
 					else {
 						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case du table de craft
 						if(stackRecup == null) {
-							model.tableDeCraft.add(stackTemp, position);
+							stackTemp = model.putInTableSlot(position, stackRecup);
+							//model.tableDeCraft.add(stackTemp, position);
 							itemEnMain=!itemEnMain;
 						}
 						//Sinon j'echange les deux items de place
 						else {
-							model.tableDeCraft.add(null, position);;
-							model.tableDeCraft.add(stackTemp, position);
-							stackTemp = stackRecup;
+							stackTemp = model.putInTableSlot(position, stackRecup);
+							//model.tableDeCraft.add(null, position);;
+							//model.tableDeCraft.add(stackTemp, position);
+							//stackTemp = stackRecup;
 						}
 					}
 
 					model.Craft();
 					System.out.println(model.resultatCraft.getMatrix()[0]);
 				}
+				//Je regarde si on clique dans l'inventaire creatif
 				if(id.equals("inventory_crea")) {
-
+					//Et si on clique sur un image
 					if (e.getSource() instanceof ImageView) {
+
 						Node sourceIm=(Node) e.getTarget();
-
 						ImageView iv = (ImageView) sourceIm;
-						Image im = iv.getImage();
-						System.out.println(im.impl_getUrl());
+						String[] lienT = iv.getId().split(".");
+						String lien = lienT[0];
+						
+						//Si on a pas d'item en main, ca nous mettra un l'item en main
+						if(!itemEnMain) {
+							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
+							itemEnMain = !itemEnMain;
+						}
+						//Sinon l'item dans notre main est
+						else {
+							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
+						}
 					}
-
-
-
 				}
 			}
-
 		}
 		/*for(int i =0;i<10;i++) {
 			System.out.println(model.inventaireSurvie.get(i));
