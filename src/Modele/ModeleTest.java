@@ -21,6 +21,7 @@ class ModeleTest {
 	Stack itm1;
 	Stack itm2;
 	Stack itm3;
+	Stack itm4;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -28,7 +29,27 @@ class ModeleTest {
 		itm1 = new Stack(modl.fullItemList.research("noteblock", true).racine(), 1);
 		itm2 = new Stack(modl.fullItemList.research("wood_plank", true).racine(), 1);
 		itm3 = new Stack(modl.fullItemList.research("redstone_dust", true).racine(), 1);
+		itm4 = new Stack(modl.fullItemList.research("stick", true).racine(), 1);
 		
+	}
+	
+	@Test
+	void testIndependanceSchema() {
+		StackMatrix crft = new StackMatrix(9);
+		for(int k = 0; k<crft.matrix.length; k++) {
+			if(k == 1 || k == 2) {
+				crft.matrix[k] = itm2;
+			} else if (k == 5 || k == 8){
+				crft.matrix[k] = itm4;
+			} else {
+				crft.matrix[k] = null;
+			}
+		}
+		
+		modl.tableDeCraft = crft;
+		modl.Craft();
+		System.out.println(modl.resultatCraft.getStackAt(0));
+		assertEquals(modl.resultatCraft.getStackAt(0).getItem().equals(modl.getStackFromFullList("wooden_hoe").getItem()), true);
 	}
 	
 	@Test
