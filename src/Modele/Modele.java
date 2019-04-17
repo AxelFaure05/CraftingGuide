@@ -46,7 +46,13 @@ public class Modele extends Observable implements Serializable {
 		this.resultatCraft = new StackMatrix(1);
 	}
 	
-	
+	public Stack getStackFromFullList(String itemName) {
+		try {
+			return new Stack(this.fullItemList.research(itemName, true).racine(), 1);
+		} catch(Exception e) {
+			return null;
+		}
+	}
 	
 	public Stack putInUncraftSlot(Stack stack) {
 		if(this.resultatCraft != null) {
