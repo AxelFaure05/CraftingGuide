@@ -46,6 +46,30 @@ public class Modele extends Observable implements Serializable {
 		this.resultatCraft = new StackMatrix(1);
 	}
 	
+	
+	
+	public Stack putInUncraftSlot(Stack stack) {
+		if(this.resultatCraft != null) {
+			Stack prev = this.resultatCraft.getStackAt(0);
+			this.resultatCraft.add(stack, 0);
+			return prev;
+		}
+		this.resultatCraft.add(stack, 0);
+		this.Uncraft();
+		return null;
+		
+	}
+	public Stack putInTableSlot(int ind, Stack stack) {
+		if(this.tableDeCraft.getStackAt(ind) != null) {
+			Stack prev = this.tableDeCraft.getStackAt(0);
+			this.tableDeCraft.add(stack, ind);
+			return prev;
+		}
+		this.tableDeCraft.add(stack, ind);
+		this.Craft();
+		return null;
+	}
+	
 	public void Craft() {
 		Craft craft = new Craft(this.tableDeCraft);
 		String itemName = this.fullCraftList.get(craft);
