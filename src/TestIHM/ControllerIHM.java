@@ -141,8 +141,8 @@ public class ControllerIHM {
     			listeTempo.get(i).getChildren().clear();
 	    		
 	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(36);
+				iv.setFitWidth(36);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 
@@ -163,8 +163,8 @@ public class ControllerIHM {
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
 	    		
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(85);
+				iv.setFitWidth(85);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 				
@@ -193,8 +193,8 @@ public class ControllerIHM {
     		}	
     		//System.out.println("2");
     		ImageView iv = new ImageView(im);
-	    	iv.setFitHeight(56);
-			iv.setFitWidth(56);
+	    	iv.setFitHeight(86);
+			iv.setFitWidth(86);
 			iv.setTranslateX(4.0);
 			iv.setTranslateY(4.0);
 			
@@ -213,8 +213,8 @@ public class ControllerIHM {
 	    		ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(26);
-				iv.setFitWidth(26);
+	    		iv.setFitHeight(86);
+				iv.setFitWidth(86);
 				iv.setTranslateX(3.0);
 				iv.setTranslateY(3.0);
 				((Pane) listeTempo.get(i)).getChildren().add(iv);
@@ -232,8 +232,8 @@ public class ControllerIHM {
     			listeTempo.get(i).getChildren().clear();
     		}
 			ImageView iv = new ImageView(im);
-    		iv.setFitHeight(26);
-			iv.setFitWidth(26);
+    		iv.setFitHeight(86);
+			iv.setFitWidth(86);
 			iv.setTranslateX(3.0);
 			iv.setTranslateY(3.0);
 			result1.getChildren().add(iv);
@@ -247,8 +247,8 @@ public class ControllerIHM {
     	    		ImageView ima = (ImageView) source;
     	    		Image im = ima.getImage();
     	    		ImageView iv = new ImageView(im);
-    	    		iv.setFitHeight(26);
-    				iv.setFitWidth(26);
+    	    		iv.setFitHeight(86);
+    				iv.setFitWidth(86);
     				iv.setTranslateX(3.0);
     				iv.setTranslateY(3.0);
     				((Pane) listeTempo.get(i)).getChildren().add(iv);

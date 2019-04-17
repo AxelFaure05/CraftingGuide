@@ -49,7 +49,7 @@ public class Main extends Application{
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
 	static Map<String, Object> namespace;
-	
+
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
 	public final static String DATA = "./Data/Designs/Items/";
@@ -109,6 +109,7 @@ public class Main extends Application{
 		int index = 0;
 		
 		
+		
 		while(it.hasNext()) {
 			item = it.next();
 			
@@ -160,6 +161,9 @@ public class Main extends Application{
 
 	    return result;
 	}
+	
+	
+	
 	
 	//Fonction renvoyant une matrice qui contient les Pane (contenant des imageView ou non)
 	public Node[][] scan() {
