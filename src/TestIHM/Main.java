@@ -61,13 +61,11 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-		primaryStage.setResizable(false);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		namespace = loader.getNamespace();
 		
 		root.setId("fenetre");
-		
 		Scene scene = new Scene(root);
 		
 		inventory = (GridPane)namespace.get("inventory");
@@ -87,7 +85,7 @@ public class Main extends Application{
 		
 		creerItemsBase();
 		
-		//Finalisation du setup de la fenêtre
+		//Finalisation du setup de la fenï¿½tre
 		primaryStage.setTitle("Crafting Guide");
 		primaryStage.setScene(scene);
 		primaryStage.setScene(scene);
@@ -106,7 +104,8 @@ public class Main extends Application{
 		Iterator<Node> itP = inv_crea.lookupAll("Pane").iterator();
 		Pane pane;
 		Item item;
-		Image image;
+		//Image image;
+		LocatedImage li;
 		ImageView iv;
 		int index = 0;
 		
@@ -116,6 +115,8 @@ public class Main extends Application{
 			item = it.next();
 			
 			try {
+				String url = DATA+item.getImLink();
+				Image image = new LocatedImage(url);
 				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getImLink())), null);
 				pane = (Pane) itP.next();
 				iv = new ImageView(image);
@@ -149,7 +150,7 @@ public class Main extends Application{
 		return result;
 	}*/
 	
-	//Fonction renvoyant une Node contenue aux coordonnées du GridPane indiqué en paramètre
+	//Fonction renvoyant une Node contenue aux coordonnï¿½es du GridPane indiquï¿½ en paramï¿½tre
 	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
 	    Node result = null;
 	    ObservableList<Node> childrens = gridPane.getChildren();
@@ -184,7 +185,7 @@ public class Main extends Application{
 		return ctrll;
 	}
 	
-	//Fonction appelée par le click de la souris sur un item du GridPane
+	//Fonction appelï¿½e par le click de la souris sur un item du GridPane
 	/*public void coords(MouseEvent e) {
 		Node source = (Node)e.getSource() ;
         Integer colIndex = GridPane.getColumnIndex(source);
