@@ -10,6 +10,7 @@ import java.util.Observable;
 
 import Modele.Composants.Stack;
 import Modele.Composants.Craft;
+import Modele.Composants.Item;
 import Modele.Structures.CraftList;
 import Modele.Structures.CraftListReversed;
 import Modele.Structures.Inventory;
@@ -46,6 +47,14 @@ public class Modele extends Observable implements Serializable {
 		this.resultatCraft = new StackMatrix(1);
 	}
 	
+	public Stack getStackFromFullList(String itemName) {
+		try {
+			Item item = this.fullItemList.research(itemName, true).racine();
+			return new Stack(item, 1);
+		} catch (Exception e){
+			return null;
+		}
+	}
 	public Stack putInInv(int ind, Stack stack) {
 		if(this.inventaireSurvie.get(ind) != null) {
 			Stack prev = this.inventaireSurvie.get(ind);
