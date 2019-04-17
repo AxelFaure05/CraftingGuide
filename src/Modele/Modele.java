@@ -46,7 +46,15 @@ public class Modele extends Observable implements Serializable {
 		this.resultatCraft = new StackMatrix(1);
 	}
 	
-	
+	public Stack putInInv(int ind, Stack stack) {
+		if(this.inventaireSurvie.get(ind) != null) {
+			Stack prev = this.inventaireSurvie.get(ind);
+			this.inventaireSurvie.set(ind, stack);
+			return prev;
+		}
+		this.inventaireSurvie.set(ind, stack);
+		return null;
+	}
 	
 	public Stack putInUncraftSlot(Stack stack) {
 		if(this.resultatCraft != null) {
