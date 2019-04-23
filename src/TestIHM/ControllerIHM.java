@@ -2,12 +2,18 @@ package TestIHM;
 
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
+
 import Controller.Controller;
+import Modele.Composants.Item;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -105,6 +111,8 @@ public class ControllerIHM {
     public Pane returntempo2() {
     	return this.tempo2;
     }
+    
+    public final static String DATA = "./Data/Designs/Items/";
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
@@ -268,6 +276,36 @@ public class ControllerIHM {
         		result1.getChildren().clear();
         	}
     	}	
+    }
+    
+    public void afficheResult(String link) throws IOException {
+    	System.out.println("Affichage du résultat du Craft");
+		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+link)), null);
+		ImageView iv = new ImageView(im);
+		String ID = link;
+		iv.setId(ID);
+		iv.setFitHeight(86);
+		iv.setFitWidth(86);
+		iv.setTranslateX(3.0);
+		iv.setTranslateY(3.0);
+		result.getChildren().add(iv);
+    }
+    
+    public void affichageUncraft(ArrayList<String> linkList) throws IOException {
+    	System.out.println("Affichage du Craft");
+    	for(int i=0;i<9;i++) {
+    		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+linkList.get(i))), null);
+    		ImageView iv = new ImageView(im);
+    		String ID = linkList.get(i);
+    		iv.setId(ID);
+    		iv.setFitHeight(86);
+    		iv.setFitWidth(86);
+    		iv.setTranslateX(3.0);
+    		iv.setTranslateY(3.0);
+    		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
+			p1.getChildren().clear();
+    		p1.getChildren().add(iv);
+    	}
     }
     
     public CouplePerso coordsParent(MouseEvent e) {
