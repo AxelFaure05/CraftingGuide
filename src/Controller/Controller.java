@@ -8,6 +8,7 @@ import java.util.Observer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	Modele model;
 	ControllerIHM cIHM;
 	boolean itemEnMain = false;
+	
+	Stack resultat;
 	//Je créé le stack d'item qui sera dans notre main
 	Stack stackTemp = null;
 
@@ -32,6 +35,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	public Controller(Modele m, ControllerIHM c) {
 		this.model = m;
 		this.cIHM = c;
+
+		
 		Item testI = new Item(10,"objet","objet",true);
 		Stack test = new Stack(testI,1);
 		model.inventaireSurvie.set(2, test);
@@ -62,7 +67,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						if(stackRecup != null) {
 							System.out.print("je recupere l'item ");
 							System.out.println(position);
-							
 							stackTemp = model.putInInv(position, stackRecup);
 							//stackTemp = model.inventaireSurvie.get(position);
 							//model.inventaireSurvie.set(position, null);
@@ -93,6 +97,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 				}
 
+				
 				//Je regarde si on clique sur la table de craft
 				if(id.equals("table")) {
 					
@@ -128,14 +133,14 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 					
 					model.Craft();
-					System.out.println(model.resultatCraft.getMatrix()[0]);
+					resultat = model.resultatCraft.getMatrix()[0];
 				}
+				
+				
 				//Je regarde si on clique dans l'inventaire creatif
 				if(id.equals("inventory_crea")) {
-<<<<<<< HEAD
 					//Et si on clique sur un image
 					if (e.getSource() instanceof ImageView) {
-
 						Node sourceIm=(Node) e.getTarget();
 						ImageView iv = (ImageView) sourceIm;
 						String[] lienT = iv.getId().split(".");
@@ -146,18 +151,16 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
 							itemEnMain = !itemEnMain;
 						}
-						//Sinon l'item dans notre main est
+						//Sinon l'item dans notre main est remplacer
 						else {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
 						}
 					}
-=======
 					//CouplePerso coord2 = cIHM.coordsParent(e);
 					//String id2 = source.getParent();
 					//Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
 					//System.out.print(position);
 					//System.out.println(id);
->>>>>>> 7a656787522541f08bbfa9972c81a3270dc14d2e
 				}
 			}
 		}
