@@ -137,9 +137,9 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					//Et si on clique sur un image
 					if (sourceIm instanceof ImageView) {
 						ImageView iv = (ImageView) sourceIm;
-						String[] lienT = iv.getId().split("[_\\.]");
-						String lien = lienT[1];
-												
+						String[] lienT = iv.getId().split("[\\.]");
+						String[] lienT2 = lienT[0].split("img_");
+						String lien = lienT2[1];												
 						//Si on a pas d'item en main, ca nous mettra un l'item en main
 						if(!itemEnMain) {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
