@@ -131,8 +131,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							//stackTemp = stackRecup;
 						}
 					}
-					
-					model.Craft();
 					resultat = model.resultatCraft.getMatrix()[0];
 				}
 				

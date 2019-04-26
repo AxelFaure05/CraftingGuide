@@ -75,6 +75,15 @@ public class Modele extends Observable implements Serializable {
 		this.Craft();
 		return null;
 	}
+	public Stack putInInv(int ind, Stack stack) {
+		if(this.inventaireSurvie.get(ind) != null) {
+			Stack prev = this.inventaireSurvie.get(ind);
+			this.inventaireSurvie.set(ind, stack);
+			return prev;
+		}
+		this.inventaireSurvie.set(ind, stack);
+		return null;
+	}
 	
 	public void Craft() {
 		Craft craft = new Craft(this.tableDeCraft);
