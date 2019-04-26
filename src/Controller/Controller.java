@@ -39,8 +39,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 		
 		Item testI = new Item(10,"objet","objet",true);
 		Stack test = new Stack(testI,1);
-		model.inventaireSurvie.set(2, test);
-		model.inventaireSurvie.set(3, test);
+		//model.inventaireSurvie.set(2, test);
+		//model.inventaireSurvie.set(3, test);
 	}
 
 	public void detectClick(MouseEvent e) {
@@ -49,7 +49,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 			Node source=(Node) e.getSource();
 			String id = source.getId().toString();
 			CouplePerso coord = cIHM.coords(e);
-
 			//J'identifie le click de sourie
 			if(e.getButton() == MouseButton.PRIMARY) {
 
@@ -62,14 +61,11 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					Stack stackRecup = model.inventaireSurvie.get(position);
 					//Je regarde si j'ai deja un item dans la main oui ou non
 					if(!itemEnMain) {
-
 						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
 						if(stackRecup != null) {
 							System.out.print("je recupere l'item ");
 							System.out.println(position);
-							stackTemp = model.putInInv(position, stackRecup);
-							//stackTemp = model.inventaireSurvie.get(position);
-							//model.inventaireSurvie.set(position, null);
+							stackTemp = model.putInInv(position, stackTemp);
 							itemEnMain = !itemEnMain;
 						}
 					}
@@ -79,8 +75,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							System.out.print("je pose l'item ");
 							System.out.println(position);
 							
-							stackTemp = model.putInInv(position, stackRecup);
-							//model.inventaireSurvie.set(position, stackTemp);
+							stackTemp = model.putInInv(position, stackTemp);
 							itemEnMain=!itemEnMain;
 						}
 						//Si la case clique n'est pas vide, alors j'echange les deux items de place
@@ -88,15 +83,16 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							System.out.print("jechange deux items de place ");
 							System.out.println(position);
 							
-							stackTemp = model.putInInv(position, stackRecup);
+							stackTemp = model.putInInv(position, stackTemp);
 							
 							//model.inventaireSurvie.set(position,null);
 							//model.inventaireSurvie.set(position, stackTemp);
 							//stackTemp = stackRecup;
 						}
 					}
-				}
+					//System.out.println(model.inventaireSurvie.get(position));
 
+				}
 				
 				//Je regarde si on clique sur la table de craft
 				if(id.equals("table")) {
@@ -119,13 +115,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					else {
 						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case du table de craft
 						if(stackRecup == null) {
-							stackTemp = model.putInTableSlot(position, stackRecup);
+							stackTemp = model.putInTableSlot(position, stackTemp);
 							//model.tableDeCraft.add(stackTemp, position);
 							itemEnMain=!itemEnMain;
 						}
 						//Sinon j'echange les deux items de place
 						else {
-							stackTemp = model.putInTableSlot(position, stackRecup);
+							stackTemp = model.putInTableSlot(position, stackTemp);
 							//model.tableDeCraft.add(null, position);;
 							//model.tableDeCraft.add(stackTemp, position);
 							//stackTemp = stackRecup;
@@ -137,13 +133,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 				
 				//Je regarde si on clique dans l'inventaire creatif
 				if(id.equals("inventory_crea")) {
+					Node sourceIm = (Node) e.getTarget();
 					//Et si on clique sur un image
-					if (e.getSource() instanceof ImageView) {
-						Node sourceIm=(Node) e.getTarget();
+					if (sourceIm instanceof ImageView) {
 						ImageView iv = (ImageView) sourceIm;
-						String[] lienT = iv.getId().split(".");
-						String lien = lienT[0];
-						
+						String[] lienT = iv.getId().split("[_\\.]");
+						String lien = lienT[1];
+												
 						//Si on a pas d'item en main, ca nous mettra un l'item en main
 						if(!itemEnMain) {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
@@ -154,11 +150,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
 						}
 					}
-					//CouplePerso coord2 = cIHM.coordsParent(e);
-					//String id2 = source.getParent();
-					//Integer position = cIHM.coordsToPosition(coord2.x, coord2.y)-1;
-					//System.out.print(position);
-					//System.out.println(id);
 				}
 			}
 		}

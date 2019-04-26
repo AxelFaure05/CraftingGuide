@@ -81,8 +81,10 @@ public class Modele extends Observable implements Serializable {
 			this.inventaireSurvie.set(ind, stack);
 			return prev;
 		}
+		else {
 		this.inventaireSurvie.set(ind, stack);
 		return null;
+		}
 	}
 	
 	public void Craft() {

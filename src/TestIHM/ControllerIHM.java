@@ -136,14 +136,14 @@ public class ControllerIHM {
     	//System.out.println("y="+y);
     	//System.out.println(this.inventory2.getChildren().get(z));
     	//System.out.println(inventory2.getId());
-    	System.out.println("ParentID:"+id);
-    	System.out.println("Clicked element ID :"+source.getId());
+    	//System.out.println("ParentID:"+id);
+    	//System.out.println("Clicked element ID :"+source.getId());
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
     	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1"))) {
-    		System.out.println("cdt 1");
+    		//System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     			Image im = ima.getImage();
@@ -166,7 +166,7 @@ public class ControllerIHM {
     	}
     	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
     	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory"))) {
-    		System.out.println("cdt2");
+    		//System.out.println("cdt2");
     		for(int i=0;i<3;i++) {
     			
     			GridPane grid = listeInventaires.get(i);
@@ -259,7 +259,7 @@ public class ControllerIHM {
     	
     	else {
     		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") || p.getParent().getId().equals("anchorResult1"))) {
-    			System.out.println("cdt3");
+    			//System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
     	    		ImageView ima = (ImageView) source;
