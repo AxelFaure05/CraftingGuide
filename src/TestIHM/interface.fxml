@@ -427,10 +427,7 @@
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="1" GridPane.rowIndex="26" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="2" GridPane.rowIndex="26" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="3" GridPane.rowIndex="26" />
-                                                <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4" GridPane.rowIndex="26">
-                                                   <children>
-                                                      <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" />
-                                                   </children></Pane>
+                                                <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="4" GridPane.rowIndex="26" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="5" GridPane.rowIndex="26" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" GridPane.rowIndex="26" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" GridPane.rowIndex="26" />
@@ -444,6 +441,7 @@
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="6" GridPane.rowIndex="27" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="7" GridPane.rowIndex="27" />
                                                 <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="8" GridPane.rowIndex="27" />
+                                                <Pane id="case" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" GridPane.columnIndex="8" GridPane.rowIndex="24" />
                                              </children>
                                           </GridPane>
                                        </children>
