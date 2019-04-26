@@ -155,8 +155,8 @@ public class ControllerIHM {
 	    		iv.setId(ID);
 	    		iv.setFitHeight(36);
 				iv.setFitWidth(36);
-				iv.setTranslateX(3.0);
-				iv.setTranslateY(3.0);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
 
 				GridPane grid = listeInventaires.get(i);
 				Pane p1 = (Pane) grid.getChildren().get(z-1);
@@ -164,9 +164,46 @@ public class ControllerIHM {
     		}	
     		return;
     	}
+    	
+    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty())) {
+    		System.out.println("cdt7");
+    		ImageView imA = (ImageView) tempo2.getChildren().get(0);
+    		String iD = imA.getId();    		
+    		
+    		for(int i=0;i<3;i++) {
+    			GridPane grid = listeInventaires.get(i);
+    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
+    			ImageView ima = (ImageView) source;
+	    		Image im = ima.getImage();
+	    		ImageView iv = new ImageView(im);
+	    		String ID = ima.getId();
+	    		iv.setId(ID);
+	    		
+	    		iv.setFitHeight(86);
+				iv.setFitWidth(86);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
+				
+				Image iM = imA.getImage();
+				ImageView iV = new ImageView(iM);
+				
+				iV.setId(iD);
+				iV.setFitHeight(36);
+				iV.setFitWidth(36);
+				iV.setTranslateX(4.0);
+				iV.setTranslateY(4.0);
+    		
+    			p1.getChildren().clear();
+    			p1.getChildren().add(iV);
+    			listeTempo.get(i).getChildren().clear();
+    			listeTempo.get(i).getChildren().add(iv);
+    		}
+    	}
+    	
     	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory"))) {
-    		//System.out.println("cdt2");
+    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && tempo.getChildren().isEmpty()) {
+    		System.out.println("cdt2");
+    		System.out.println("---");
     		for(int i=0;i<3;i++) {
     			
     			GridPane grid = listeInventaires.get(i);
@@ -179,8 +216,8 @@ public class ControllerIHM {
 	    		
 	    		iv.setFitHeight(85);
 				iv.setFitWidth(85);
-				iv.setTranslateX(3.0);
-				iv.setTranslateY(3.0);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
 				
     			p1.getChildren().clear();
     			listeTempo.get(i).getChildren().add(iv);
@@ -229,10 +266,10 @@ public class ControllerIHM {
 	    		ImageView ima = (ImageView) source;
 	    		Image im = ima.getImage();
 	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(86);
-				iv.setFitWidth(86);
-				iv.setTranslateX(3.0);
-				iv.setTranslateY(3.0);
+	    		iv.setFitHeight(90);
+				iv.setFitWidth(90);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
 				((Pane) listeTempo.get(i)).getChildren().add(iv);
 			}
 			Pane p1 = (Pane) table.getChildren().get(m);
@@ -252,8 +289,8 @@ public class ControllerIHM {
     		iv.setId(ID);
     		iv.setFitHeight(86);
 			iv.setFitWidth(86);
-			iv.setTranslateX(3.0);
-			iv.setTranslateY(3.0);
+			iv.setTranslateX(4.0);
+			iv.setTranslateY(4.0);
 			result1.getChildren().add(iv);
 		}
     	
@@ -269,8 +306,8 @@ public class ControllerIHM {
     	    		iv.setId(ID);
     	    		iv.setFitHeight(86);
     				iv.setFitWidth(86);
-    				iv.setTranslateX(3.0);
-    				iv.setTranslateY(3.0);
+    				iv.setTranslateX(4.0);
+    				iv.setTranslateY(4.0);
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
         		result1.getChildren().clear();
