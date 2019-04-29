@@ -1,270 +1,95 @@
 package IHM;
+import java.awt.image.BufferedImage;
+import java.beans.EventHandler;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+import Controller.Controller;
+import Modele.Modele;
+import Modele.Composants.Item;
+import TestIHM.ControllerIHM;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.stage.Stage;
-import javafx.scene.Group;
+import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.stage.Stage;
 
-public class Main extends Application {
-	
-	/*
-	 *	Tu peux directement travailler sur la classe src/CraftingGuide,
-	 *		c'est la classe principale qui fait office de Frame.
-	 */
-
-	/*
-	 * On risque d'avoir pas mal d'images et de donnï¿½es ï¿½ stocker, 
-	 * 		peut-ï¿½tre que les stocker dans un dossier crï¿½ï¿½ ï¿½ cet effet peut aider dans l'organisation ? 
-	 */
-	public final static String DOSSIER_DONNEES = "./Data/";
+public class Main extends Application{
 	private BorderPane layout;
-	private Scene scene;
-	Group root = new Group();
+	static Modele modl = new Modele();
+	static ControllerIHM ctrl = new ControllerIHM();
+	static Controller ctrll = new Controller(modl,ctrl);
+	GridPane inventory = ctrl.returnInventaire();
+	GridPane inventory1 = ctrl.returnInventaire1();
+	GridPane inventory2 = ctrl.returnInventaire2();
+	GridPane tableCraft = ctrl.returnCraftingTable();
+	GridPane inv_crea = ctrl.returnInventaire_Crea();
+	ScrollPane scroll = ctrl.returnScrollPane();
+	Pane tempo2 = ctrl.returntempo2();
+	static Map<String, Object> namespace;
 
+	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
+	
+	public final static String DATA = "./Data/Designs/Items/";
+	
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
 	
 	@Override
-	public void start(Stage window) {
+	public void start(Stage primaryStage) throws Exception {
 		try {
-			layout = new BorderPane();
-			scene= new Scene (layout,1400,900);
-			
-			Image background = new Image("file:" + DOSSIER_DONNEES + "Designs/menu.jpg");
-			ImageView mv = new ImageView(background);
-			/*mv.setFitWidth(500);
-			mv.setFitHeight(500);*/
-			mv.setImage(background);
-			layout.getChildren().addAll(mv);
-			
-			//Crï¿½ation des diffï¿½rents ï¿½lï¿½ments
-			Menu onglet1= new Menu("Menu Principal");
-			Menu onglet2= new Menu("Table de Craft");
-			Menu onglet3= new Menu("Table de Craft Inversï¿½e");
-
-			MenuBar menuBar= new MenuBar();
-			menuBar.getMenus().addAll(onglet1);
-			menuBar.getMenus().addAll(onglet2);
-			menuBar.getMenus().addAll(onglet3);
-
-			Button bouttonCraft= new Button ("Crafting");
-			
-			//Appel d'une mï¿½thode qui gï¿½re l'ouverture de l'onglet crafting si clique sur boutton "BouttonCraft"
-			 bouttonCraft.setOnAction(new EventHandler<ActionEvent>() {
-		            @Override
-		            public void handle(ActionEvent event) {
-		               System.out.println("Crafting");
-		               crafting(window);
-		            }
-		        });
-			 
-			Button bouttonCraftInverse= new Button ("Crafting Inversï¿½e");
-			
-			//Appel d'une mï¿½thode qui gï¿½re l'ouverture de l'onglet crafting Inversï¿½e si clique sur boutton "BouttonCraftInverse"
-			 bouttonCraftInverse.setOnAction(new EventHandler<ActionEvent>() {
-		            @Override
-		            public void handle(ActionEvent event) {
-		                System.out.println("Crafting Inverse");
-		                craftingInverse(window);
-		            }
-		        });
-			 
-			HBox hbox = new HBox();
-			hbox.setPadding(new Insets(10, 120, 15, 12));
-			hbox.setSpacing(100);
-			hbox.setStyle("-fx-background-color: #336699;");
-
-
-			hbox.getChildren().addAll(bouttonCraft, bouttonCraftInverse);
-
-			//Agencement des diffï¿½rents ï¿½lï¿½ments du layout
-			layout.setTop(menuBar);
-			layout.setBottom(hbox);
-			//Affichage
-			window.setScene(scene);
-			window.show();
-		} 
-
-		catch(Exception e) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface2.fxml"));
+		Parent root = loader.load();
+		namespace = loader.getNamespace();
+		
+		root.setId("fenetre");
+		Scene scene = new Scene(root);
+		primaryStage.setResizable(false);
+		
+		
+		/*inventaires.add(inventory);
+		inventaires.add(inventory1);
+		inventaires.add(inventory2);
+		inventaires.add(inv_crea);*/
+		
+		
+		//Finalisation du setup de la fenï¿½tre
+		primaryStage.setTitle("Crafting Guide");
+		primaryStage.setScene(scene);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void menuStart(Stage window) {
-		layout = new BorderPane();
-		scene= new Scene (layout,1400,900);
 		
-		Image background = new Image("file:" + DOSSIER_DONNEES + "Designs/menu.jpg");
-		ImageView mv = new ImageView(background);
-		mv.setImage(background);
-		layout.getChildren().addAll(mv);
-		
-		Menu onglet1= new Menu("Menu Principal");
-		Menu onglet2= new Menu("Table de Craft");
-		Menu onglet3= new Menu("Table de Craft Inversée");
-
-		MenuBar menuBar= new MenuBar();
-		menuBar.getMenus().addAll(onglet1);
-		menuBar.getMenus().addAll(onglet2);
-		menuBar.getMenus().addAll(onglet3);
-	
-		layout.setTop(menuBar);
-		
-		Button bouttonCraft= new Button ("Crafting");
-		
-		//Appel d'une mï¿½thode qui gï¿½re l'ouverture de l'onglet crafting si clique sur boutton "BouttonCraft"
-		 bouttonCraft.setOnAction(new EventHandler<ActionEvent>() {
-	            @Override
-	            public void handle(ActionEvent event) {
-	               System.out.println("Crafting");
-	               crafting(window);
-	            }
-	        });
-		 
-		Button bouttonCraftInverse= new Button ("Crafting Inversï¿½e");
-		
-		//Appel d'une mï¿½thode qui gï¿½re l'ouverture de l'onglet crafting Inversï¿½e si clique sur boutton "BouttonCraftInverse"
-		 bouttonCraftInverse.setOnAction(new EventHandler<ActionEvent>() {
-	            @Override
-	            public void handle(ActionEvent event) {
-	                System.out.println("Crafting Inverse");
-	                craftingInverse(window);
-	            }
-	        });
-		 
-		HBox hbox = new HBox();
-		hbox.setPadding(new Insets(10, 120, 15, 12));
-		hbox.setSpacing(100);
-		hbox.setStyle("-fx-background-color: #336699;");
-
-
-		hbox.getChildren().addAll(bouttonCraft, bouttonCraftInverse);
-		
-		Scene scene = new Scene(root,1400,900);
-		scene.setRoot(root);
-		
-		//Agencement des diffï¿½rents ï¿½lï¿½ments du layout
-		layout.setTop(menuBar);
-		layout.setBottom(hbox);
-		//Affichage
-		window.setScene(scene);
-		window.show();
-	}
-	
-	public void crafting(Stage window) {
-		layout = new BorderPane();
-		scene= new Scene (layout,1400,900);
-		Image bk = new Image("file:" + DOSSIER_DONNEES + "Designs/Table_de_Craft.png");
-		ImageView mv = new ImageView(bk);
-		/*mv.setFitWidth(500);
-		mv.setFitHeight(500);*/
-		mv.setImage(bk);
-		
-		
-		//Ajout des onglets
-		Menu onglet1= new Menu("Menu Principal");
-		Menu onglet2= new Menu("Table de Craft");
-		Menu onglet3= new Menu("Table de Craft Inversée");
-
-		MenuBar menuBar= new MenuBar();
-		menuBar.getMenus().addAll(onglet1);
-		menuBar.getMenus().addAll(onglet2);
-		menuBar.getMenus().addAll(onglet3);
-	
-	
-		layout.setTop(menuBar);
-		
-		onglet1.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				System.out.println("Retour au Menu");
-				menuStart(window);
-			}
-			
-		});
-		
-		Group g2 = new Group();
-		ComposantPerso c = new ComposantPerso();
-	
-		root.getChildren().addAll(g2,c,mv,layout);
-		
-		Scene scene = new Scene(root,1400,900);
-		scene.setRoot(root);
-		
-		//Appel de la fonction pour le hover des cases
-		interactionInventaire();
-		
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		window.setTitle("Crafting Guide");
-		window.setResizable(false);
-		window.setScene(scene);
-		
-		window.show();
-	}
-	
-	public void craftingInverse(Stage window) {
 		
 	}
 	
 	
 	
-	
-	
-	public void interactionInventaire() {
-		int col = 11;
-		int lig = 198;
-		Rectangle r;
-		
-		for(int j = 0;j<3;j++) {
-			for(int i = 0;i<9;i++) {
-				r = new Rectangle(col+36*i,lig+36*j,32,32);
-				r.setFill(Color.TRANSPARENT);
-				registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
-				root.getChildren().add(r);
-			}
-		}
-		
-		for(int i=0;i<9;i++) {
-			r = new Rectangle(col+36*i,lig+38.75*3,32,32);
-			r.setFill(Color.TRANSPARENT);
-			registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
-			root.getChildren().add(r);
-		}
-		
-		int col1 = 55;
-		int lig1 = 64;
-		
-		for(int i = 0;i<3;i++) {
-			for (int j = 0;j<3;j++) {
-					r = new Rectangle(col1+36*i,lig1+36*j,32,32);
-					r.setFill(Color.TRANSPARENT);
-					registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
-					root.getChildren().add(r);
-				}
-			}
-		r = new Rectangle(237.5,94.5,42,42);
-		r.setFill(Color.TRANSPARENT);
-		registerHandler(r, Color.TRANSPARENT, Color.DARKGRAY);
-		root.getChildren().add(r);
-	}
-
-	private void registerHandler(Shape s, Color defaultColor, Color hoverColor) {
-		s.setOnMouseEntered( e -> s.setFill(hoverColor));
-		s.setOnMouseExited(e -> s.setFill(defaultColor));
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
 }
