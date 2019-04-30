@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -147,9 +148,9 @@ public class ControllerIHM {
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     			Image im = ima.getImage();
-    		
-    			listeTempo.get(i).getChildren().clear();
-	    		
+    			if(e.getButton() == MouseButton.PRIMARY) {
+    				listeTempo.get(i).getChildren().clear();
+    			}
 	    		ImageView iv = new ImageView(im);
 	    		String ID = ima.getId();
 	    		iv.setId(ID);
@@ -195,7 +196,9 @@ public class ControllerIHM {
     		
     			p1.getChildren().clear();
     			p1.getChildren().add(iV);
-    			listeTempo.get(i).getChildren().clear();
+    			if(e.getButton() == MouseButton.PRIMARY) {
+    				listeTempo.get(i).getChildren().clear();
+    			}
     			listeTempo.get(i).getChildren().add(iv);
     		}
     	}
@@ -238,10 +241,11 @@ public class ControllerIHM {
     		GridPane grid = table;
     		Pane p1 = (Pane) grid.getChildren().get(m);
     		p1.getChildren().clear();
-    		
-    		for(int i=0;i<3;i++) {
-    			listeTempo.get(i).getChildren().clear();
-    		}	
+    		if(e.getButton() == MouseButton.PRIMARY) {
+	    		for(int i=0;i<3;i++) {
+	    			listeTempo.get(i).getChildren().clear();
+	    		}	
+    		}
     		//System.out.println("2");
     		ImageView iv = new ImageView(im);
     		String ID = ima.getId();
