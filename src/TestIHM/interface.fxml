@@ -470,7 +470,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="304.0" prefWidth="328.0">
                      <children>
-                        <AnchorPane layoutX="443.0" layoutY="60.0" prefHeight="335.0" prefWidth="335.0" AnchorPane.bottomAnchor="266.0" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="60.0">
+                        <AnchorPane layoutX="444.0" layoutY="93.0" prefHeight="273.0" prefWidth="281.0" AnchorPane.bottomAnchor="274.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="93.0">
                            <children>
                               <GridPane fx:id="table" hgap="2.0" layoutY="17.0" onMouseClicked="#leftClick" prefHeight="166.0" prefWidth="200.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
@@ -617,14 +617,14 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="789.0" layoutY="127.0" prefHeight="199.0" prefWidth="184.0" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="789.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="127.0">
+                        <AnchorPane layoutX="835.0" layoutY="197.0" prefHeight="65.0" prefWidth="92.0" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="835.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="197.0">
                            <children>
-                              <Pane id="case" fx:id="result" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="result" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="65.0" prefWidth="92.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="156.0" layoutY="479.0" prefHeight="91.0" prefWidth="95.0">
+                        <AnchorPane layoutX="156.0" layoutY="479.0" prefHeight="92.0" prefWidth="92.0">
                            <children>
-                              <Pane id="case" fx:id="tempo" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="tempo" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="92.0" prefWidth="92.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -642,7 +642,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="304.0" prefWidth="328.0">
                      <children>
-                        <AnchorPane layoutX="648.0" layoutY="79.0" prefHeight="309.0" prefWidth="294.0" AnchorPane.bottomAnchor="273.0" AnchorPane.leftAnchor="648.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="79.0">
+                        <AnchorPane layoutX="652.0" layoutY="93.0" prefHeight="273.0" prefWidth="281.0" AnchorPane.bottomAnchor="274.0" AnchorPane.leftAnchor="652.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="93.0">
                            <children>
                               <GridPane fx:id="table_uncraft" hgap="2.0" layoutY="17.0" onMouseClicked="#coordsTable" prefHeight="166.0" prefWidth="200.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
@@ -675,7 +675,7 @@
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                            </padding>
                         </AnchorPane>
-                        <AnchorPane layoutX="1.0" layoutY="12.0" prefHeight="432.0" prefWidth="404.0">
+                        <AnchorPane layoutX="1.0" layoutY="13.0" prefHeight="432.0" prefWidth="404.0">
                            <children>
                               <GridPane fx:id="inventory1" hgap="2.0" onMouseClicked="#leftClick" prefHeight="432.0" prefWidth="404.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
@@ -789,12 +789,12 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="anchorResult1" layoutX="461.0" layoutY="182.0" prefHeight="109.0" prefWidth="99.0" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="182.0">
+                        <AnchorPane fx:id="anchorResult1" layoutX="461.0" layoutY="197.0" prefHeight="65.0" prefWidth="92.0" AnchorPane.bottomAnchor="378.0" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="447.0" AnchorPane.topAnchor="197.0">
                            <children>
                               <Pane id="case" fx:id="result1" minHeight="48.0" minWidth="39.0" onMouseClicked="#leftClick" prefHeight="48.0" prefWidth="39.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="155.0" layoutY="489.0" prefHeight="92.0" prefWidth="92.0">
+                        <AnchorPane layoutX="156.0" layoutY="479.0" prefHeight="92.0" prefWidth="92.0">
                            <children>
                               <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
