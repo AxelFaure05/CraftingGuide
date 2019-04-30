@@ -151,7 +151,7 @@ public class ControllerIHM {
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1"))) {
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1")) && !(source.getId().equals("result"))) {
     		//System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -288,7 +288,7 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
-		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
+		if(source instanceof Pane /*&& source.getParent().getId().equals("anchorResult1")*/ && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result"))) {
 			System.out.println("cdt6");
 			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
