@@ -113,6 +113,14 @@ public class ControllerIHM {
     	return this.tempo2;
     }
     
+    public Pane returnResult() {
+    	return this.result;
+    }
+    
+    public Pane returnResult1() {
+    	return this.result1;
+    }
+    
     public final static String DATA = "./Data/Designs/Items/";
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
