@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -112,6 +113,14 @@ public class ControllerIHM {
     	return this.tempo2;
     }
     
+    public Pane returnResult() {
+    	return this.result;
+    }
+    
+    public Pane returnResult1() {
+    	return this.result1;
+    }
+    
     public void setresult(Pane res) {
     	this.result = res;
     }
@@ -145,14 +154,14 @@ public class ControllerIHM {
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
     	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1"))) {
-    		//System.out.println("cdt 1");
+    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1")) && !(source.getId().equals("result"))) {
+    		System.out.println("cdt 1");
     		for(int i=0;i<3;i++) {
     			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     			Image im = ima.getImage();
-    		
-    			listeTempo.get(i).getChildren().clear();
-	    		
+    			if(e.getButton() == MouseButton.PRIMARY) {
+    				listeTempo.get(i).getChildren().clear();
+    			}
 	    		ImageView iv = new ImageView(im);
 	    		String ID = ima.getId();
 	    		iv.setId(ID);
@@ -198,7 +207,9 @@ public class ControllerIHM {
     		
     			p1.getChildren().clear();
     			p1.getChildren().add(iV);
-    			listeTempo.get(i).getChildren().clear();
+    			if(e.getButton() == MouseButton.PRIMARY) {
+    				listeTempo.get(i).getChildren().clear();
+    			}
     			listeTempo.get(i).getChildren().add(iv);
     		}
     	}
@@ -241,10 +252,11 @@ public class ControllerIHM {
     		GridPane grid = table;
     		Pane p1 = (Pane) grid.getChildren().get(m);
     		p1.getChildren().clear();
-    		
-    		for(int i=0;i<3;i++) {
-    			listeTempo.get(i).getChildren().clear();
-    		}	
+    		if(e.getButton() == MouseButton.PRIMARY) {
+	    		for(int i=0;i<3;i++) {
+	    			listeTempo.get(i).getChildren().clear();
+	    		}	
+    		}
     		//System.out.println("2");
     		ImageView iv = new ImageView(im);
     		String ID = ima.getId();
@@ -257,8 +269,39 @@ public class ControllerIHM {
     		p1.getChildren().add(iv);
     		//System.out.println("3");
     	}
-    	
-		if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
+		
+		if(source instanceof ImageView && p.getParent().getId().equals("table") && !(listeTempo.get(0).getChildren().isEmpty())) {
+			System.out.println("cdt10");
+			ImageView imA = (ImageView) tempo2.getChildren().get(0);
+				Image iM = imA.getImage();
+				ImageView iV = new ImageView(iM);
+				String iD = imA.getId();
+			    iV.setId(iD);
+			    iV.setFitHeight(80);
+				iV.setFitWidth(80);
+				iV.setTranslateX(6.0);
+				iV.setTranslateY(6.0);
+			for(int i=0;i<3;i++) {
+    			listeTempo.get(i).getChildren().clear();
+	    		ImageView ima = (ImageView) source;
+	    		Image im = ima.getImage();
+	    		ImageView iv = new ImageView(im);
+	    		iv.setFitHeight(80);
+				iv.setFitWidth(80);
+				iv.setTranslateX(6.0);
+				iv.setTranslateY(6.0);
+				//((Pane) listeTempo.get(i)).getChildren().clear();;
+				((Pane) listeTempo.get(i)).getChildren().add(iv);
+				
+				
+			}
+				
+				Pane p1 = (Pane) source.getParent();
+				p1.getChildren().clear();
+				p1.getChildren().add(iV);
+		}
+		
+    	if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
 			System.out.println("cdt5");
 			int k = coordsParent(e).x;
         	int l = coordsParent(e).y;
@@ -279,7 +322,7 @@ public class ControllerIHM {
 			p1.getChildren().clear();
 		}
     	
-		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
+		if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result"))) {
 			System.out.println("cdt6");
 			ImageView ima = (ImageView) tempo2.getChildren().get(0);
     		Image im = ima.getImage();
@@ -296,10 +339,76 @@ public class ControllerIHM {
 			iv.setTranslateY(4.0);
 			result1.getChildren().add(iv);
 		}
+		
+		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
+			System.out.println("cdt8");
+			ImageView ima =  (ImageView) tempo2.getChildren().get(0);
+	    	Image im = ima.getImage();
+	    	ImageView iv = new ImageView(im);
+	    	String ID = ima.getId();
+	    	iv.setId(ID);
+	    	iv.setFitHeight(86);
+			iv.setFitWidth(86);
+			iv.setTranslateX(4.0);
+			iv.setTranslateY(4.0);
+			for(int i=0;i<3;i++) {
+				((Pane) listeTempo.get(i)).getChildren().clear();
+			}
+			result1.getChildren().add(iv);
+		}
+		
+		if(source instanceof ImageView && p.getParent().getId().equals("anchorResult1")) {
+			System.out.println("cdt9");
+			if(listeTempo.get(0).getChildren().isEmpty()) {
+				for(int i=0;i<3;i++) {
+					ImageView ima = (ImageView) source;
+		    		Image im = ima.getImage();
+		    		ImageView iv = new ImageView(im);
+		    		String ID = ima.getId();
+		    		iv.setId(ID);
+		    		iv.setFitHeight(86);
+					iv.setFitWidth(86);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
+				
+					((Pane) listeTempo.get(i)).getChildren().add(iv);
+				}
+				result1.getChildren().clear();
+			}
+			else {
+				
+				for(int i=0;i<3;i++) {
+					ImageView ima = (ImageView) source;
+					Image im = ima.getImage();
+		    		ImageView iv = new ImageView(im);
+		    		String ID = ima.getId();
+		    		iv.setId(ID);
+		    		iv.setFitHeight(86);
+					iv.setFitWidth(86);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
+					
+					ImageView imA = (ImageView) tempo2.getChildren().get(0);
+					Image iM = imA.getImage();
+					ImageView iV = new ImageView(iM);
+					String iD = imA.getId();
+				    iV.setId(iD);
+				    iV.setFitHeight(86);
+					iV.setFitWidth(86);
+					iV.setTranslateX(4.0);
+					iV.setTranslateY(4.0);
+					
+					((Pane) listeTempo.get(i)).getChildren().clear();
+					((Pane) listeTempo.get(i)).getChildren().add(iv);
+					result1.getChildren().clear();
+					result1.getChildren().add(iV);
+				}
+			}
+		}
     	
     	else {
-    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") || p.getParent().getId().equals("anchorResult1"))) {
-    			//System.out.println("cdt3");
+    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") /*|| p.getParent().getId().equals("anchorResult1")*/)) {
+    			System.out.println("cdt3");
         		for(int i=0;i<3;i++) {
         			listeTempo.get(i).getChildren().clear();
     	    		ImageView ima = (ImageView) source;
@@ -313,7 +422,7 @@ public class ControllerIHM {
     				iv.setTranslateY(4.0);
     				((Pane) listeTempo.get(i)).getChildren().add(iv);
         		}
-        		result1.getChildren().clear();
+        		//result1.getChildren().clear();
         	}
     	}	
     }
@@ -328,8 +437,7 @@ public class ControllerIHM {
 		iv.setFitWidth(86);
 		iv.setTranslateX(3.0);
 		iv.setTranslateY(3.0);
-		System.out.println(result);
-		//try{
+		//try {
 		result.getChildren().add(iv);
 		/*}catch(Exception e) {
 			System.out.println("ERREUR");
@@ -416,6 +524,7 @@ public class ControllerIHM {
     public void resultClicked(MouseEvent e) {
     	ctrl.detectClick(e);
 		System.out.println("Result clicked");
+		System.out.println(e.getSource());
 	}
     
     public Integer coordsToPosition(int a,int b) {

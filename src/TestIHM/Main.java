@@ -143,7 +143,6 @@ public class Main extends Application{
 			System.out.println(item.getImLink());
 			//System.out.println(Main.imageExist(item));
 		}		
-		((Pane) inv_crea.getChildren().get(20)).getChildren().clear();
 		
     }
 	
