@@ -29,7 +29,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	boolean itemEnMain = false;
 
 	Stack resultat;
-	//Je créé le stack d'item qui sera dans notre main
+	//Je crÃ©Ã© le stack d'item qui sera dans notre main
 	Stack stackTemp = null;
 
 
@@ -61,7 +61,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 				//J'identifie si nous cliquons dans l'inventaire
 				if(id.equals("inventory")||id.equals("inventory1")||id.equals("inventory2")) {
 
-					//Ceci sont les coordonnées dans l'inventaire de la ou on clique, dependant si on clique sur un image ou une case vide
+					//Ceci sont les coordonnÃ©es dans l'inventaire de la ou on clique, dependant si on clique sur un image ou une case vide
 					Integer position = cIHM.coordsToPosition(coord.x, coord.y)-1;
 					Integer positionParent = cIHM.coordsToPosition(coordParent.x, coordParent.y)-1;
 
@@ -159,7 +159,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 				//J'identifie si nous cliquons dans l'inventaire
 				if(id.equals("inventory")||id.equals("inventory1")||id.equals("inventory2")) {
 
-					//Ceci sont les coordonnées dans l'inventaire de la ou on clique, dependant si on clique sur un image ou une case vide
+					//Ceci sont les coordonnÃ©es dans l'inventaire de la ou on clique, dependant si on clique sur un image ou une case vide
 					Integer position = cIHM.coordsToPosition(coord.x, coord.y)-1;
 					Integer positionParent = cIHM.coordsToPosition(coordParent.x, coordParent.y)-1;
 
@@ -209,8 +209,9 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							model.tableDeCraft.add(stackTemp, position);
 						}
 					}
-					resultat = model.resultatCraft.getMatrix()[0];
-					if(resultat != null) {
+					if(model.resultatCraft.getMatrix()[0] != null) {
+						resultat = model.resultatCraft.getMatrix()[0];
+						
 						try {
 							this.cIHM.afficheResult(resultat.getItem().getImLink());
 						} catch (IOException e1) {
