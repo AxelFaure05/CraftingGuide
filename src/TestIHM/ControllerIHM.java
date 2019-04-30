@@ -315,7 +315,7 @@ public class ControllerIHM {
     	}	
     }
     
-    public void afficheResult(String link) throws IOException {
+    public void afficheResult(String link) throws IOException{
     	System.out.println("Affichage du résultat du Craft");
 		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+link)), null);
 		ImageView iv = new ImageView(im);
@@ -325,7 +325,13 @@ public class ControllerIHM {
 		iv.setFitWidth(86);
 		iv.setTranslateX(3.0);
 		iv.setTranslateY(3.0);
+		//try {
 		result.getChildren().add(iv);
+		/*}catch(Exception e) {
+			System.out.println("ERREUR");
+			System.out.println("Cause de l'erreur: "+e.getCause());
+			System.out.println(e.getMessage());
+		}*/
     }
     
     public void affichageUncraft(ArrayList<String> linkList) throws IOException {
