@@ -48,6 +48,7 @@ public class Main extends Application{
 	GridPane inv_crea = ctrl.returnInventaire_Crea();
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
+	Pane result;
 	static Map<String, Object> namespace;
 
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
@@ -75,7 +76,10 @@ public class Main extends Application{
 		scroll = (ScrollPane)namespace.get("scroll");
 		inv_crea = (GridPane)namespace.get("inventory_crea");
 		tempo2 = (Pane)namespace.get("tempo2");
+		result = (Pane)namespace.get("result");
 		
+		System.out.println(result);
+		ctrl.setresult(result);
 		/*inventaires.add(inventory);
 		inventaires.add(inventory1);
 		inventaires.add(inventory2);
