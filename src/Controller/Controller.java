@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.event.ActionEvent;
@@ -43,14 +44,17 @@ public class Controller implements ActionListener,ItemListener, Observer {
 		//model.inventaireSurvie.set(3, test);
 	}
 
-	public void detectClick(MouseEvent e) {
+	public void detectClick(MouseEvent e){
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
 			Node source=(Node) e.getSource();
+			Node sourceTarget=(Node) e.getTarget();
 			String id = source.getId().toString();
 			CouplePerso coord = cIHM.coords(e);
+			CouplePerso coordParent = cIHM.coordsParent(e);
 			//J'identifie le click de sourie
 			if(e.getButton() == MouseButton.PRIMARY) {
+				System.out.println(source.getId());
 
 
 
@@ -62,11 +66,11 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					//Je regarde si j'ai deja un item dans la main oui ou non
 					if(!itemEnMain) {
 						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
-						if(stackRecup != null) {
+						if(sourceTarget instanceof ImageView) {
+							Integer positionParent = cIHM.coordsToPosition(coordParent.x, coordParent.y)-1;
 							System.out.print("je recupere l'item ");
-							System.out.println(position);
-							stackTemp = model.putInInv(position, stackTemp);
-							itemEnMain = !itemEnMain;
+							System.out.println(positionParent);
+							stackTemp = model.putInInv(positionParent, stackTemp);
 						}
 					}
 					else {
@@ -76,7 +80,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							System.out.println(position);
 							
 							stackTemp = model.putInInv(position, stackTemp);
-							itemEnMain=!itemEnMain;
 						}
 						//Si la case clique n'est pas vide, alors j'echange les deux items de place
 						else {
@@ -84,10 +87,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							System.out.println(position);
 							
 							stackTemp = model.putInInv(position, stackTemp);
-							
-							//model.inventaireSurvie.set(position,null);
-							//model.inventaireSurvie.set(position, stackTemp);
-							//stackTemp = stackRecup;
+
 						}
 					}
 					//System.out.println(model.inventaireSurvie.get(position));
@@ -107,43 +107,40 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						//Si j'ai pas d'item dans la main, et que je clique sur une case ou se trouve un item, je la recupere
 						if(stackRecup != null) {
 							stackTemp = model.putInTableSlot(position, stackTemp);
-							//model.tableDeCraft.add(null,position);
-							//stackTemp = stackRecup;
-							itemEnMain=!itemEnMain;
 						}
 					}
 					else {
 						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case du table de craft
 						if(stackRecup == null) {
 							stackTemp = model.putInTableSlot(position, stackTemp);
-							//model.tableDeCraft.add(stackTemp, position);
-							itemEnMain=!itemEnMain;
 						}
 						//Sinon j'echange les deux items de place
 						else {
 							stackTemp = model.putInTableSlot(position, stackTemp);
-							//model.tableDeCraft.add(null, position);;
-							//model.tableDeCraft.add(stackTemp, position);
-							//stackTemp = stackRecup;
 						}
 					}
 					resultat = model.resultatCraft.getMatrix()[0];
+					if(resultat != null) {
+						try {
+							this.cIHM.afficheResult(resultat.getItem().getImLink());
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
 				}
 				
 				
 				//Je regarde si on clique dans l'inventaire creatif
 				if(id.equals("inventory_crea")) {
-					Node sourceIm = (Node) e.getTarget();
 					//Et si on clique sur un image
-					if (sourceIm instanceof ImageView) {
-						ImageView iv = (ImageView) sourceIm;
+					if (sourceTarget instanceof ImageView) {
+						ImageView iv = (ImageView) sourceTarget;
 						String[] lienT = iv.getId().split("[\\.]");
 						String[] lienT2 = lienT[0].split("img_");
 						String lien = lienT2[1];												
 						//Si on a pas d'item en main, ca nous mettra un l'item en main
 						if(!itemEnMain) {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
-							itemEnMain = !itemEnMain;
 						}
 						//Sinon l'item dans notre main est remplacer
 						else {
@@ -151,6 +148,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						}
 					}
 				}
+				if(stackTemp == null) {
+					itemEnMain = false;
+				}
+				else {
+					itemEnMain= true;
+				}
+					
 			}
 		}
 		/*for(int i =0;i<10;i++) {
