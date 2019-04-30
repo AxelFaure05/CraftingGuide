@@ -67,7 +67,7 @@ public class Main extends Application{
 		
 		root.setId("fenetre");
 		Scene scene = new Scene(root);
-		
+		primaryStage.setResizable(false);
 		inventory = (GridPane)namespace.get("inventory");
 		inventory1 = (GridPane)namespace.get("inventory1");
 		inventory2 = (GridPane)namespace.get("inventory2");
