@@ -2,5 +2,70 @@
 
 
 #fenetre{
-  -fx-background-image: url("menu.jpg");
+ 
+-fx-background-image: url("menu.jpg");  -fx-background-repeat:no-repeat;
+  -fx-background-size:cover;
+}
+
+
+#table{
+  -fx-background-image: url("../../Data/Designs/GUI_Table.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover, auto;
+
+}
+
+#case{
+	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+  /*-fx-background-radius: 50px;*/
+    -fx-border-radius: 4px 4px 4px 4px;
+    -fx-border-width: 2px;
+    -fx-border-color: #191919;
+
+
+}
+
+#case:hover{
+	/*-fx-background-color:red;*/
+	-fx-background-image: url("../../Data/Designs/GUI_Result_Hover.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+}
+
+#result{
+	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
+}
+
+
+/*.tab-pane{
+	-fx-tab-width:100px;
+	-fx-tab-max-weight:200px;
+	-fx-text-fill:#FFF;
+}
+
+
+.tab-pane:selected{
+    -fx-background-color: grey;
+	-fx-text-fill:#FFF;
+}
+*/
+.tab-pane *.tab-header-background {
+  -fx-background-color: #5E87BA;
+  -fx-outer-border, -fx-inner-border;
+
+
+}
+
+
+.tab-pane .tab{
+	-fx-pref-width: 275;
+	-fx-pref-weight: 100;
+  -fx-background-color: #5E87BA;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-color:white;
+
+
 }

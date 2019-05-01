@@ -1,4 +1,5 @@
 package IHM;
+
 import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
 import java.io.File;
@@ -15,7 +16,6 @@ import javax.swing.ImageIcon;
 import Controller.Controller;
 import Modele.Modele;
 import Modele.Composants.Item;
-import TestIHM.ControllerIHM;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -49,6 +49,7 @@ public class Main extends Application{
 	GridPane inv_crea = ctrl.returnInventaire_Crea();
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
+	Pane result;
 	static Map<String, Object> namespace;
 
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
@@ -62,20 +63,32 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface2.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		namespace = loader.getNamespace();
 		
 		root.setId("fenetre");
 		Scene scene = new Scene(root);
 		primaryStage.setResizable(false);
+		inventory = (GridPane)namespace.get("inventory");
+		inventory1 = (GridPane)namespace.get("inventory1");
+		inventory2 = (GridPane)namespace.get("inventory2");
+		tableCraft = (GridPane)namespace.get("table");
+		scroll = (ScrollPane)namespace.get("scroll");
+		inv_crea = (GridPane)namespace.get("inventory_crea");
+		tempo2 = (Pane)namespace.get("tempo2");
+		result = (Pane)namespace.get("result");
 		
-		
+		System.out.println(result);
+		ctrl.setresult(result);
 		/*inventaires.add(inventory);
 		inventaires.add(inventory1);
 		inventaires.add(inventory2);
 		inventaires.add(inv_crea);*/
 		
+		System.out.println(inventaires);
+		
+		creerItemsBase();
 		
 		//Finalisation du setup de la fen�tre
 		primaryStage.setTitle("Crafting Guide");
@@ -86,10 +99,114 @@ public class Main extends Application{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(tempoFull());
 		
 	}
 	
+	public void creerItemsBase() throws IOException {
+		
+		Iterator<Item> it = modl.fullItemList.iterator();
+		Iterator<Node> itP = inv_crea.lookupAll("Pane").iterator();
+		Pane pane;
+		Item item;
+		Image image;
+		ImageView iv;
+		int index = 0;
+		
+		
+		
+		while(it.hasNext()) {
+			item = it.next();
+			
+			try {
+				String url = item.getImLink();
+				//String[] path = url.split(".");
+				
+				image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getImLink())), null);
+				//String nom = path[0];
+				pane = (Pane) itP.next();
+				iv = new ImageView(image);
+				iv.setId(url);
+				iv.setFitHeight(26);
+				iv.setFitWidth(26);
+				iv.setTranslateX(3.0);
+				iv.setTranslateY(3.0);
+				//((Pane) inv_crea.getChildren().get(index)).getChildren().remove(inv_crea.);
+				pane.getChildren().add(iv);
+				index++;
+				//System.out.println(image.impl_getUrl());
+				System.out.println(iv.getId());
+				} catch (Exception e){
+					//e.printStackTrace();
+					System.out.println(DATA+item.getImLink());
+					System.out.println("Non existant");
+				}
+			System.out.println(item.getImLink());
+			//System.out.println(Main.imageExist(item));
+		}		
+		
+    }
 	
+	/*public static boolean imageExist(Item item){
+			boolean result = false;
+			try {
+				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+		         result=true;
+		    } catch (IOException e) {
+		    	//e.printStackTrace();
+				result=false;
+			}
+		return result;
+	}*/
+	
+	//Fonction renvoyant une Node contenue aux coordonn�es du GridPane indiqu� en param�tre
+	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+	    Node result = null;
+	    ObservableList<Node> childrens = gridPane.getChildren();
+
+	    for (Node node : childrens) {
+	        if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+	            result = node;
+	            break;
+	        }
+	    }
+
+	    return result;
+	}
+	
+	
+	
+	
+	//Fonction renvoyant une matrice qui contient les Pane (contenant des imageView ou non)
+	public Node[][] scan() {
+		
+		Node[][]inventaire = null;
+		
+		for(int i=0;i<28;i++) {
+			for(int j=0;j<9;j++) {				
+				inventaire[i][j] = getNodeByRowColumnIndex(i, j, inventory);
+			}
+		}
+		return inventaire;
+	}
+	
+	public static Controller returnController() {
+		return ctrll;
+	}
+	
+	//Fonction appel�e par le click de la souris sur un item du GridPane
+	/*public void coords(MouseEvent e) {
+		Node source = (Node)e.getSource() ;
+        Integer colIndex = GridPane.getColumnIndex(source);
+        Integer rowIndex = GridPane.getRowIndex(source);
+        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
+	}*/
+	
+	public boolean tempoFull() {
+    	boolean result = false;
+    	//if(tempo2.getChildren())
+    	System.out.println(tempo2);
+    	return result;
+    }
 	
 }

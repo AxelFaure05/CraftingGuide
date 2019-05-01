@@ -2,8 +2,8 @@
 
 
 #fenetre{
-  -fx-background-image: url("menu.jpg");
-  -fx-background-repeat:no-repeat;
+
+ -fx-background-repeat:no-repeat;
   -fx-background-size:cover;
 }
 

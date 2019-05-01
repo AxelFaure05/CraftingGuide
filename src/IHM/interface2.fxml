@@ -24,7 +24,7 @@
             <Image url="@../../Data/Designs/menu.png" />
          </image>
       </ImageView>
-      <Pane id="fenetre" fx:id="paneprincipal" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" stylesheets="@application.css">
+      <Pane id="fenetre" fx:id="paneprincipal" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" stylesheets="@application2.css">
          <children>
             <Button layoutX="263.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#Démarrer" prefHeight="86.0" prefWidth="474.0" style="-fx-opacity: 100;" text="Démarrer" />
             <Button layoutX="263.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#Credits" prefHeight="86.0" prefWidth="474.0" text="Credits" />

@@ -1,4 +1,4 @@
-package TestIHM;
+package IHM;
 
 import java.io.InputStream;
 

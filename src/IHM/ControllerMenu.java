@@ -1,9 +1,11 @@
 package IHM;
 
-import TestIHM.Main;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class ControllerMenu {
 
@@ -11,19 +13,21 @@ public class ControllerMenu {
     private Pane paneprincipal;
 
     @FXML
-    void Démarrer(ActionEvent event) {
-    	System.out.println("hello");
-    	//TestIHM.Main main= new Main();
+    void Démarrer(MouseEvent e) throws Exception {
+    	System.out.println("Démarrer");
+    	Main appli = new Main();
+    	Stage primaryStage = null;
+		appli.start(primaryStage);
     	
     }
 
     @FXML
-    void Credits(ActionEvent event) {
+    void Credits(MouseEvent e) {
 
     }
 
     @FXML
-    void Quitter(ActionEvent event) {
+    void Quitter(MouseEvent e) {
 
     }
 
