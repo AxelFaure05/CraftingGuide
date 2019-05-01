@@ -17,8 +17,7 @@ public class ControllerMenu {
     	System.out.println("Démarrer");
     	Main appli = new Main();
     	Stage primaryStage = null;
-		appli.start(primaryStage);
-    	
+		appli.start(primaryStage); 	
     }
 
     @FXML
