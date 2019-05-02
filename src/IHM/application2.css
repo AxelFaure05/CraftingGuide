@@ -52,6 +52,9 @@ Button:hover {
 	-fx-background-image: url("../../Data/Designs/GUI_Result.png");
 }
 
+#img{
+	-fx-background-size: cover, auto;
+}
 
 /*.tab-pane{
 	-fx-tab-width:100px;
