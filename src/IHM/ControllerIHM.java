@@ -313,6 +313,7 @@ public class ControllerIHM {
 	        	int l = coordsParent(e).y;
 	        	int m = coordsInTable(k,l)-1;
 	        	System.out.println(m);
+	        	String ID = source.getId();
 				for(int i=0;i<3;i++) {
 					if(e.getButton() == MouseButton.PRIMARY) {
 						listeTempo.get(i).getChildren().clear();
@@ -320,6 +321,7 @@ public class ControllerIHM {
 		    		ImageView ima = (ImageView) source;
 		    		Image im = ima.getImage();
 		    		ImageView iv = new ImageView(im);
+		    		iv.setId(ID);
 		    		iv.setFitHeight(90);
 					iv.setFitWidth(90);
 					iv.setTranslateX(4.0);
@@ -328,6 +330,7 @@ public class ControllerIHM {
 				}
 				Pane p1 = (Pane) table.getChildren().get(m);
 				p1.getChildren().clear();
+				System.out.println("ID="+ID);
 			}
 	    	
 			if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result")) && !(source.getParent().getId().equals("table"))) {
