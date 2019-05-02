@@ -152,18 +152,23 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 				}
 
-
+				//Je regarde si on clique dans la case du table de uncraft
 				if(id.equals("case")) {
-					if(source.getParent().getId().equals("anchorResult1")) {
-						if(sourceTarget instanceof ImageView) {
-							stackTemp = model.putInUncraftSlot(stackTemp);
-						}
-						else {
-							stackTemp = model.putInUncraftSlot(stackTemp);
-						}
+					//System.out.println("TEST");
+					//System.out.println(sourceTarget.getId());
+					try {
+						if(source.getParent().getId().equals("anchorResult1")) {
+							if(sourceTarget instanceof ImageView) {
+								stackTemp = model.putInUncraftSlot(stackTemp);
+							}
+							else {
+								stackTemp = model.putInUncraftSlot(stackTemp);
+							}
 
+						}
 					}
-
+					catch(Exception e1){
+					}
 				}
 			}
 
@@ -186,12 +191,11 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 					else {
 
-						//Si j'ai un item dans la main, et la case clique n'est pas vide, alors j'echange les deux items de place						
+						//Si j'ai un item dans la main, je pose cette item dans la case clique meme s'il y a deja un item					
 						if(sourceTarget instanceof ImageView) {							
 							model.inventaireSurvie.set(positionParent, stackTemp);
 						}
 
-						//Si la case clique est vide, alors je pose l'item dans cette case de l'inventaire
 						else {							
 							model.inventaireSurvie.set(position, stackTemp);
 
@@ -214,16 +218,15 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						}
 					}
 					else {
-						//Si j'ai un item dans la main, et que la case clique est vide, alors je pose l'item dans cette case du table de craft
+						//Si j'ai un item dans la main, je pose cette item dans la case clique meme s'il y a deja un item
 						if(sourceTarget instanceof ImageView) {
 							model.tableDeCraft.add(stackTemp, positionParent);
 						}
-						//Sinon j'echange les deux items de place
 						else {
 							model.tableDeCraft.add(stackTemp, position);
 						}
 					}
-					
+
 					model.Craft();
 					resultat = model.resultatCraft.getMatrix()[0];					
 					if(resultat != null) {
@@ -253,17 +256,90 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							stackTemp = new Stack(model.fullItemList.research(lien, true).racine(),1);
 						}
 					}
-				}				
+				}
+				//Je regarde si on clique dans la case du table de uncraft
+				if(id.equals("case")) {
+					//System.out.println("TEST");
+					//System.out.println(sourceTarget.getId());
+					try {
+						if(source.getParent().getId().equals("anchorResult1")) {
+							if(sourceTarget instanceof ImageView) {
+								model.resultatCraft.add(stackTemp, 0);
+							}
+							else {
+								model.resultatCraft.add(stackTemp, 0);
+							}
+							model.Uncraft();
+						}
+					}
+					catch(Exception e1){
+					}
+				}
 			}
 
-			if(stackTemp == null) {
-				itemEnMain = false;
+			if(e.getButton() == MouseButton.MIDDLE) {
+
+				//J'identifie si nous cliquons dans l'inventaire
+				if(id.equals("inventory")||id.equals("inventory1")||id.equals("inventory2")) {
+
+					//Ceci sont les coordonnées dans l'inventaire de la ou on clique, dependant si on clique sur un image ou une case vide
+					Integer position = cIHM.coordsToPosition(coord.x, coord.y)-1;
+					Integer positionParent = cIHM.coordsToPosition(coordParent.x, coordParent.y)-1;
+
+					//J'efface l'item dans la case clique
+					if(sourceTarget instanceof ImageView) {									
+						model.inventaireSurvie.set(positionParent, null);
+					}
+				}
+
+				//Je regarde si on clique sur la table de craft
+				if(id.equals("table")) {
+
+					Integer position = cIHM.coordsInTable(coord.x, coord.y)-1;
+					Integer positionParent = cIHM.coordsInTable(coordParent.x, coordParent.y)-1;
+
+					//Je regarde si j'ai deja un item dans la main oui ou non
+
+
+					//Je supprime l'item a la case clique
+					if(sourceTarget instanceof ImageView) {
+						model.tableDeCraft.add(null, positionParent);
+					}
+				}				
+				resultat = model.resultatCraft.getMatrix()[0];
+				if(resultat != null) {
+					try {
+						this.cIHM.afficheResult(resultat.getItem().getImLink());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+
+				//Je regarde si on clique dans la case du table de uncraft
+				if(id.equals("case")) {
+					//System.out.println("TEST");
+					//System.out.println(sourceTarget.getId());
+					try {
+						if(source.getParent().getId().equals("anchorResult1")) {
+							if(sourceTarget instanceof ImageView) {
+								model.resultatCraft.add(null,0);
+							}
+						}
+					}
+					catch(Exception e1){
+					}
+				}
 			}
-			else {
-				itemEnMain= true;
-			}
+		}				
+
+		if(stackTemp == null) {
+			itemEnMain = false;
+		}
+		else {
+			itemEnMain= true;
 		}
 	}
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 	}
