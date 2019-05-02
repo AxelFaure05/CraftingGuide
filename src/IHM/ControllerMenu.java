@@ -132,7 +132,6 @@ public void creerItemsBase() throws IOException {
 		creerItemsBase();
 		
 		
-		
 		stage.setScene(scene);
 		
 		}

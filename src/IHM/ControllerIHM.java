@@ -31,7 +31,7 @@ import javafx.scene.paint.Color;
 
 public class ControllerIHM {
 	
-//	Controller ctrl = Main.returnController();
+	Controller ctrl = Main.returnController();
 
 	   @FXML
 	    private Pane paneprincipal;
@@ -130,7 +130,7 @@ public class ControllerIHM {
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
     
     public void leftClick(MouseEvent e) {
-    	//ctrl.detectClick(e);
+    	ctrl.detectClick(e);
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
     	listeTempo.add(tempo2);
@@ -479,6 +479,7 @@ public class ControllerIHM {
 		iv.setTranslateX(3.0);
 		iv.setTranslateY(3.0);
 		//try {
+		setresult(result);
 		result.getChildren().add(iv);
 		/*}catch(Exception e) {
 			System.out.println("ERREUR");
