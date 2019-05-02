@@ -50,6 +50,7 @@ public class Main extends Application{
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
 	Pane result;
+	public static boolean menuFermee=false;
 	static Map<String, Object> namespace;
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
@@ -59,7 +60,9 @@ public class Main extends Application{
 		Application.launch(args);
 	}
 	
-	
+	public static boolean menuferm() {
+		return !menuFermee;
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
@@ -75,6 +78,10 @@ public class Main extends Application{
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
+			if (menuFermee==true) {
+				primaryStage.close();
+				menuFermee=false;
+			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -83,7 +90,7 @@ public class Main extends Application{
 		
 	}
 	
-
+/*
 	public void crafting(Stage primaryStage) throws Exception {
 		try {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
@@ -126,7 +133,8 @@ public class Main extends Application{
 		
 	}
 	
-	
+	*/
+	/*
 	public void creerItemsBase() throws IOException {
 		
 		Iterator<Item> it = modl.fullItemList.iterator();
@@ -169,7 +177,7 @@ public class Main extends Application{
 			//System.out.println(Main.imageExist(item));
 		}		
 		
-    }
+    }*/
 	
 	/*public static boolean imageExist(Item item){
 			boolean result = false;

@@ -1,5 +1,19 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+Button {
+  -fx-border-color: black;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-font-size:35px;
+   -fx-background-radius: 0;
+   -fx-background-color: #727272
+
+}
+Button:hover {
+
+  -fx-font-size:45px;
+  -fx-background-color: #404751;
+}
 
 #fenetre{
 

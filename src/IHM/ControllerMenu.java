@@ -94,15 +94,13 @@ public void creerItemsBase() throws IOException {
     }
     
     
-    
-    
-    
-    
-    
-    
     @FXML
     void Démarrer(MouseEvent e) throws Exception {
+    	
+    	IHM.Main.menuferm();
     	System.out.println("Démarrer");
+    	
+	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		namespace = loader.getNamespace();
@@ -133,20 +131,29 @@ public void creerItemsBase() throws IOException {
 		
 		creerItemsBase();
 		
-		//Finalisation du setup de la fenï¿½tre
-	//	primaryStage.setTitle("Crafting Guide");
-		//primaryStage.setScene(scene);
+		
 		
 		stage.setScene(scene);
-	//	primaryStage.show();
 		
 		}
 	
     
 
-    @FXML
-    void Credits(MouseEvent e) {
+    
 
+
+	@FXML
+    void Credits(MouseEvent e) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface3.fxml"));
+		Parent root = loader.load();
+		namespace = loader.getNamespace();
+		 Stage stage = new Stage();
+         stage.setTitle("Table de Crafting");      
+        stage.show();
+		root.setId("fenetre");	
+		Scene scene = new Scene(root);
+		
+		stage.setScene(scene);
     }
 
     @FXML
