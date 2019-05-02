@@ -51,7 +51,6 @@ public class Main extends Application{
 	Pane tempo2 = ctrl.returntempo2();
 	Pane result;
 	static Map<String, Object> namespace;
-	public boolean x=false;
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
 	public final static String DATA = "./Data/Designs/Items/";
@@ -60,9 +59,7 @@ public class Main extends Application{
 		Application.launch(args);
 	}
 	
-	public void demarrage() {
-		Application.launch();
-	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
