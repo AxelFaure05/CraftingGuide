@@ -60,6 +60,10 @@ public class Main extends Application{
 		Application.launch(args);
 	}
 	
+	public void demarrage() {
+		Application.launch();
+	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {

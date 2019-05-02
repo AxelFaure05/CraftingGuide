@@ -13,12 +13,11 @@ public class ControllerMenu {
     private Pane paneprincipal;
 
     @FXML
-    void Démarrer(MouseEvent e) throws Exception {
-    	System.out.println("Démarrer");
+    void Dï¿½marrer(MouseEvent e) throws Exception {
+    	System.out.println("Dï¿½marrer");
     	Main appli = new Main();
-    	
-		appli.launch();
-    	
+    	Stage primaryStage = null;
+		appli.start(primaryStage);
     }
 
     @FXML
