@@ -153,278 +153,309 @@ public class ControllerIHM {
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
-    	//Si on tient un item et que la source ne vient pas de inventory crea
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1")) && !(source.getId().equals("result"))) {
-    		System.out.println("cdt 1");
-    		for(int i=0;i<3;i++) {
-    			ImageView ima = (ImageView) tempo2.getChildren().get(0);
-    			Image im = ima.getImage();
-    			if(e.getButton() == MouseButton.PRIMARY) {
-    				listeTempo.get(i).getChildren().clear();
-    			}
-	    		ImageView iv = new ImageView(im);
-	    		String ID = ima.getId();
-	    		iv.setId(ID);
-	    		iv.setFitHeight(36);
-				iv.setFitWidth(36);
-				iv.setTranslateX(4.0);
-				iv.setTranslateY(4.0);
-
-				GridPane grid = listeInventaires.get(i);
-				Pane p1 = (Pane) grid.getChildren().get(z-1);
-				p1.getChildren().add(iv);
-    		}	
-    		return;
-    	}
+    	if(!(e.getButton() == MouseButton.MIDDLE)) {
     	
-    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty())) {
-    		System.out.println("cdt7");
-    		ImageView imA = (ImageView) tempo2.getChildren().get(0);
-    		String iD = imA.getId();    		
-    		
-    		for(int i=0;i<3;i++) {
-    			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
-    			ImageView ima = (ImageView) source;
-	    		Image im = ima.getImage();
-	    		ImageView iv = new ImageView(im);
-	    		String ID = ima.getId();
-	    		iv.setId(ID);
-	    		
-	    		iv.setFitHeight(86);
-				iv.setFitWidth(86);
-				iv.setTranslateX(4.0);
-				iv.setTranslateY(4.0);
-				
-				Image iM = imA.getImage();
-				ImageView iV = new ImageView(iM);
-				
-				iV.setId(iD);
-				iV.setFitHeight(36);
-				iV.setFitWidth(36);
-				iV.setTranslateX(4.0);
-				iV.setTranslateY(4.0);
-    		
-    			p1.getChildren().clear();
-    			p1.getChildren().add(iV);
-    			if(e.getButton() == MouseButton.PRIMARY) {
-    				listeTempo.get(i).getChildren().clear();
-    			}
-    			listeTempo.get(i).getChildren().add(iv);
-    		}
-    	}
-    	
-    	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
-    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && tempo.getChildren().isEmpty()) {
-    		System.out.println("cdt2");
-    		System.out.println("---");
-    		for(int i=0;i<3;i++) {
-    			
-    			GridPane grid = listeInventaires.get(i);
-    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
-    			ImageView ima = (ImageView) source;
-	    		Image im = ima.getImage();
-	    		ImageView iv = new ImageView(im);
-	    		String ID = ima.getId();
-	    		iv.setId(ID);
-	    		
-	    		iv.setFitHeight(85);
-				iv.setFitWidth(85);
-				iv.setTranslateX(4.0);
-				iv.setTranslateY(4.0);
-				
-    			p1.getChildren().clear();
-    			listeTempo.get(i).getChildren().add(iv);
-    		}
-    	}
-    	
-    	//Si on tient un item et qu'on clique dans la table de craft
-    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && source.getParent().getId().equals("table")) {
-    		System.out.println("cdt4");
-    		
-    		int k = coordsTable(e).x;
-        	int l = coordsTable(e).y;
-        	int m = coordsInTable(k,l)-1;
-    		
-    		ImageView ima = (ImageView) tempo2.getChildren().get(0);
-    		Image im = ima.getImage();
-    		//System.out.println("1");
-    		GridPane grid = table;
-    		Pane p1 = (Pane) grid.getChildren().get(m);
-    		p1.getChildren().clear();
-    		if(e.getButton() == MouseButton.PRIMARY) {
+	    	//Si on tient un item et que la source ne vient pas de inventory crea
+	    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1")) && !(source.getId().equals("result"))) {
+	    		System.out.println("cdt 1");
 	    		for(int i=0;i<3;i++) {
-	    			listeTempo.get(i).getChildren().clear();
+	    			ImageView ima = (ImageView) tempo2.getChildren().get(0);
+	    			Image im = ima.getImage();
+	    			if(e.getButton() == MouseButton.PRIMARY) {
+	    				listeTempo.get(i).getChildren().clear();
+	    			}
+		    		ImageView iv = new ImageView(im);
+		    		String ID = ima.getId();
+		    		iv.setId(ID);
+		    		iv.setFitHeight(36);
+					iv.setFitWidth(36);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
+	
+					GridPane grid = listeInventaires.get(i);
+					Pane p1 = (Pane) grid.getChildren().get(z-1);
+					p1.getChildren().add(iv);
 	    		}	
-    		}
-    		//System.out.println("2");
-    		ImageView iv = new ImageView(im);
-    		String ID = ima.getId();
-    		iv.setId(ID);
-	    	iv.setFitHeight(86);
-			iv.setFitWidth(86);
-			iv.setTranslateX(4.0);
-			iv.setTranslateY(4.0);
-			
-    		p1.getChildren().add(iv);
-    		//System.out.println("3");
-    	}
-		
-		if(source instanceof ImageView && p.getParent().getId().equals("table") && !(listeTempo.get(0).getChildren().isEmpty())) {
-			System.out.println("cdt10");
-			ImageView imA = (ImageView) tempo2.getChildren().get(0);
-				Image iM = imA.getImage();
-				ImageView iV = new ImageView(iM);
-				String iD = imA.getId();
-			    iV.setId(iD);
-			    iV.setFitHeight(80);
-				iV.setFitWidth(80);
-				iV.setTranslateX(6.0);
-				iV.setTranslateY(6.0);
-			for(int i=0;i<3;i++) {
-    			listeTempo.get(i).getChildren().clear();
-	    		ImageView ima = (ImageView) source;
-	    		Image im = ima.getImage();
-	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(80);
-				iv.setFitWidth(80);
-				iv.setTranslateX(6.0);
-				iv.setTranslateY(6.0);
-				//((Pane) listeTempo.get(i)).getChildren().clear();;
-				((Pane) listeTempo.get(i)).getChildren().add(iv);
-				
-				
-			}
-				
-				Pane p1 = (Pane) source.getParent();
-				p1.getChildren().clear();
-				p1.getChildren().add(iV);
-		}
-		
-    	if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
-			System.out.println("cdt5");
-			int k = coordsParent(e).x;
-        	int l = coordsParent(e).y;
-        	int m = coordsInTable(k,l)-1;
-        	System.out.println(m);
-			for(int i=0;i<3;i++) {
-    			listeTempo.get(i).getChildren().clear();
-	    		ImageView ima = (ImageView) source;
-	    		Image im = ima.getImage();
-	    		ImageView iv = new ImageView(im);
-	    		iv.setFitHeight(90);
-				iv.setFitWidth(90);
-				iv.setTranslateX(4.0);
-				iv.setTranslateY(4.0);
-				((Pane) listeTempo.get(i)).getChildren().add(iv);
-			}
-			Pane p1 = (Pane) table.getChildren().get(m);
-			p1.getChildren().clear();
-		}
-    	
-		if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result"))) {
-			System.out.println("cdt6");
-			ImageView ima = (ImageView) tempo2.getChildren().get(0);
-    		Image im = ima.getImage();
-    		result1.getChildren().clear();
-			for(int i=0;i<3;i++) {
-    			listeTempo.get(i).getChildren().clear();
-    		}
-			ImageView iv = new ImageView(im);
-			String ID = ima.getId();
-    		iv.setId(ID);
-    		iv.setFitHeight(86);
-			iv.setFitWidth(86);
-			iv.setTranslateX(4.0);
-			iv.setTranslateY(4.0);
-			result1.getChildren().add(iv);
-		}
-		
-		if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
-			System.out.println("cdt8");
-			ImageView ima =  (ImageView) tempo2.getChildren().get(0);
-	    	Image im = ima.getImage();
-	    	ImageView iv = new ImageView(im);
-	    	String ID = ima.getId();
-	    	iv.setId(ID);
-	    	iv.setFitHeight(86);
-			iv.setFitWidth(86);
-			iv.setTranslateX(4.0);
-			iv.setTranslateY(4.0);
-			for(int i=0;i<3;i++) {
-				((Pane) listeTempo.get(i)).getChildren().clear();
-			}
-			result1.getChildren().add(iv);
-		}
-		
-		if(source instanceof ImageView && p.getParent().getId().equals("anchorResult1")) {
-			System.out.println("cdt9");
-			if(listeTempo.get(0).getChildren().isEmpty()) {
-				for(int i=0;i<3;i++) {
-					ImageView ima = (ImageView) source;
+	    		return;
+	    	}
+	    	
+	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty())) {
+	    		System.out.println("cdt7");
+	    		ImageView imA = (ImageView) tempo2.getChildren().get(0);
+	    		String iD = imA.getId();    		
+	    		
+	    		for(int i=0;i<3;i++) {
+	    			GridPane grid = listeInventaires.get(i);
+	    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
+	    			ImageView ima = (ImageView) source;
 		    		Image im = ima.getImage();
 		    		ImageView iv = new ImageView(im);
 		    		String ID = ima.getId();
 		    		iv.setId(ID);
-		    		iv.setFitHeight(86);
-					iv.setFitWidth(86);
-					iv.setTranslateX(4.0);
-					iv.setTranslateY(4.0);
-				
-					((Pane) listeTempo.get(i)).getChildren().add(iv);
-				}
-				result1.getChildren().clear();
-			}
-			else {
-				
-				for(int i=0;i<3;i++) {
-					ImageView ima = (ImageView) source;
-					Image im = ima.getImage();
-		    		ImageView iv = new ImageView(im);
-		    		String ID = ima.getId();
-		    		iv.setId(ID);
+		    		
 		    		iv.setFitHeight(86);
 					iv.setFitWidth(86);
 					iv.setTranslateX(4.0);
 					iv.setTranslateY(4.0);
 					
-					ImageView imA = (ImageView) tempo2.getChildren().get(0);
+					Image iM = imA.getImage();
+					ImageView iV = new ImageView(iM);
+					
+					iV.setId(iD);
+					iV.setFitHeight(36);
+					iV.setFitWidth(36);
+					iV.setTranslateX(4.0);
+					iV.setTranslateY(4.0);
+	    		
+	    			p1.getChildren().clear();
+	    			p1.getChildren().add(iV);
+	    			if(e.getButton() == MouseButton.PRIMARY) {
+	    				listeTempo.get(i).getChildren().clear();
+	    			}
+	    			listeTempo.get(i).getChildren().add(iv);
+	    		}
+	    	}
+	    	
+	    	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
+	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && tempo.getChildren().isEmpty()) {
+	    		System.out.println("cdt2");
+	    		System.out.println("---");
+	    		for(int i=0;i<3;i++) {
+	    			
+	    			GridPane grid = listeInventaires.get(i);
+	    			Pane p1 = (Pane) grid.getChildren().get(posParent-1);
+	    			ImageView ima = (ImageView) source;
+		    		Image im = ima.getImage();
+		    		ImageView iv = new ImageView(im);
+		    		String ID = ima.getId();
+		    		iv.setId(ID);
+		    		
+		    		iv.setFitHeight(85);
+					iv.setFitWidth(85);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
+					
+	    			p1.getChildren().clear();
+	    			listeTempo.get(i).getChildren().add(iv);
+	    		}
+	    	}
+	    	
+	    	//Si on tient un item et qu'on clique dans la table de craft
+	    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && source.getParent().getId().equals("table")) {
+	    		System.out.println("cdt4");
+	    		
+	    		int k = coordsTable(e).x;
+	        	int l = coordsTable(e).y;
+	        	int m = coordsInTable(k,l)-1;
+	    		
+	    		ImageView ima = (ImageView) tempo2.getChildren().get(0);
+	    		Image im = ima.getImage();
+	    		//System.out.println("1");
+	    		GridPane grid = table;
+	    		Pane p1 = (Pane) grid.getChildren().get(m);
+	    		p1.getChildren().clear();
+	    		if(e.getButton() == MouseButton.PRIMARY) {
+		    		for(int i=0;i<3;i++) {
+		    			listeTempo.get(i).getChildren().clear();
+		    		}	
+	    		}
+	    		//System.out.println("2");
+	    		ImageView iv = new ImageView(im);
+	    		String ID = ima.getId();
+	    		iv.setId(ID);
+		    	iv.setFitHeight(86);
+				iv.setFitWidth(86);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
+				
+	    		p1.getChildren().add(iv);
+	    		//System.out.println("3");
+	    	}
+			
+			if(source instanceof ImageView && p.getParent().getId().equals("table") && !(listeTempo.get(0).getChildren().isEmpty())) {
+				System.out.println("cdt10");
+				ImageView imA = (ImageView) tempo2.getChildren().get(0);
 					Image iM = imA.getImage();
 					ImageView iV = new ImageView(iM);
 					String iD = imA.getId();
 				    iV.setId(iD);
-				    iV.setFitHeight(86);
-					iV.setFitWidth(86);
-					iV.setTranslateX(4.0);
-					iV.setTranslateY(4.0);
-					
-					((Pane) listeTempo.get(i)).getChildren().clear();
+				    iV.setFitHeight(80);
+					iV.setFitWidth(80);
+					iV.setTranslateX(6.0);
+					iV.setTranslateY(6.0);
+				for(int i=0;i<3;i++) {
+					if(e.getButton() == MouseButton.PRIMARY) {
+						listeTempo.get(i).getChildren().clear();
+					}
+		    		ImageView ima = (ImageView) source;
+		    		Image im = ima.getImage();
+		    		ImageView iv = new ImageView(im);
+		    		iv.setFitHeight(80);
+					iv.setFitWidth(80);
+					iv.setTranslateX(6.0);
+					iv.setTranslateY(6.0);
+					//((Pane) listeTempo.get(i)).getChildren().clear();;
 					((Pane) listeTempo.get(i)).getChildren().add(iv);
+					
+					
+				}
+					
+					Pane p1 = (Pane) source.getParent();
+					p1.getChildren().clear();
+					p1.getChildren().add(iV);
+			}
+			
+	    	if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
+				System.out.println("cdt5");
+				int k = coordsParent(e).x;
+	        	int l = coordsParent(e).y;
+	        	int m = coordsInTable(k,l)-1;
+	        	System.out.println(m);
+				for(int i=0;i<3;i++) {
+					if(e.getButton() == MouseButton.PRIMARY) {
+						listeTempo.get(i).getChildren().clear();
+					}
+		    		ImageView ima = (ImageView) source;
+		    		Image im = ima.getImage();
+		    		ImageView iv = new ImageView(im);
+		    		iv.setFitHeight(90);
+					iv.setFitWidth(90);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
+					((Pane) listeTempo.get(i)).getChildren().add(iv);
+				}
+				Pane p1 = (Pane) table.getChildren().get(m);
+				p1.getChildren().clear();
+			}
+	    	
+			if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result"))) {
+				System.out.println("cdt6");
+				ImageView ima = (ImageView) tempo2.getChildren().get(0);
+	    		Image im = ima.getImage();
+	    		result1.getChildren().clear();
+				for(int i=0;i<3;i++) {
+					if(e.getButton() == MouseButton.PRIMARY) {
+						listeTempo.get(i).getChildren().clear();
+					}
+	    		}
+				ImageView iv = new ImageView(im);
+				String ID = ima.getId();
+	    		iv.setId(ID);
+	    		iv.setFitHeight(86);
+				iv.setFitWidth(86);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
+				result1.getChildren().add(iv);
+			}
+			
+			if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
+				System.out.println("cdt8");
+				ImageView ima =  (ImageView) tempo2.getChildren().get(0);
+		    	Image im = ima.getImage();
+		    	ImageView iv = new ImageView(im);
+		    	String ID = ima.getId();
+		    	iv.setId(ID);
+		    	iv.setFitHeight(86);
+				iv.setFitWidth(86);
+				iv.setTranslateX(4.0);
+				iv.setTranslateY(4.0);
+				for(int i=0;i<3;i++) {
+					if(e.getButton() == MouseButton.PRIMARY) {
+						((Pane) listeTempo.get(i)).getChildren().clear();
+					}
+				}
+				result1.getChildren().add(iv);
+			}
+			
+			if(source instanceof ImageView && p.getParent().getId().equals("anchorResult1")) {
+				System.out.println("cdt9");
+				if(listeTempo.get(0).getChildren().isEmpty()) {
+					for(int i=0;i<3;i++) {
+						ImageView ima = (ImageView) source;
+			    		Image im = ima.getImage();
+			    		ImageView iv = new ImageView(im);
+			    		String ID = ima.getId();
+			    		iv.setId(ID);
+			    		iv.setFitHeight(86);
+						iv.setFitWidth(86);
+						iv.setTranslateX(4.0);
+						iv.setTranslateY(4.0);
+					
+						((Pane) listeTempo.get(i)).getChildren().add(iv);
+					}
 					result1.getChildren().clear();
-					result1.getChildren().add(iV);
+				}
+				
+				else {
+					
+					for(int i=0;i<3;i++) {
+						ImageView ima = (ImageView) source;
+						Image im = ima.getImage();
+			    		ImageView iv = new ImageView(im);
+			    		String ID = ima.getId();
+			    		iv.setId(ID);
+			    		iv.setFitHeight(86);
+						iv.setFitWidth(86);
+						iv.setTranslateX(4.0);
+						iv.setTranslateY(4.0);
+						
+						ImageView imA = (ImageView) tempo2.getChildren().get(0);
+						Image iM = imA.getImage();
+						ImageView iV = new ImageView(iM);
+						String iD = imA.getId();
+					    iV.setId(iD);
+					    iV.setFitHeight(86);
+						iV.setFitWidth(86);
+						iV.setTranslateX(4.0);
+						iV.setTranslateY(4.0);
+						
+						if(e.getButton() == MouseButton.PRIMARY) {
+							((Pane) listeTempo.get(i)).getChildren().clear();
+						}
+						((Pane) listeTempo.get(i)).getChildren().add(iv);
+						result1.getChildren().clear();
+						result1.getChildren().add(iV);
+					}
 				}
 			}
-		}
-    	
+	    	
+	    	else {
+	    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") /*|| p.getParent().getId().equals("anchorResult1")*/)) {
+	    			System.out.println("cdt3");
+	        		for(int i=0;i<3;i++) {
+	        			listeTempo.get(i).getChildren().clear();
+	    	    		ImageView ima = (ImageView) source;
+	    	    		Image im = ima.getImage();
+	    	    		ImageView iv = new ImageView(im);
+	    	    		String ID = ima.getId();
+	    	    		iv.setId(ID);
+	    	    		iv.setFitHeight(86);
+	    				iv.setFitWidth(86);
+	    				iv.setTranslateX(4.0);
+	    				iv.setTranslateY(4.0);
+	    				((Pane) listeTempo.get(i)).getChildren().add(iv);
+	        		}
+	        		//result1.getChildren().clear();
+	        	}
+	    	}
+    	}
     	else {
-    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") /*|| p.getParent().getId().equals("anchorResult1")*/)) {
-    			System.out.println("cdt3");
-        		for(int i=0;i<3;i++) {
-        			listeTempo.get(i).getChildren().clear();
-    	    		ImageView ima = (ImageView) source;
-    	    		Image im = ima.getImage();
-    	    		ImageView iv = new ImageView(im);
-    	    		String ID = ima.getId();
-    	    		iv.setId(ID);
-    	    		iv.setFitHeight(86);
-    				iv.setFitWidth(86);
-    				iv.setTranslateX(4.0);
-    				iv.setTranslateY(4.0);
-    				((Pane) listeTempo.get(i)).getChildren().add(iv);
-        		}
-        		//result1.getChildren().clear();
-        	}
-    	}	
+    		if(source instanceof ImageView && !(p.getParent().getId().equals("inventory_crea"))) {
+    			System.out.println("Clear");
+    			if(p.getParent().getId().equals("inventory") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory2")) {
+    				System.out.println("On est dans un inventaire");
+    				for(int i=0;i<3;i++) {
+    					GridPane grid = listeInventaires.get(i);
+    					Pane p1 = (Pane) grid.getChildren().get(posParent-1);
+    					p1.getChildren().clear();
+    				}
+    			}
+    			else {
+	    			Pane p1 = (Pane) source.getParent();
+	    			p1.getChildren().clear();
+    			}
+    		}
+    	}
     }
     
     public void afficheResult(String link) throws IOException{

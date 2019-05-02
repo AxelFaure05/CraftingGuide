@@ -13,7 +13,7 @@ public class ControllerMenu {
     private Pane paneprincipal;
 
     @FXML
-    void D�marrer(MouseEvent e) throws Exception {
+    void Demarrer(MouseEvent e) throws Exception {
     	System.out.println("D�marrer");
     	Main appli = new Main();
     	Stage primaryStage = null;

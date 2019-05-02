@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
@@ -17,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IHM.ControllerIHM">
+<Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IHM.ControllerIHM">
    <children>
       <TabPane prefHeight="700.0" prefWidth="1000.0" styleClass="tabPane" stylesheets="@application.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -457,7 +452,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="475.0" layoutY="257.0" prefHeight="94.0" prefWidth="94.0">
                            <children>
-                              <Pane id="case" fx:id="tempo2" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="31.0" prefWidth="31.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="tempo2" minHeight="26.0" minWidth="27.0" onMouseClicked="#leftClick" prefHeight="31.0" prefWidth="31.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -629,7 +624,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="156.0" layoutY="479.0" prefHeight="92.0" prefWidth="92.0">
                            <children>
-                              <Pane id="case" fx:id="tempo" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="92.0" prefWidth="92.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="tempo" minHeight="26.0" minWidth="27.0" onMouseClicked="#leftClick" prefHeight="92.0" prefWidth="92.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -801,7 +796,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="156.0" layoutY="479.0" prefHeight="92.0" prefWidth="92.0">
                            <children>
-                              <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#resultClicked" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Pane id="case" fx:id="tempo1" minHeight="26.0" minWidth="27.0" onMouseClicked="#leftClick" prefHeight="28.0" prefWidth="27.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </children>
