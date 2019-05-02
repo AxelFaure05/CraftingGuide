@@ -16,12 +16,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-import TestIHM.Main;
+import IHM.Main;
 import Modele.Modele;
 import Modele.Composants.Item;
 import Modele.Composants.Stack;
-import TestIHM.ControllerIHM;
-import TestIHM.ControllerIHM.CouplePerso;
+import IHM.ControllerIHM;
+import IHM.ControllerIHM.CouplePerso;
 
 public class Controller implements ActionListener,ItemListener, Observer {
 	Modele model;
@@ -38,8 +38,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 		this.cIHM = c;
 
 
-		Item testI = new Item(10,"objet","objet",true);
-		Stack test = new Stack(testI,1);
+		//Item testI = new Item(10,"objet","objet",true);
+		//Stack test = new Stack(testI,1);
 		//model.inventaireSurvie.set(2, test);
 		//model.inventaireSurvie.set(3, test);
 	}
@@ -151,8 +151,22 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						}
 					}
 				}
+
+
+				if(id.equals("case")) {
+					if(source.getParent().getId().equals("anchorResult1")) {
+						if(sourceTarget instanceof ImageView) {
+							stackTemp = model.putInUncraftSlot(stackTemp);
+						}
+						else {
+							stackTemp = model.putInUncraftSlot(stackTemp);
+						}
+
+					}
+
+				}
 			}
-			
+
 			//J'identifie le click de sourie
 			if(e.getButton() == MouseButton.SECONDARY) {
 
@@ -209,7 +223,9 @@ public class Controller implements ActionListener,ItemListener, Observer {
 							model.tableDeCraft.add(stackTemp, position);
 						}
 					}
-					resultat = model.resultatCraft.getMatrix()[0];
+					
+					model.Craft();
+					resultat = model.resultatCraft.getMatrix()[0];					
 					if(resultat != null) {
 						try {
 							this.cIHM.afficheResult(resultat.getItem().getImLink());
@@ -239,7 +255,7 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 				}				
 			}
-			
+
 			if(stackTemp == null) {
 				itemEnMain = false;
 			}
