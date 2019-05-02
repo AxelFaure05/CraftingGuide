@@ -179,7 +179,7 @@ public class ControllerIHM {
 	    		return;
 	    	}
 	    	
-	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty())) {
+	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty()) && !(p.getId().equals("result"))) {
 	    		System.out.println("cdt7");
 	    		ImageView imA = (ImageView) tempo2.getChildren().get(0);
 	    		String iD = imA.getId();    		
@@ -267,22 +267,23 @@ public class ControllerIHM {
 				iv.setFitWidth(86);
 				iv.setTranslateX(4.0);
 				iv.setTranslateY(4.0);
-				
+				System.out.println("ID="+ID);
 	    		p1.getChildren().add(iv);
 	    		//System.out.println("3");
 	    	}
 			
 			if(source instanceof ImageView && p.getParent().getId().equals("table") && !(listeTempo.get(0).getChildren().isEmpty())) {
+				result.getChildren().clear();
 				System.out.println("cdt10");
 				ImageView imA = (ImageView) tempo2.getChildren().get(0);
-					Image iM = imA.getImage();
-					ImageView iV = new ImageView(iM);
-					String iD = imA.getId();
-				    iV.setId(iD);
-				    iV.setFitHeight(80);
-					iV.setFitWidth(80);
-					iV.setTranslateX(6.0);
-					iV.setTranslateY(6.0);
+				Image iM = imA.getImage();
+				ImageView iV = new ImageView(iM);
+				String iD = imA.getId();
+				iV.setId(iD);
+				iV.setFitHeight(80);
+				iV.setFitWidth(80);
+				iV.setTranslateX(6.0);
+				iV.setTranslateY(6.0);
 				for(int i=0;i<3;i++) {
 					if(e.getButton() == MouseButton.PRIMARY) {
 						listeTempo.get(i).getChildren().clear();
@@ -307,10 +308,12 @@ public class ControllerIHM {
 			
 	    	if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
 				System.out.println("cdt5");
+				result.getChildren().clear();
 				int k = coordsParent(e).x;
 	        	int l = coordsParent(e).y;
 	        	int m = coordsInTable(k,l)-1;
 	        	System.out.println(m);
+	        	String ID = source.getId();
 				for(int i=0;i<3;i++) {
 					if(e.getButton() == MouseButton.PRIMARY) {
 						listeTempo.get(i).getChildren().clear();
@@ -318,6 +321,7 @@ public class ControllerIHM {
 		    		ImageView ima = (ImageView) source;
 		    		Image im = ima.getImage();
 		    		ImageView iv = new ImageView(im);
+		    		iv.setId(ID);
 		    		iv.setFitHeight(90);
 					iv.setFitWidth(90);
 					iv.setTranslateX(4.0);
@@ -326,9 +330,10 @@ public class ControllerIHM {
 				}
 				Pane p1 = (Pane) table.getChildren().get(m);
 				p1.getChildren().clear();
+				System.out.println("ID="+ID);
 			}
 	    	
-			if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result"))) {
+			if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result")) && !(source.getParent().getId().equals("table"))) {
 				System.out.println("cdt6");
 				ImageView ima = (ImageView) tempo2.getChildren().get(0);
 	    		Image im = ima.getImage();
@@ -458,6 +463,11 @@ public class ControllerIHM {
     	}
     }
     
+    public void clearResult() {
+    	System.out.println("Clearing crafting result");
+    	result.getChildren().clear();
+    }
+    
     public void afficheResult(String link) throws IOException{
     	System.out.println("Affichage du résultat du Craft");
 		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+link)), null);
@@ -491,6 +501,7 @@ public class ControllerIHM {
     		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
 			p1.getChildren().clear();
     		p1.getChildren().add(iv);
+    		System.out.println(ID);
     	}
     }
     
