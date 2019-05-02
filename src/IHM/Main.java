@@ -41,7 +41,7 @@ public class Main extends Application{
 	private BorderPane layout;
 	static Modele modl = new Modele();
 	static ControllerIHM ctrl = new ControllerIHM();
-	static Controller ctrll = new Controller(modl,ctrl);
+	//static Controller ctrll = new Controller(modl,ctrl);
 	GridPane inventory = ctrl.returnInventaire();
 	GridPane inventory1 = ctrl.returnInventaire1();
 	GridPane inventory2 = ctrl.returnInventaire2();
@@ -51,7 +51,7 @@ public class Main extends Application{
 	Pane tempo2 = ctrl.returntempo2();
 	Pane result;
 	static Map<String, Object> namespace;
-
+	public boolean x=false;
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
 	
 	public final static String DATA = "./Data/Designs/Items/";
@@ -63,9 +63,31 @@ public class Main extends Application{
 	public void demarrage() {
 		Application.launch();
 	}
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("interface2.fxml"));
+			Parent root = loader.load();
+			namespace = loader.getNamespace();
+			
+			root.setId("fenetre");
+			Scene scene = new Scene(root);
+			primaryStage.setResizable(false);
+			
+			primaryStage.setTitle("Crafting Guide");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(tempoFull());
+		
+	}
+	
+
+	public void crafting(Stage primaryStage) throws Exception {
 		try {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
@@ -85,10 +107,10 @@ public class Main extends Application{
 		
 		System.out.println(result);
 		ctrl.setresult(result);
-		/*inventaires.add(inventory);
-		inventaires.add(inventory1);
-		inventaires.add(inventory2);
-		inventaires.add(inv_crea);*/
+		//inventaires.add(inventory);
+		//inventaires.add(inventory1);
+		//inventaires.add(inventory2);
+		//inventaires.add(inv_crea);
 		
 		System.out.println(inventaires);
 		
@@ -106,6 +128,7 @@ public class Main extends Application{
 		System.out.println(tempoFull());
 		
 	}
+	
 	
 	public void creerItemsBase() throws IOException {
 		
@@ -194,9 +217,9 @@ public class Main extends Application{
 		return inventaire;
 	}
 	
-	public static Controller returnController() {
-		return ctrll;
-	}
+//	public static Controller returnController() {
+	//	return ctrll;
+	//}
 	
 	//Fonction appel�e par le click de la souris sur un item du GridPane
 	/*public void coords(MouseEvent e) {

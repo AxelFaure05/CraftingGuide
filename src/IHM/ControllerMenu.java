@@ -1,6 +1,7 @@
 package IHM;
-
+import IHM.Main;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -13,11 +14,11 @@ public class ControllerMenu {
     private Pane paneprincipal;
 
     @FXML
-    void Demarrer(MouseEvent e) throws Exception {
-    	System.out.println("Dï¿½marrer");
-    	Main appli = new Main();
-    	Stage primaryStage = null;
-		appli.start(primaryStage);
+    void Démarrer(MouseEvent e) throws Exception {
+    	System.out.println("Démarrer");
+    	Stage primaryStage;
+		//Main.crafting(primaryStage);
+	
     }
 
     @FXML
@@ -27,7 +28,7 @@ public class ControllerMenu {
 
     @FXML
     void Quitter(MouseEvent e) {
-
+    	Platform.exit();
     }
 
 }
