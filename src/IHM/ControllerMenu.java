@@ -16,8 +16,8 @@ public class ControllerMenu {
     void Démarrer(MouseEvent e) throws Exception {
     	System.out.println("Démarrer");
     	Main appli = new Main();
-    	Stage primaryStage = null;
-		appli.start(primaryStage);
+    	
+		appli.launch();
     	
     }
 
