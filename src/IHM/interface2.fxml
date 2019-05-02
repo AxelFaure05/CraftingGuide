@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="598.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IHM.ControllerMenu">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IHM.ControllerMenu">
    <children>
-      <ImageView fitHeight="598.0" fitWidth="1034.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="647.0" fitWidth="1025.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Data/Designs/Background.jpg" />
+            <Image url="@../../Data/Designs/menu.png" />
          </image>
       </ImageView>
-      <Pane id="fenetre" fx:id="paneprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="1034.0" stylesheets="@application2.css">
+      <Pane id="fenetre" fx:id="paneprincipal" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" stylesheets="@application2.css">
          <children>
             <Button layoutX="263.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#Démarrer" prefHeight="86.0" prefWidth="474.0" style="-fx-opacity: 100;" text="Démarrer" />
             <Button layoutX="263.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#Credits" prefHeight="86.0" prefWidth="474.0" text="Credits" />
             <Button layoutX="263.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#Quitter" prefHeight="86.0" prefWidth="474.0" text="Quitter" />
-            <ImageView fitHeight="119.0" fitWidth="704.0" layoutX="159.0" layoutY="59.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../Data/Designs/Crafting-Guide.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>
