@@ -48,7 +48,6 @@ public class Controller implements ActionListener,ItemListener, Observer {
 	public void detectClick(MouseEvent e){
 		//Je regarde si on clique dans une pane pour debuter
 		if(e.getSource() instanceof Pane) {
-
 			Node source=(Node) e.getSource();
 			Node sourceTarget=(Node) e.getTarget();
 
@@ -125,9 +124,9 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					}
 					resultat = model.resultatCraft.getMatrix()[0];
 					//System.out.println(model.resultatCraft.getMatrix()[0]);
-					for(int i=0;i<9;i++) {
+					/*for(int i=0;i<9;i++) {
 						System.out.println(model.tableDeCraft.getStackAt(i));
-					}
+					}*/
 					if(resultat != null) {
 						try {
 							this.cIHM.afficheResult(resultat.getItem().getImLink());
@@ -166,13 +165,17 @@ public class Controller implements ActionListener,ItemListener, Observer {
 								stackTemp = model.putInUncraftSlot(stackTemp);
 								ArrayList<String> listeUncraft = new ArrayList<String>();
 								for(int i=0;i<9;i++) {
-									String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
-									listeUncraft.add(lienIm);
+									if(model.tableDeCraft.getStackAt(i) == null) {
+										listeUncraft.add(null);
+									}
+									else {
+										String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
+										listeUncraft.add(lienIm);
+									}
 								}
 								cIHM.affichageUncraft(listeUncraft);
 							}
 							else {
-								System.out.println("TEST");
 								stackTemp = model.putInUncraftSlot(stackTemp);
 								ArrayList<String> listeUncraft = new ArrayList<String>();
 								for(int i=0;i<9;i++) {
@@ -184,6 +187,9 @@ public class Controller implements ActionListener,ItemListener, Observer {
 										listeUncraft.add(lienIm);
 									}
 								}
+								/*for(int i=0;i<9;i++) {
+									System.out.println(model.tableDeCraft.getStackAt(i));
+								}*/
 								cIHM.affichageUncraft(listeUncraft);
 							}
 
@@ -328,7 +334,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 					if(sourceTarget instanceof ImageView) {
 						model.tableDeCraft.add(null, positionParent);
 					}
-				}				
+				}
+				model.Craft();
 				resultat = model.resultatCraft.getMatrix()[0];
 				if(resultat != null) {
 					try {
@@ -354,7 +361,8 @@ public class Controller implements ActionListener,ItemListener, Observer {
 				}
 			}
 		}				
-
+		model.Craft();
+		model.resultatCraft.add(null, 0);
 		if(stackTemp == null) {
 			itemEnMain = false;
 		}

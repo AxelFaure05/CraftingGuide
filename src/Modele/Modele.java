@@ -58,6 +58,7 @@ public class Modele extends Observable implements Serializable {
 		if(this.resultatCraft != null) {
 			Stack prev = this.resultatCraft.getStackAt(0);
 			this.resultatCraft.add(stack, 0);
+			this.Uncraft();
 			return prev;
 		}
 		this.resultatCraft.add(stack, 0);
@@ -69,6 +70,7 @@ public class Modele extends Observable implements Serializable {
 		if(this.tableDeCraft.getStackAt(ind) != null) {
 			Stack prev = this.tableDeCraft.getStackAt(ind);
 			this.tableDeCraft.add(stack, ind);
+			this.Craft();
 			return prev;
 		}
 		this.tableDeCraft.add(stack, ind);
