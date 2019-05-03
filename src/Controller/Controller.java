@@ -124,6 +124,10 @@ public class Controller implements ActionListener,ItemListener, Observer {
 						}
 					}
 					resultat = model.resultatCraft.getMatrix()[0];
+					//System.out.println(model.resultatCraft.getMatrix()[0]);
+					for(int i=0;i<9;i++) {
+						System.out.println(model.tableDeCraft.getStackAt(i));
+					}
 					if(resultat != null) {
 						try {
 							this.cIHM.afficheResult(resultat.getItem().getImLink());
@@ -172,8 +176,13 @@ public class Controller implements ActionListener,ItemListener, Observer {
 								stackTemp = model.putInUncraftSlot(stackTemp);
 								ArrayList<String> listeUncraft = new ArrayList<String>();
 								for(int i=0;i<9;i++) {
-									String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
-									listeUncraft.add(lienIm);
+									if(model.tableDeCraft.getStackAt(i) == null) {
+										listeUncraft.add(null);
+									}
+									else {
+										String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
+										listeUncraft.add(lienIm);
+									}
 								}
 								cIHM.affichageUncraft(listeUncraft);
 							}
