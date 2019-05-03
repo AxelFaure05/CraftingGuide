@@ -295,10 +295,10 @@ public class ControllerIHM {
 		    		ImageView ima = (ImageView) source;
 		    		Image im = ima.getImage();
 		    		ImageView iv = new ImageView(im);
-		    		iv.setFitHeight(80);
-					iv.setFitWidth(80);
-					iv.setTranslateX(6.0);
-					iv.setTranslateY(6.0);
+		    		iv.setFitHeight(84);
+					iv.setFitWidth(84);
+					iv.setTranslateX(4.0);
+					iv.setTranslateY(4.0);
 					//((Pane) listeTempo.get(i)).getChildren().clear();;
 					((Pane) listeTempo.get(i)).getChildren().add(iv);
 					
@@ -326,8 +326,8 @@ public class ControllerIHM {
 		    		Image im = ima.getImage();
 		    		ImageView iv = new ImageView(im);
 		    		iv.setId(ID);
-		    		iv.setFitHeight(90);
-					iv.setFitWidth(90);
+		    		iv.setFitHeight(84);
+					iv.setFitWidth(84);
 					iv.setTranslateX(4.0);
 					iv.setTranslateY(4.0);
 					((Pane) listeTempo.get(i)).getChildren().add(iv);
