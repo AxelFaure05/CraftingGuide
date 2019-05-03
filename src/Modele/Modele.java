@@ -67,7 +67,7 @@ public class Modele extends Observable implements Serializable {
 	}
 	public Stack putInTableSlot(int ind, Stack stack) {
 		if(this.tableDeCraft.getStackAt(ind) != null) {
-			Stack prev = this.tableDeCraft.getStackAt(0);
+			Stack prev = this.tableDeCraft.getStackAt(ind);
 			this.tableDeCraft.add(stack, ind);
 			return prev;
 		}

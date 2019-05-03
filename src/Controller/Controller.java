@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.event.ActionEvent;
@@ -154,20 +155,33 @@ public class Controller implements ActionListener,ItemListener, Observer {
 
 				//Je regarde si on clique dans la case du table de uncraft
 				if(id.equals("case")) {
-					//System.out.println("TEST");
 					//System.out.println(sourceTarget.getId());
 					try {
 						if(source.getParent().getId().equals("anchorResult1")) {
 							if(sourceTarget instanceof ImageView) {
 								stackTemp = model.putInUncraftSlot(stackTemp);
+								ArrayList<String> listeUncraft = new ArrayList<String>();
+								for(int i=0;i<9;i++) {
+									String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
+									listeUncraft.add(lienIm);
+								}
+								cIHM.affichageUncraft(listeUncraft);
 							}
 							else {
+								System.out.println("TEST");
 								stackTemp = model.putInUncraftSlot(stackTemp);
+								ArrayList<String> listeUncraft = new ArrayList<String>();
+								for(int i=0;i<9;i++) {
+									String lienIm = model.tableDeCraft.getStackAt(i).getItem().getImLink();
+									listeUncraft.add(lienIm);
+								}
+								cIHM.affichageUncraft(listeUncraft);
 							}
 
 						}
 					}
 					catch(Exception e1){
+						e1.printStackTrace();
 					}
 				}
 			}
