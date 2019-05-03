@@ -455,6 +455,11 @@ public class ControllerIHM {
     					p1.getChildren().clear();
     				}
     			}
+    			if(p.getParent().getId().equals("table")) {
+    				result.getChildren().clear();
+    				Pane p1 = (Pane) source.getParent();
+	    			p1.getChildren().clear();
+    			}
     			else {
 	    			Pane p1 = (Pane) source.getParent();
 	    			p1.getChildren().clear();
@@ -492,18 +497,20 @@ public class ControllerIHM {
     public void affichageUncraft(ArrayList<String> linkList) throws IOException {
     	System.out.println("Affichage du Craft");
     	for(int i=0;i<9;i++) {
-    		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+linkList.get(i))), null);
-    		ImageView iv = new ImageView(im);
-    		String ID = linkList.get(i);
-    		iv.setId(ID);
-    		iv.setFitHeight(86);
-    		iv.setFitWidth(86);
-    		iv.setTranslateX(3.0);
-    		iv.setTranslateY(3.0);
-    		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
-			p1.getChildren().clear();
-    		p1.getChildren().add(iv);
-    		System.out.println(ID);
+    		if(!(linkList.get(i).equals(null))) {
+	    		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+linkList.get(i))), null);
+	    		ImageView iv = new ImageView(im);
+	    		String ID = linkList.get(i);
+	    		iv.setId(ID);
+	    		iv.setFitHeight(86);
+	    		iv.setFitWidth(86);
+	    		iv.setTranslateX(3.0);
+	    		iv.setTranslateY(3.0);
+	    		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
+				p1.getChildren().clear();
+	    		p1.getChildren().add(iv);
+	    		System.out.println(ID);
+    		}
     	}
     }
     
