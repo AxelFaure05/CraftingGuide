@@ -480,6 +480,7 @@ public class ControllerIHM {
 		iv.setTranslateY(3.0);
 		//try {
 		setresult(result);
+		System.out.println(iv);
 		result.getChildren().add(iv);
 		/*}catch(Exception e) {
 			System.out.println("ERREUR");

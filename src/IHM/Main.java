@@ -64,7 +64,7 @@ public class Main extends Application{
 		return !menuFermee;
 	}
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	/*public void start(Stage primaryStage) throws Exception {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("interface2.fxml"));
 			Parent root = loader.load();
@@ -92,10 +92,10 @@ public class Main extends Application{
 	
 	public void fermetureMenu() {
 		primaryStage.close();
-	}
+	}*/
 	
-/*
-	public void crafting(Stage primaryStage) throws Exception {
+
+	public void start(Stage primaryStage) throws Exception {
 		try {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
@@ -137,8 +137,8 @@ public class Main extends Application{
 		
 	}
 	
-	*/
-	/*
+	
+	
 	public void creerItemsBase() throws IOException {
 		
 		Iterator<Item> it = modl.fullItemList.iterator();
@@ -181,19 +181,19 @@ public class Main extends Application{
 			//System.out.println(Main.imageExist(item));
 		}		
 		
-    }*/
+    }
 	
-	/*public static boolean imageExist(Item item){
+	public static boolean imageExist(Item item){
 			boolean result = false;
 			try {
-				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getLien())), null);
+				Image image = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+item.getImLink())), null);
 		         result=true;
 		    } catch (IOException e) {
 		    	//e.printStackTrace();
 				result=false;
 			}
 		return result;
-	}*/
+	}
 	
 	//Fonction renvoyant une Node contenue aux coordonn�es du GridPane indiqu� en param�tre
 	public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
