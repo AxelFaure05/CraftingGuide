@@ -1,5 +1,7 @@
 package IHM;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
 import java.io.File;
@@ -37,7 +39,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application implements KeyListener{
 	private BorderPane layout;
 	static Modele modl = new Modele();
 	static ControllerIHM ctrl = new ControllerIHM();
@@ -97,6 +99,7 @@ public class Main extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		try {
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = loader.load();
 		namespace = loader.getNamespace();
@@ -244,5 +247,23 @@ public class Main extends Application{
     	System.out.println(tempo2);
     	return result;
     }
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

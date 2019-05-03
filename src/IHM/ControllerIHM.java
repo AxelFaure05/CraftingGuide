@@ -2,6 +2,8 @@ package IHM;
 
 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 import Controller.Controller;
 import Modele.Composants.Item;
@@ -468,8 +472,17 @@ public class ControllerIHM {
     	}
     }
     
+    public void clearTable() {
+    	for(int i=0;i<9;i++) {
+    		Pane p1 = (Pane) table.getChildren().get(i);
+    		//System.out.println(p1.getChildren());
+	    	p1.getChildren().clear();
+    		clearResult();
+    	}
+    }
+    
     public void clearResult() {
-    	System.out.println("Clearing crafting result");
+    	//System.out.println("Clearing crafting result");
     	result.getChildren().clear();
     }
     
