@@ -128,6 +128,10 @@ public class ControllerIHM {
     public void setresult(Pane res) {
     	this.result = res;
     }
+    
+    public void settableuncraft(GridPane tbl) {
+    	this.table_uncraft = tbl;
+    }
     public final static String DATA = "./Data/Designs/Items/";
     
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
@@ -510,7 +514,7 @@ public class ControllerIHM {
     public void affichageUncraft(ArrayList<String> linkList) throws IOException {
     	//System.out.println("Affichage du Craft");
     	for(int i=0;i<9;i++) {
-    		if(!(linkList.get(i).equals(null))) {
+    		if(!(linkList.get(i)==null)) {
 	    		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+linkList.get(i))), null);
 	    		ImageView iv = new ImageView(im);
 	    		String ID = linkList.get(i);
@@ -519,6 +523,7 @@ public class ControllerIHM {
 	    		iv.setFitWidth(86);
 	    		iv.setTranslateX(3.0);
 	    		iv.setTranslateY(3.0);
+	    		System.out.println("Table de uncraft : " + table_uncraft);
 	    		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
 				p1.getChildren().clear();
 	    		p1.getChildren().add(iv);

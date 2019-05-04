@@ -52,6 +52,7 @@ public class Main extends Application implements KeyListener{
 	ScrollPane scroll = ctrl.returnScrollPane();
 	Pane tempo2 = ctrl.returntempo2();
 	Pane result;
+	GridPane tblu;
 	public static boolean menuFermee=false;
 	static Map<String, Object> namespace;
 	ArrayList<GridPane> inventaires = new ArrayList<GridPane>();
@@ -115,8 +116,10 @@ public class Main extends Application implements KeyListener{
 		inv_crea = (GridPane)namespace.get("inventory_crea");
 		tempo2 = (Pane)namespace.get("tempo2");
 		result = (Pane)namespace.get("result");
+		tblu = (GridPane)namespace.get("table_uncraft");
 		
 		System.out.println(result);
+		ctrl.settableuncraft(tblu);
 		ctrl.setresult(result);
 		//inventaires.add(inventory);
 		//inventaires.add(inventory1);
