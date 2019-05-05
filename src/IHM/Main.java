@@ -67,6 +67,9 @@ public class Main extends Application implements KeyListener{
 		return !menuFermee;
 	}
 	@Override
+	
+	//Ceci est une fonction qui avait pour but de lancer un menu de démarrage, avant de lancer le programme. Elle a du être oublié à cause du fait qu'on ne pouvait plus gérer correctement nos interractions graphiques
+	
 	/*public void start(Stage primaryStage) throws Exception {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("interface2.fxml"));
@@ -97,7 +100,7 @@ public class Main extends Application implements KeyListener{
 		primaryStage.close();
 	}*/
 	
-
+	//Fonction de lancement de la fenêtre
 	public void start(Stage primaryStage) throws Exception {
 		try {
 		
@@ -144,7 +147,7 @@ public class Main extends Application implements KeyListener{
 	}
 	
 	
-	
+	//Fonction de génération des items dans notre inventaire dit "créatif"
 	public void creerItemsBase() throws IOException {
 		
 		Iterator<Item> it = modl.fullItemList.iterator();
@@ -188,7 +191,7 @@ public class Main extends Application implements KeyListener{
 		}		
 		
     }
-	
+	//Fonction qui vérifie si on a bien une image dans notre base d'image
 	public static boolean imageExist(Item item){
 			boolean result = false;
 			try {
@@ -235,14 +238,6 @@ public class Main extends Application implements KeyListener{
 	public static Controller returnController() {
 		return ctrll;
 	}
-	
-	//Fonction appelï¿½e par le click de la souris sur un item du GridPane
-	/*public void coords(MouseEvent e) {
-		Node source = (Node)e.getSource() ;
-        Integer colIndex = GridPane.getColumnIndex(source);
-        Integer rowIndex = GridPane.getRowIndex(source);
-        System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-	}*/
 	
 	public boolean tempoFull() {
     	boolean result = false;

@@ -34,7 +34,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class ControllerIHM {
-	
+	//Instanciation des différents composants chargés par le fichier interface.fxml
 	Controller ctrl = Main.returnController();
 
 	   @FXML
@@ -78,17 +78,7 @@ public class ControllerIHM {
 	    
 	    @FXML
 	    private AnchorPane anchorResult1;
-
-    @FXML
-    void dragdetect(ActionEvent event) {
-
-    }
-
-    @FXML
-    void dragdone(ActionEvent event) {
-
-    }
-    
+    //Différentes fonctions qui renvoient nos différents composants fxml afin de les réutiliser dans d'autres classes
     public GridPane returnCraftingTable() {
 		return table;
     }
@@ -137,7 +127,11 @@ public class ControllerIHM {
     ArrayList<Pane> listeTempo = new ArrayList<Pane>();
     ArrayList<GridPane> listeInventaires = new ArrayList<GridPane>();  
     
+    //leftClick est une grosse fonction qui gère tous les clics sur les différents composants. Elle aurait pu être plus condensée, cependant nos composants ne font pas tous la même taille,
+    //donc l'instanciation des images ne se fait pas toujours à la même taille, et de plus, cela revient au même que de relancer d'autres fonctions dans celle-ci, c'est pourquoi nous avons tout mis ici dans des boucles if.
+    
     public void leftClick(MouseEvent e) {
+    	//Récupération de différentes données, plus ou moins nécessaires au bon fonctionnement de la fonction
     	ctrl.detectClick(e);
     	listeTempo.add(tempo);
     	listeTempo.add(tempo1);
@@ -161,9 +155,10 @@ public class ControllerIHM {
     	//Mise en place des conditions
     	//Si l'item sur lequel on clique est dans l'inventaire
     	
+    	//Toute cette partie n'est lancée que si l'on n'utilise pas le clic molette/central de la souris
     	if(!(e.getButton() == MouseButton.MIDDLE)) {
     	
-	    	//Si on tient un item et que la source ne vient pas de inventory crea
+	    	//Si on tient un item et que la source est un des inventaires
 	    	if(source instanceof Pane && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("inventory_crea")) && !(source.getParent().getId().equals("table")) && !(source.getParent().getId().equals("anchorResult1")) && !(source.getId().equals("result"))) {
 	    		//System.out.println("cdt 1");
 	    		for(int i=0;i<3;i++) {
@@ -186,7 +181,7 @@ public class ControllerIHM {
 	    		}	
 	    		return;
 	    	}
-	    	
+	    	//Si on tient un Item et que l'on clique sur un item dans l'inventaire
 	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && !(tempo.getChildren().isEmpty()) && !(p.getId().equals("result"))) {
 	    		//System.out.println("cdt7");
 	    		ImageView imA = (ImageView) tempo2.getChildren().get(0);
@@ -224,7 +219,7 @@ public class ControllerIHM {
 	    		}
 	    	}
 	    	
-	    	//Si on ne tient rien et qu'on ne vient pas de inventory_crea
+	    	//Si on ne tient rien et qu'on clique un item d'un inventaire
 	    	if(source instanceof ImageView && (p.getParent().getId().equals("inventory2") || p.getParent().getId().equals("inventory1") || p.getParent().getId().equals("inventory") ) && tempo.getChildren().isEmpty()) {
 	    		//System.out.println("cdt2");
 	    		//System.out.println("---");
@@ -279,7 +274,7 @@ public class ControllerIHM {
 	    		p1.getChildren().add(iv);
 	    		//System.out.println("3");
 	    	}
-			
+			//Si on clique sur un item dans la table et qu'on tient un item
 			if(source instanceof ImageView && p.getParent().getId().equals("table") && !(listeTempo.get(0).getChildren().isEmpty())) {
 				result.getChildren().clear();
 				//System.out.println("cdt10");
@@ -313,7 +308,7 @@ public class ControllerIHM {
 					p1.getChildren().clear();
 					p1.getChildren().add(iV);
 			}
-			
+			////Si on clique sur un item dans la table et qu'on ne tient rien
 	    	if(source instanceof ImageView && p.getParent().getId().equals("table") && (listeTempo.get(0).getChildren().isEmpty())) {
 				//System.out.println("cdt5");
 				result.getChildren().clear();
@@ -340,7 +335,7 @@ public class ControllerIHM {
 				p1.getChildren().clear();
 				//System.out.println("ID="+ID);
 			}
-	    	
+	    	//Si on tient un item et qu'on clique sur la case d'entrée du uncraft
 			if(source instanceof Pane && !(source.getParent().getId().equals("anchorResult1")) && !(listeTempo.get(0).getChildren().isEmpty()) && !(source.getParent().getId().equals("result")) && !(source.getParent().getId().equals("table"))) {
 				//System.out.println("cdt6");
 				ImageView ima = (ImageView) tempo2.getChildren().get(0);
@@ -360,7 +355,7 @@ public class ControllerIHM {
 				iv.setTranslateY(4.0);
 				result1.getChildren().add(iv);
 			}
-			
+			//Si on ne tient rien et qu'on clique sur la case d'entrée du uncraft
 			if(source instanceof Pane && source.getParent().getId().equals("anchorResult1") && !(listeTempo.get(0).getChildren().isEmpty())) {
 				//System.out.println("cdt8");
 				ImageView ima =  (ImageView) tempo2.getChildren().get(0);
@@ -379,7 +374,7 @@ public class ControllerIHM {
 				}
 				result1.getChildren().add(iv);
 			}
-			
+			//Si on veut récupérer l'image passée en entrée du uncraft
 			if(source instanceof ImageView && p.getParent().getId().equals("anchorResult1")) {
 				//System.out.println("cdt9");
 				clearUncraft();
@@ -432,7 +427,7 @@ public class ControllerIHM {
 					}
 				}
 			}
-	    	
+	    	//Si on vient de l'inventaire dit "Créatif"
 	    	else {
 	    		if(source instanceof ImageView && (p.getParent().getId().equals("inventory_crea") /*|| p.getParent().getId().equals("anchorResult1")*/)) {
 	    			//System.out.println("cdt3");
@@ -453,6 +448,7 @@ public class ControllerIHM {
 	        	}
 	    	}
     	}
+    	//Si on fait un clic molette/central : on supprime l'item cliqué
     	else {
     		if(source instanceof ImageView && !(p.getParent().getId().equals("inventory_crea"))) {
     			//System.out.println("Clear");
@@ -476,7 +472,7 @@ public class ControllerIHM {
     		}
     	}
     }
-    
+    //Fonction de nettoyage de la table de uncraft
     public void clearUncraft() {
     	for(int i=0;i<9;i++) {
     		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
@@ -485,7 +481,7 @@ public class ControllerIHM {
     		clearResult();
     	}
     }
-    
+    //Fonction de nettoyage de la table de craft, lancée par le bouton "Clear"
     public void clearTable() {
     	for(int i=0;i<9;i++) {
     		Pane p1 = (Pane) table.getChildren().get(i);
@@ -494,12 +490,12 @@ public class ControllerIHM {
     		clearResult();
     	}
     }
-    
+    //Fonction de nettoyage du résultat du craft
     public void clearResult() {
     	//System.out.println("Clearing crafting result");
     	result.getChildren().clear();
     }
-    
+    //Fonction qui affiche un item résultant d'un craft
     public void afficheResult(String link) throws IOException{
     	System.out.println("Affichage du résultat du Craft");
 		Image im = SwingFXUtils.toFXImage(ImageIO.read(new File(DATA+link)), null);
@@ -520,7 +516,7 @@ public class ControllerIHM {
 			System.out.println(e.getMessage());
 		}*/
     }
-    
+  //Fonction qui affiche un item résultant d'un décraft
     public void affichageUncraft(ArrayList<String> linkList) throws IOException {
     	//System.out.println("Affichage du Craft");
     	for(int i=0;i<9;i++) {
@@ -541,7 +537,7 @@ public class ControllerIHM {
     		}
     	}
     }
-    
+    //Fonction de renvoi des coordonnées Parentes de l'élément cliqué
     public CouplePerso coordsParent(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		Node n = source.getParent();
@@ -556,7 +552,7 @@ public class ControllerIHM {
         CouplePerso result = new CouplePerso(rowIndex,colIndex);
 		return result ;
     }
-        
+    //Fonction de renvoi des coordonnées de l'élément cliqué
     public CouplePerso coords(MouseEvent e) {
 		Node source = (Node) e.getTarget() ;
 		Integer colIndex = null;
@@ -570,7 +566,7 @@ public class ControllerIHM {
 		CouplePerso result = new CouplePerso(rowIndex,colIndex);
 		return result ;
 	}
-    
+    //Couple perso est une classe renvoyant un couple d'Integer, et est utilisée pour renvoyer un couple de coordonnées
     public class CouplePerso{
     	public int x;
     	public int y;
@@ -579,7 +575,7 @@ public class ControllerIHM {
     		this.y=s;
     	}
     }
-    
+    //Fonction qui renvoie les coordonnées d'une position dans la table de craft
     public CouplePerso coordsTable(MouseEvent e) {
     	//ctrl.detectClick(e);
 		Node source = (Node) e.getTarget() ;
@@ -605,11 +601,11 @@ public class ControllerIHM {
 		//System.out.println("Result clicked");
 		//System.out.println(e.getSource());
 	}
-    
+    //Fonction qui renvoie la position dans une liste de l'élément cliqué par rapport à nos inventaires de 9 cases de large
     public Integer coordsToPosition(int a,int b) {
     	return a*9+b+1;
     }
-    
+    //Fonction qui renvoie la position dans une liste de l'élément cliqué par rapport à la table de craft de 3 cases de large    
     public Integer coordsInTable(int a,int b) {
     	return a*3+b+1;
     }
