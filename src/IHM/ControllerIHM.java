@@ -382,6 +382,7 @@ public class ControllerIHM {
 			
 			if(source instanceof ImageView && p.getParent().getId().equals("anchorResult1")) {
 				//System.out.println("cdt9");
+				clearUncraft();
 				if(listeTempo.get(0).getChildren().isEmpty()) {
 					for(int i=0;i<3;i++) {
 						ImageView ima = (ImageView) source;
@@ -473,6 +474,15 @@ public class ControllerIHM {
 	    			p1.getChildren().clear();
     			}
     		}
+    	}
+    }
+    
+    public void clearUncraft() {
+    	for(int i=0;i<9;i++) {
+    		Pane p1 = (Pane) table_uncraft.getChildren().get(i);
+    		//System.out.println(p1.getChildren());
+	    	p1.getChildren().clear();
+    		clearResult();
     	}
     }
     
